@@ -1,0 +1,85 @@
+.transportCard {
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 320px;
+  background-color: #14161a;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  will-change: transform, box-shadow;
+}
+
+.transportImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.headerCard {
+  background-color: #14161a;
+  text-align: center;
+  padding: 10px;
+  font-size: 13px;
+}
+
+.price {
+  text-align: right;
+  padding: 5px;
+  background-color: #1d2125;
+  font-size: 22px;
+  font-weight: 500;
+  color: #50c878;
+  margin-top: auto;
+  position: relative; // Для позиционирования tooltip
+  cursor: pointer;
+
+  &:hover .tooltip {
+    display: block; // Показываем tooltip при наведении
+  }
+}
+
+.details {
+  display: flex;
+  padding: 0 15px;
+
+  .leftColumn {
+    flex: 1;
+    margin-right: 16px;
+  }
+
+  .rightColumn {
+    flex: 1;
+  }
+}
+
+.detailItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #ffffff;
+
+  .icon {
+    margin-right: 4px;
+    color: #007bff;
+    width: 23px;
+  }
+}
+
+.tooltip {
+  display: none; // Скрываем tooltip по умолчанию
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

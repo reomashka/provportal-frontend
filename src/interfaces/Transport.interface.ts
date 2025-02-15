@@ -1,0 +1,36 @@
+export default interface Transport {
+  id: number;
+  nameAuto: string;
+  fullSpeed?: number;
+  speed100Time?: number;
+  speedMaxTime?: number;
+  volumeTank?: number;
+  costLiter?: number;
+  typeTank?: string;
+  slots?: number;
+  price?: number;
+  seats?: number;
+  repairWithoutIns?: number;
+  repairLiteIns?: number;
+  repairStandIns?: number;
+  repairExcIns?: number;
+  liteInsurance?: number;
+  standInsurance?: number;
+  excInsurance?: number;
+  uniqueName: string;
+  typeBody: string;
+  showroom?: string;
+  EPP?: string;
+  city: string;
+  stageCounter?: number;
+  paintInter?: string;
+  paintFirst?: string;
+  paintSecond?: string;
+  paintThird?: string;
+  antichrome?: number;
+  accessories?: string;
+  rims?: string;
+  gosCostOld?: number;
+  class?: string;
+  units?: number;
+}

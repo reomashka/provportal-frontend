@@ -1,0 +1,95 @@
+.footer {
+  // background-color: #101010;
+  padding: 25px;
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0; /* Убираем возможность сжатия футера */
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: auto;
+
+  &.footerLinks {
+    display: flex;
+    gap: 10px;
+  }
+
+  .footerLink {
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 5px;
+
+    &.vk {
+      background-color: rgba(84, 152, 255, 0.15);
+      color: #436bf5;
+    }
+
+    &.telegram {
+      background-color: rgba(84, 152, 255, 0.15);
+      color: #5498ff;
+    }
+
+    &.team {
+      background-color: rgba(140, 51, 229, 0.15);
+      color: #9e4def;
+    }
+  }
+
+  .footerLogo {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 15px;
+    color: #ffffff;
+    max-width: 100%; /* Ограничиваем ширину логотипа */
+    overflow: hidden; /* Обрезаем переполнение */
+    text-overflow: ellipsis; /* Добавляем многоточие для переполненного текста */
+    margin-left: auto; /* Перемещаем логотип вправо */
+
+    img {
+      margin-right: 8px;
+    }
+
+    span {
+      font-size: 1.2em; /* Задает размер шрифта для текста */
+    }
+  }
+
+  .footerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 440px) {
+  .footerLogo {
+    display: flex;
+    align-items: center;
+    font-weight: 300;
+    font-size: 7px;
+    color: #ffffff;
+    max-width: 100%; /* Ограничиваем ширину логотипа */
+    overflow: hidden; /* Обрезаем переполнение */
+    text-overflow: ellipsis; /* Добавляем многоточие для переполненного текста */
+    margin-left: auto; /* Перемещаем логотип вправо */
+  }
+
+  .footer {
+    background-color: #101010;
+    padding: 25px;
+    font-size: 7px;
+    display: flex;
+    justify-content: center; /* центрируем контент */
+    align-items: center;
+    flex: 0 0 auto;
+    width: 100%;
+    margin: 30px auto 0 auto; /* Отступ сверху 30px */
+    box-sizing: border-box; /* учитываем padding при вычислении ширины */
+  }
+}

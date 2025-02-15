@@ -1,0 +1,147 @@
+// Основные стили для header
+header {
+  color: #fff;
+  // display: flex;
+  // justify-content: space-between;
+  align-items: center;
+  position: relative;
+  background-color: #121212;
+  padding: 10px 0;
+  z-index: 10;
+  width: 100%;
+}
+
+.containerHeader {
+  display: flex;
+  justify-content: space-between; // Лого слева, навигация справа
+  align-items: center;
+  width: 100%; // Занимает всю доступную ширину
+  box-sizing: border-box;
+}
+
+.logo {
+  margin-left: 10px;
+
+  img {
+    height: 60px;
+    margin-bottom: 10px;
+  }
+}
+
+// Стили для навигации
+nav {
+  .navList {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      position: relative;
+      margin-left: 20px;
+      font-size: 16px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #fff;
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        background-color: #00c16e;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  .arrow {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+  }
+
+  // Стили для выпадающего меню
+  .dropdownMenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    border-radius: 5px;
+    z-index: 20; // Выпадающее меню выше остальных элементов
+
+    li {
+      margin: 0;
+    }
+
+    a {
+      padding: 10px 20px;
+    }
+
+    .dropdown {
+      position: relative;
+
+      .dropdownMenu {
+        top: 0;
+        left: 100%;
+        margin-left: 1px;
+      }
+    }
+  }
+
+  .dropdown:hover {
+    .dropdownMenu {
+      display: block;
+      pointer-events: none; // Отключаем кликабельность
+      animation: enablePointerEvents 0.01s forwards 0.01s; // Включаем через 0.3с
+    }
+
+    > a {
+      .arrow {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+// Анимация включения кликабельности в меню
+@keyframes enablePointerEvents {
+  to {
+    pointer-events: auto; // Включаем кликабельность
+  }
+}
+
+.noAnimation {
+  transition: none;
+}
+
+// Медиазапрос для экранов шириной до 645px
+@media (max-width: 645px) {
+  header {
+    flex-direction: column;
+  }
+
+  .containerHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navList {
+    flex-direction: column;
+    width: 100%;
+
+    li {
+      width: 100%;
+    }
+  }
+
+  .dropdownMenu {
+    margin-top: 10px; // Добавлено для отделения от других элементов
+    height: auto; // Убедитесь, что высота автоматически изменяется
+    position: static;
+  }
+}
