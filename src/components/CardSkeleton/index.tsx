@@ -4,8 +4,8 @@ const CardSkeleton = () => (
   <ContentLoader
     speed={2}
     width={310}
-    height={250}
-    viewBox='0 0 310 250'
+    height={260}
+    viewBox='0 0 310 260'
     backgroundColor='#1d2125'
     foregroundColor='#2a2e33'
   >

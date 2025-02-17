@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import iconCar from '@assets/homePage/main-section-img/mc-car.svg';
 import iconCard from '@assets/homePage/main-section-img/mc-card.svg';
@@ -33,12 +34,21 @@ export const MainSection = () => {
       <p className={styles.mainSectionTitle}>Основные разделы</p>
       <div className={styles.mainSectionCardBlock}>
         {mainSectionCards.map((card) => (
-          <Link to={card.link} key={card.id}>
-            <div className={`${styles.mainSectionCard} ${styles[card.color]}`}>
-              <p>{card.name}</p>
-              <img src={icons[card.icon]} alt='#' />
-            </div>
-          </Link>
+          <motion.div
+            className={styles.transportCard}
+            key={card.id}
+            initial={{ opacity: 0, y: 5 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: card.id * 0.1 }}
+            whileHover={{ scale: 1.02, transition: { duration: 0.5 } }}
+          >
+            <Link to={card.link}>
+              <div className={`${styles.mainSectionCard} ${styles[card.color]}`}>
+                <p>{card.name}</p>
+                <img src={icons[card.icon]} alt='#' />
+              </div>
+            </Link>
+          </motion.div>
         ))}
       </div>
     </section>

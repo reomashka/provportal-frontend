@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './header.module.scss';
+import { Flame } from 'lucide-react';
 
 import logo from '@assets/logos/mainLogo.svg';
 
@@ -35,11 +36,20 @@ export const Header = () => {
                   <Link to='/transport/moto'>Мотоциклы</Link>
                 </li>
                 <li>
-                  <Link to='/transport/cont'>Контейнерный</Link>
+                  <Link to='/transport/container'>
+                    Контейнерный (New)
+                    <Flame />
+                  </Link>
                 </li>
                 <li>
-                  <Link to='/transport/exc'>Экслюзивный</Link>
+                  <Link to='/transport/exclusive'>
+                    Экслюзивный (New)
+                    <Flame />
+                  </Link>
                 </li>
+                {/* <li>
+                  <Link to='/transport/exc'>Экслюзивный</Link>
+                </li> */}
               </ul>
             </li>
 

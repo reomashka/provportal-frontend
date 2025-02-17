@@ -1,18 +1,21 @@
 import React from 'react';
-
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Timer, Gauge, Warehouse, Fuel, ClockAlert, Users, Grid2x2 } from 'lucide-react';
-
 import styles from './TransportCard.module.scss';
 import Transport from '@interfaces/Transport.interface';
 
 interface TransportCardProps {
   transportData: Transport[];
-  transportType: 'moto' | 'passenger' | 'cargo' | 'public';
+  transportType: string;
 }
 
 export const TransportCard: React.FC<TransportCardProps> = ({ transportData, transportType }) => {
+  // Сохранение позиции прокрутки перед переходом
+  const handleCardClick = () => {
+    localStorage.setItem('scrollY', window.scrollY.toString());
+  };
+
   return (
     <>
       {transportData.map((transport) => (
@@ -20,6 +23,7 @@ export const TransportCard: React.FC<TransportCardProps> = ({ transportData, tra
           key={transport.id}
           to={'/transport/' + transport.id}
           style={{ textDecoration: 'none', color: 'inherit' }}
+          onClick={handleCardClick} // Сохраняем позицию прокрутки перед переходом
         >
           <motion.div
             className={styles.transportCard}
@@ -27,7 +31,7 @@ export const TransportCard: React.FC<TransportCardProps> = ({ transportData, tra
             initial={{ opacity: 0, y: 5 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            whileHover={{ scale: 1.02, transition: { duration: 0.05 } }}
+            whileHover={{ scale: 1.01, transition: { duration: 0.07 } }}
           >
             <img
               src={`https://provportal.ru/assets/images/transport/${transport.uniqueName}.webp`}
@@ -69,7 +73,7 @@ export const TransportCard: React.FC<TransportCardProps> = ({ transportData, tra
                   <span>{transport.showroom}</span>
                 </div>
 
-                {transportType == 'public' ? (
+                {transportType === 'public' ? (
                   <div className={styles.detailItem}>
                     <Users className={styles.icon} color='#ffffff' strokeWidth={1.5} />
                     <span> {transport.seats}</span>

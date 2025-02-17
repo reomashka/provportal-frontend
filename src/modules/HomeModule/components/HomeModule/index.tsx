@@ -1,16 +1,16 @@
 import { HeaderHome } from '../HeaderHome';
 import { MainSection } from '../MainSection';
-import { ServersSection } from '../ServersSection';
+import { OnlineSection } from '../OnlineSection';
 
 import { NewsSection } from '../NewsSection';
 
-export const HomePageModule = () => {
+export const HomeModule = () => {
   return (
     <>
       <HeaderHome />
       <main>
         <MainSection />
-        <ServersSection />
+        <OnlineSection />
         <NewsSection />
       </main>
     </>

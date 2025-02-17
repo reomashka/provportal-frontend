@@ -1,5 +1,5 @@
 import styles from './HeaderHome.module.scss';
-import logoHome from '@assets/logos/Site-logo.svg';
+import logoHome from '@assets/logos/logo_blue.svg';
 
 export const HeaderHome = () => {
   return (
