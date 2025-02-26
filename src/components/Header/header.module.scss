@@ -11,12 +11,16 @@ header {
   width: 100%;
 }
 
-.containerHeader {
+.container {
   display: flex;
-  justify-content: space-between; // Лого слева, навигация справа
+  justify-content: space-between;
   align-items: center;
-  width: 100%; // Занимает всю доступную ширину
+  width: 100%;
   box-sizing: border-box;
+  padding: 0 1rem;
+  max-width: 1350px;
+  margin: 0 auto;
+  height: 100%;
 }
 
 .logo {
@@ -125,7 +129,7 @@ nav {
     flex-direction: column;
   }
 
-  .containerHeader {
+  .container {
     flex-direction: column;
     align-items: flex-start;
   }

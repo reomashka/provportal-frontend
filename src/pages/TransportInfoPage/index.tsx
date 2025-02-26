@@ -5,13 +5,15 @@ import { Footer } from '@components/Footer';
 
 export const TransportInfoPage = () => {
   return (
-    <div className='container'>
+    <>
       <TransportInfoPageMetadata />
       <Header />
       <main>
-        <TransportInfo />
+        <div className='container'>
+          <TransportInfo />
+        </div>
       </main>
       <Footer />
-    </div>
+    </>
   );
 };

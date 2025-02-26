@@ -7,7 +7,7 @@ import logo from '@assets/logos/mainLogo.svg';
 export const Header = () => {
   return (
     <header>
-      <div className={styles.containerHeader}>
+      <div className={styles.container}>
         <div className={styles.logo}>
           <Link to='/home'>
             <img src={logo} alt='Logo'></img>
@@ -69,7 +69,7 @@ export const Header = () => {
 
             <li className={`${styles.dropdown} + ${styles.noAnimation}`}>
               <Link to='#'>
-                Системы<span className='arrow_new'>&#9660;</span>
+                Системы <span className='arrow_new'>&#9660;</span>
               </Link>
               <ul className={styles.dropdownMenu}>
                 <li>

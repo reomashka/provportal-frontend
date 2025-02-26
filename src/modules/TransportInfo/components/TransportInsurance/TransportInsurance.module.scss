@@ -1,0 +1,122 @@
+.textCenter {
+  text-align: center !important;
+}
+
+.title {
+  color: #34f091;
+  font-weight: 700;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  background-color: #14161a;
+  border-radius: 25px;
+  line-height: 25px;
+  overflow-x: hidden;
+  padding: 10px 35px 10px 20px;
+}
+
+.listUnstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+.insuranceTable th,
+.insuranceTable td {
+  padding: 10px;
+  text-align: center;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .insurance-container {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .insuranceTable {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .insuranceTable thead {
+    display: none; /* Скрываем заголовок таблицы */
+  }
+
+  .insuranceTable tbody tr {
+    display: block;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  .insuranceTable td {
+    display: block;
+    width: 100%; /* Заставляем ячейки занимать всю ширину */
+    border: none;
+    padding: 8px;
+    text-align: left; /* Выравниваем текст по левому краю */
+    position: relative;
+  }
+
+  .insuranceTable td::before {
+    content: attr(data-label); /* Добавляем заголовок через data-label */
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #00974b;
+  }
+}
+
+.tableHover > tbody > tr:hover > * {
+  --bs-table-accent-bg: var(--bs-table-hover-bg);
+  color: var(--bs-table-hover-color);
+}
+
+.table {
+  --bs-table-bg: transparent;
+  --bs-table-accent-bg: transparent;
+  --bs-table-striped-color: #212529;
+  --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+  --bs-table-active-color: #212529;
+  --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+  --bs-table-hover-color: #34f091;
+  --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  vertical-align: center;
+  border-color: #1e1e1e;
+  border-collapse: separate;
+  border-spacing: 0px;
+  padding: 0px 0px 0px 0px;
+  width: 100%;
+  font-size: 12px;
+  margin: 5px;
+}
+
+.table > :not(caption) > * > * {
+  padding: 0.5rem 0.5rem;
+  background-color: var(--bs-table-bg);
+  border-bottom-width: 1px;
+  box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+}
+.table > tbody {
+  vertical-align: inherit;
+}
+.table > thead {
+  vertical-align: bottom;
+}
+.table > :not(:first-child) {
+  border-top: 2px solid currentColor;
+}

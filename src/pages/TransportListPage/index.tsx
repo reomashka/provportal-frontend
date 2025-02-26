@@ -21,18 +21,21 @@ const transportTypeMap: Record<TransportTypeProps['transportType'], string> = {
 
 export const TransportListPage: React.FC<TransportTypeProps> = ({ transportType }) => {
   return (
-    <div className='container'>
+    <>
       <TransportListPageMetadata />
       <Header />
-      <Banner
-        path={`/assets/images/other/${transportType}.webp`}
-        title={transportTypeMap[transportType]}
-      />
-      <SortButtons />
-      {/* <SearchContainer /> */}
-      <TransportList transportType={transportType} />
-      <ScrollToTop />
+      <div className='container'>
+        <Banner
+          path={`/assets/images/other/${transportType}.webp`}
+          title={transportTypeMap[transportType]}
+        />
+        <SortButtons />
+        {/* <SearchContainer /> */}
+        <TransportList transportType={transportType} />
+        <ScrollToTop />
+      </div>
+
       <Footer />
-    </div>
+    </>
   );
 };

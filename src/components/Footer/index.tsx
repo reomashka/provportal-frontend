@@ -4,7 +4,7 @@ import styles from './Footer.module.scss';
 export const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <div className={styles.footerContainer}>
+      <div className={styles.container}>
         <div className={styles.footerLinks}>
           <Link to='https://vk.com/provportal' className={`${styles.footerLink} + ${styles.vk}`}>
             Группа портала
