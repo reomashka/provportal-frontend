@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-// import './style.css';
 import styles from './TransportInfo.module.scss';
 
 import { useParams } from 'react-router-dom';
