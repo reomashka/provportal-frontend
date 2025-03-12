@@ -1,10 +1,24 @@
-provportal by romashka
+### **ProvPortal by romashka (PP Team)**
 
 technologies:
 
-- react
-- redux
-- nest js
+- React
+- Redux
+- Lucide icons
+- Module SCSS
+
+- Nest.JS
 - git
-- postgres SQL
+- postgreSQL
 - Prisma
+- Docker
+- Swagger
+
+- Яндекс Метрика
+- Google Serch Console
+
+**Документация фронтенд**
+
+На клиентской части портала используется React с модульной архитектурой. В папке `src/modules` хранятся модули разных частей сайтов. Важно, модуль != страница. В модулях используются компоненты актуальны только для конкретного модуля и нигде больше не могут быть использованы.
+
+Папка `src/pages` хранит в себе папки со страницами. на странице мы используем только глобальные компоненты из src/components и модули. Никакой бизнес логики.

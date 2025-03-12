@@ -24,16 +24,18 @@ export const TransportListPage: React.FC<TransportTypeProps> = ({ transportType 
     <>
       <TransportListPageMetadata />
       <Header />
-      <div className='container'>
-        <Banner
-          path={`/assets/images/other/${transportType}.webp`}
-          title={transportTypeMap[transportType]}
-        />
-        <SortButtons />
-        {/* <SearchContainer /> */}
-        <TransportList transportType={transportType} />
-        <ScrollToTop />
-      </div>
+      <main>
+        <div className='container'>
+          <Banner
+            path={`/assets/images/other/${transportType}.webp`}
+            title={transportTypeMap[transportType]}
+          />
+          <SortButtons />
+          {/* <SearchContainer /> */}
+          <TransportList transportType={transportType} />
+          <ScrollToTop />
+        </div>
+      </main>
 
       <Footer />
     </>

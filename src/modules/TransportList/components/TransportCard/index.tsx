@@ -87,19 +87,27 @@ export const TransportCard: React.FC<TransportCardProps> = ({ transportData, tra
               </div>
             </div>
 
-            <div className={styles.price}>
-              <span>
-                {new Intl.NumberFormat('ru-RU', { useGrouping: true }).format(transport.price ?? 0)}{' '}
-                ₽
-                <span className={styles.tooltip}>
-                  Актуальная гос. цена:{' '}
+            {transportType !== 'container' ? (
+              <div className={styles.price}>
+                <span>
                   {new Intl.NumberFormat('ru-RU', { useGrouping: true }).format(
-                    (transport.price ?? 0) * 0.9
+                    transport.price ?? 0
                   )}{' '}
                   ₽
-                </span>{' '}
-              </span>
-            </div>
+                  <span className={styles.tooltip}>
+                    Актуальная гос. цена:{' '}
+                    {new Intl.NumberFormat('ru-RU', { useGrouping: true }).format(
+                      (transport.price ?? 0) * 0.9
+                    )}{' '}
+                    ₽
+                  </span>{' '}
+                </span>
+              </div>
+            ) : (
+              <div className={styles.price}>
+                <span>Контейнер</span>
+              </div>
+            )}
           </motion.div>
         </Link>
       ))}

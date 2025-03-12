@@ -4,6 +4,7 @@ import { HomePage } from './pages/HomePage';
 import { TransportLand } from './pages/TransportLand';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { TransportInfoPage } from './pages/TransportInfoPage';
+import { JobsListPage } from './pages/JobsListPage';
 
 const App = () => {
   return (
@@ -28,6 +29,9 @@ const App = () => {
         element={<TransportListPage transportType='exclusive' />}
       />
       <Route path='/transport/:id' element={<TransportInfoPage />} />
+
+      <Route path='/jobs' element={<JobsListPage />} />
+
       <Route path='*' element={<NotFoundPage />} />
     </Routes>
   );

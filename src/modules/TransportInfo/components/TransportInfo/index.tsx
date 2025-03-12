@@ -14,14 +14,14 @@ import { TransportTuning } from '../TransportTuning';
 
 export const TransportInfo = () => {
   const [transportData, setTransportData] = useState<Transport | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
 
   useEffect(() => {
     window.scrollTo(0, 0);
 
     async function fetchData() {
-      setIsLoading(true);
+      // setIsLoading(true);
       try {
         const transportDataResponse = await fetch(
           `http://localhost:4444/api/transport/get-one/${id}`
@@ -35,7 +35,7 @@ export const TransportInfo = () => {
       } catch (error) {
         console.error('Ошибка при загрузке данных:', error);
       } finally {
-        setIsLoading(false);
+        // setIsLoading(false);
       }
     }
 
@@ -49,7 +49,7 @@ export const TransportInfo = () => {
         <MiniInfo transportData={transportData} />
 
         <div className={styles.row}>
-          <TransportSpecific />
+          <TransportSpecific transportData={transportData} />
           <div className={styles.selectionOfInfo}>
             <TransportInsurance />
             <TransportStages />

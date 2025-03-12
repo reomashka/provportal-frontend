@@ -31,28 +31,30 @@ export function TransportLand() {
   ];
 
   return (
-    <div className='container'>
+    <>
       <Header />
-      <main>
-        <Banner path='assets/images/other/house.png' title='Автомобили' />
+      <div className='container'>
+        <main>
+          <Banner path='assets/images/other/bank.jpg' title='Автомобили' />
 
-        <div className={styles.transportGrid}>
-          {categories.map((category) => (
-            <Link to={category.to} key={category.title} className={styles.categoryCard}>
-              <div className={styles.imgWrapper}>
-                <img
-                  src={category.img || '/placeholder.svg'}
-                  alt={category.title}
-                  className={styles.image}
-                />
-              </div>
-              <h2>{category.title}</h2>
-            </Link>
-          ))}
-        </div>
-      </main>
+          <div className={styles.transportGrid}>
+            {categories.map((category) => (
+              <Link to={category.to} key={category.title} className={styles.categoryCard}>
+                <div className={styles.imgWrapper}>
+                  <img
+                    src={category.img || '/placeholder.svg'}
+                    alt={category.title}
+                    className={styles.image}
+                  />
+                </div>
+                <h2>{category.title}</h2>
+              </Link>
+            ))}
+          </div>
+        </main>
+      </div>
 
       <Footer />
-    </div>
+    </>
   );
 }

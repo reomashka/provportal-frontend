@@ -1,0 +1,28 @@
+.jobsGrid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  box-sizing: border-box;
+  justify-content: end; /* Выравнивание сетки по правому краю */
+}
+
+@media (max-width: 1300px) {
+  .jobsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1150px) {
+  .jobsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .jobsGrid {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0 10px;
+  }
+}

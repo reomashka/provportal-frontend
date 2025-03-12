@@ -16,7 +16,7 @@ export const TransportList: React.FC<TransportTypeProps> = ({ transportType }) =
 
   const dispatch = useDispatch();
   const filterData = useSelector((state: RootState) => state.filter.value);
-  const scrollY = useSelector((state: RootState) => state.scroll.scrollY);
+  // const scrollY = useSelector((state: RootState) => state.scroll.scrollY);
 
   // Сохранение позиции прокрутки перед переходом
   useEffect(() => {
