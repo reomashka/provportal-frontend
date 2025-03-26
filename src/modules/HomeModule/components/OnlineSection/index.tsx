@@ -44,7 +44,7 @@ export const OnlineSection = () => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const { data } = await axios.get(`http://localhost:4444/api/online`);
+        const { data } = await axios.get(`http://localhost:3000/api/online`);
         setOnlineData(data);
       } catch (error) {
         console.error('Ошибка загрузки данных по онлайну серверов:', error);

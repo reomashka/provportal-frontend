@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Transport from '@interfaces/Transport.interface';
 
-const API_URL = 'http://localhost:4444/api/transport';
+const API_URL = 'http://localhost:3000/api/transport';
 
 export const fetchDataAllTransport = async (order: string): Promise<Transport[]> => {
   try {

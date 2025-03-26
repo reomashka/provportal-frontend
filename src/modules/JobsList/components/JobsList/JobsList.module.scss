@@ -26,3 +26,35 @@
     padding: 0 10px;
   }
 }
+.sortButton {
+  display: inline-block;
+  max-width: 300px;
+  padding: 0.5rem 2rem;
+  margin-bottom: 15px;
+  border-radius: 0.25rem;
+  background-color: #059669;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #52525b;
+  }
+
+  &.active {
+    background-color: #059669;
+
+    &:hover {
+      background-color: #047857;
+    }
+  }
+}
+
+.active {
+  background-color: #047857;
+}

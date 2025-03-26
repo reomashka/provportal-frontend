@@ -38,7 +38,7 @@ export const TransportList: React.FC<TransportTypeProps> = ({ transportType }) =
       setHasError(false);
       try {
         const { data } = await axios.get(
-          `http://localhost:4444/api/transport/get-all?order=${filterData}&class=${transportType}`
+          `http://localhost:3000/api/transport/get-all?order=${filterData}&class=${transportType}`
         );
         setTransportData(data);
       } catch (error) {

@@ -6,6 +6,8 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { TransportInfoPage } from './pages/TransportInfoPage';
 import { JobsListPage } from './pages/JobsListPage';
 
+import { JobsCRUD } from './pages/AdmPanelPages/JobsCRUD';
+
 const App = () => {
   return (
     <Routes>
@@ -31,6 +33,9 @@ const App = () => {
       <Route path='/transport/:id' element={<TransportInfoPage />} />
 
       <Route path='/jobs' element={<JobsListPage />} />
+
+      {/* adm */}
+      <Route path='/adm/jobs' element={<JobsCRUD />} />
 
       <Route path='*' element={<NotFoundPage />} />
     </Routes>

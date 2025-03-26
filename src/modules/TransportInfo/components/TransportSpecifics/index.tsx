@@ -107,5 +107,3 @@ export const TransportSpecific: React.FC<TransportSpecificProps> = ({ transportD
     </div>
   );
 };
-
-export default TransportSpecific;

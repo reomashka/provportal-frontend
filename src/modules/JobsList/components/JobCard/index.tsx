@@ -1,32 +1,33 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Info, CircleFadingArrowUp, MapPin } from 'lucide-react';
+import { Info, CircleFadingArrowUp, MapPin, Pen } from 'lucide-react';
 import styles from './TransportCard.module.scss';
-import Transport from '@interfaces/Transport.interface';
+
+import { Job } from '@interfaces/Job.interface';
 
 interface TransportCardProps {
-  transportData: Transport[];
+  jobData: Job[];
 }
 
-export const JobCard: React.FC<TransportCardProps> = ({ transportData }) => {
+export const JobCard: React.FC<TransportCardProps> = ({ jobData }) => {
   // Сохранение позиции прокрутки перед переходом
   const handleCardClick = () => {
     localStorage.setItem('scrollY', window.scrollY.toString());
   };
-
+  const role = 'admin';
   return (
     <>
-      {transportData.map((transport) => (
+      {jobData.map((job) => (
         <Link
-          key={transport.id}
-          to={'/transport/' + transport.id}
+          key={job.id}
+          to={'/transport/' + job.id}
           style={{ textDecoration: 'none', color: 'inherit' }}
           onClick={handleCardClick}
         >
           <motion.div
             className={styles.transportCard}
-            key={transport.id}
+            key={job.id}
             initial={{ opacity: 0, y: 5 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
@@ -34,31 +35,37 @@ export const JobCard: React.FC<TransportCardProps> = ({ transportData }) => {
           >
             <img
               src={`https://provportal.ru/assets/images/jobs/tram.webp`}
-              alt={transport.nameAuto}
+              alt=''
               className={styles.transportImage}
               loading='lazy'
             />
 
             <div className={styles.headerCard}>
-              <h2>Водитель трамвая</h2>
+              <h2>{job.name}</h2>
             </div>
 
             <div className={styles.details}>
               <div className={styles.leftColumn}>
                 <div className={styles.detailItem}>
                   <CircleFadingArrowUp className={styles.icon} color='#ffffff' />
-                  <span>5 уровень</span>
+                  <span>{job.lvl} уровень</span>
                 </div>
-
                 <div className={styles.detailItem}>
                   <MapPin className={styles.icon} color='#ffffff' strokeWidth={1.5} />
-                  <span>г. Приволжск, Мирный, Невский</span>
+                  <span>г. {job.city}</span>
                 </div>
-
                 <div className={styles.detailItem}>
                   <Info className={styles.icon} color='#ffffff' strokeWidth={1.5} />
-                  <span>Городские маршруты по перевозке пассажиров</span>
+                  <span>{job.about}</span>
                 </div>
+                {role === 'admin' && (
+                  <div className={`${styles.detailItem} ${styles.editItem}`}>
+                    <Link to={'/adm/jobs'}>
+                      <Pen className={styles.icon} color='#ffffff' strokeWidth={1.5} />
+                      <span>Изменить данные</span>
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           </motion.div>

@@ -3,11 +3,12 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 import { JobCard } from '../JobCard';
-import Transport from '@interfaces/Transport.interface';
+import { Job } from '@interfaces/Job.interface';
 import CardSkeleton from '@components/CardSkeleton';
+import { Link } from 'react-router-dom';
 
 export const JobsList = () => {
-  const [transportData, setTransportData] = useState<Transport[]>([]);
+  const [data, setData] = useState<Job[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
@@ -16,8 +17,8 @@ export const JobsList = () => {
       setIsLoading(true);
       setHasError(false);
       try {
-        const { data } = await axios.get(`http://localhost:4444/api/transport/get-all`);
-        setTransportData(data);
+        const { data } = await axios.get(`http://localhost:3000/api/jobs`);
+        setData(data);
       } catch (error) {
         console.error('Ошибка загрузки данных:', error);
         setHasError(true);
@@ -29,13 +30,23 @@ export const JobsList = () => {
     fetchData();
   }, []);
 
+  const role = 'admin';
+
   return (
-    <div className={styles.jobsGrid}>
-      {isLoading || hasError ? (
-        Array.from({ length: 8 }).map((_, index) => <CardSkeleton key={index} />)
-      ) : (
-        <JobCard transportData={transportData} />
+    <>
+      {role === 'admin' && (
+        <Link className={`${styles.sortButton}`} to='/adm/jobs'>
+          Добавить работу
+        </Link>
       )}
-    </div>
+
+      <div className={styles.jobsGrid}>
+        {isLoading || hasError ? (
+          Array.from({ length: 8 }).map((_, index) => <CardSkeleton key={index} />)
+        ) : data ? (
+          <JobCard jobData={data} />
+        ) : null}
+      </div>
+    </>
   );
 };

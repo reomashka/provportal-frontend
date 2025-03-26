@@ -24,7 +24,7 @@ export const TransportInfo = () => {
       // setIsLoading(true);
       try {
         const transportDataResponse = await fetch(
-          `http://localhost:4444/api/transport/get-one/${id}`
+          `http://localhost:3000/api/transport/get-one/${id}`
         );
         if (!transportDataResponse.ok) {
           throw new Error('Ошибка сервера: ' + transportDataResponse.status);
