@@ -1,37 +1,63 @@
 .gameServices {
-  margin-bottom: 48px;
+  margin-bottom: 64px;
 
   &_title {
     color: white;
-    margin-bottom: 22px;
-    font-size: 25px;
+    margin-bottom: 32px;
+    font-size: 32px;
     font-weight: 700;
-    line-height: 30px;
+    line-height: 1.2;
+    text-align: center;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(to right, transparent, #4a4a4a, transparent);
+    }
   }
 
   &_block_card {
     display: flex;
-    justify-content: space-between;
-    gap: 30px 110px;
+    justify-content: center;
+    gap: 30px;
     flex-wrap: wrap;
 
     a {
       text-decoration: none;
       color: white;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
     }
   }
 
   &_card {
     display: flex;
     align-items: center;
-    width: 280px;
-    border-radius: 8px;
-    background: rgb(16, 16, 16);
-    padding: 15px 25px;
+    width: 320px;
+    border-radius: 12px;
+    background: linear-gradient(145deg, rgb(22, 22, 22), rgb(16, 16, 16));
+    padding: 20px 25px;
     position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
 
     span {
-      color: #5a5a5a;
+      color: #8a8a8a;
+      transition: color 0.3s ease;
     }
 
     a {
@@ -40,26 +66,53 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+
+      &:hover {
+        opacity: 1;
+      }
     }
 
     &_img {
-      width: 55px;
-      height: 55px;
+      width: 65px;
+      height: 65px;
+      object-fit: contain;
+      filter: grayscale(20%) brightness(1.1);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: rotate(5deg);
+      }
     }
 
     &_text_block {
-      padding-right: 40px;
-      padding-left: 20px;
+      padding-right: 50px;
+      padding-left: 25px;
 
       span {
-        font-size: 12px;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
       }
 
       p {
-        font-size: 14px;
+        font-size: 16px;
         color: white;
-        font-weight: 500;
+        font-weight: 600;
+        margin-top: 5px;
       }
+    }
+  }
+
+  @media (max-width: 768px) {
+    &_block_card {
+      gap: 20px;
+    }
+
+    &_card {
+      width: 100%;
+      max-width: 400px;
     }
   }
 }

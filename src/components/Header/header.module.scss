@@ -1,8 +1,5 @@
-// Основные стили для header
 header {
   color: #fff;
-  // display: flex;
-  // justify-content: space-between;
   align-items: center;
   position: relative;
   background-color: #121212;
@@ -17,7 +14,6 @@ header {
   align-items: center;
   width: 100%;
   box-sizing: border-box;
-  // padding: 0 1rem;
   max-width: 1350px;
   margin: 0 auto;
   height: 100%;
@@ -32,7 +28,6 @@ header {
   }
 }
 
-// Стили для навигации
 nav {
   .navList {
     display: flex;
@@ -52,10 +47,24 @@ nav {
       padding: 10px 15px;
       display: flex;
       align-items: center;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: #00c16e;
+        transition: all 0.3s ease;
+      }
 
       &:hover {
-        background-color: #00c16e;
-        border-radius: 5px;
+        &::before {
+          left: 10%;
+          width: 80%;
+        }
       }
     }
   }
@@ -65,7 +74,6 @@ nav {
     transition: transform 0.3s ease;
   }
 
-  // Стили для выпадающего меню
   .dropdownMenu {
     display: none;
     position: absolute;
@@ -76,7 +84,7 @@ nav {
     padding: 10px 0;
     margin: 0;
     border-radius: 5px;
-    z-index: 20; // Выпадающее меню выше остальных элементов
+    z-index: 20;
 
     li {
       margin: 0;
@@ -100,8 +108,8 @@ nav {
   .dropdown:hover {
     .dropdownMenu {
       display: block;
-      pointer-events: none; // Отключаем кликабельность
-      animation: enablePointerEvents 0.01s forwards 0.01s; // Включаем через 0.3с
+      pointer-events: none;
+      animation: enablePointerEvents 0.01s forwards 0.01s;
     }
 
     > a {
@@ -112,10 +120,9 @@ nav {
   }
 }
 
-// Анимация включения кликабельности в меню
 @keyframes enablePointerEvents {
   to {
-    pointer-events: auto; // Включаем кликабельность
+    pointer-events: auto;
   }
 }
 
@@ -123,7 +130,6 @@ nav {
   transition: none;
 }
 
-// Медиазапрос для экранов шириной до 645px
 @media (max-width: 645px) {
   header {
     flex-direction: column;
@@ -144,8 +150,8 @@ nav {
   }
 
   .dropdownMenu {
-    margin-top: 10px; // Добавлено для отделения от других элементов
-    height: auto; // Убедитесь, что высота автоматически изменяется
+    margin-top: 10px;
+    height: auto;
     position: static;
   }
 }

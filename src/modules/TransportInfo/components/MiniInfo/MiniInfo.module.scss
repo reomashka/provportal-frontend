@@ -2,18 +2,26 @@
   .cardMiniInfo {
     flex: 0 0 auto;
     width: 33.33333333%;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .cardMiniInfo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
   }
 }
 
 .row {
-  --bs-gutter-x: 1rem;
-  --bs-gutter-y: 0;
+  --bs-gutter-x: 1.5rem;
   display: flex;
   flex-wrap: wrap;
   margin-top: calc(-1 * var(--bs-gutter-y));
   margin-right: calc(-0.5 * var(--bs-gutter-x));
   margin-left: calc(-0.5 * var(--bs-gutter-x));
+  margin-top: -20px;
 }
+
 .row > * {
   flex-shrink: 0;
   width: 100%;
@@ -21,66 +29,86 @@
   padding-right: calc(var(--bs-gutter-x) * 0.5);
   padding-left: calc(var(--bs-gutter-x) * 0.5);
   margin-top: var(--bs-gutter-y);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .col {
   overflow-x: hidden;
-  padding: 0px 20px 0px 10px;
   flex: 1 0 0%;
+  background: linear-gradient(145deg, #2b2b2b, #1e1e1e);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.col:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .title {
   color: #34f091;
   font-weight: 700;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin-bottom: 15px;
+  margin-top: 20px;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.textCenter {
+  line-height: 1.5;
+  margin-bottom: 15px;
+  text-align: center !important;
+  transition: margin-top 0.3s ease;
+}
+
+.textCenter:hover {
+  margin-top: 0px;
 }
 
 .table {
-  --bs-table-bg: transparent;
-  --bs-table-accent-bg: transparent;
-  --bs-table-striped-color: #212529;
-  --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
-  --bs-table-active-color: #212529;
-  --bs-table-active-bg: rgba(0, 0, 0, 0.1);
-  --bs-table-hover-color: #34f091;
-  --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   color: #ffffff;
-  vertical-align: center;
-  border-color: #1e1e1e;
+  vertical-align: middle;
+  border-color: rgba(255, 255, 255, 0.1);
   border-collapse: separate;
-  border-spacing: 0px;
-  padding: 0px 0px 0px 0px;
-  width: 100%;
-  font-size: 12px;
-  margin: 5px;
+  border-spacing: 0;
+  font-size: 14px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: -15px;
 }
 
 .table > :not(caption) > * > * {
-  padding: 0.5rem 0.5rem;
+  padding: 0.75rem 1rem;
   background-color: var(--bs-table-bg);
-  border-bottom-width: 1px;
-  box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease;
 }
+
 .table > tbody {
-  vertical-align: inherit;
+  vertical-align: middle;
 }
+
 .table > thead {
   vertical-align: bottom;
+  background: linear-gradient(145deg, #2b2b2b, #1e1e1e);
+  color: #34f091;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
+
 .table > :not(:first-child) {
-  border-top: 2px solid currentColor;
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .table-hover > tbody > tr:hover > * {
   --bs-table-accent-bg: var(--bs-table-hover-bg);
   color: var(--bs-table-hover-color);
-}
-
-.textCenter {
-  text-align: center !important;
 }
 
 .textLeft {
@@ -100,4 +128,23 @@ tr {
   border-color: inherit;
   border-style: solid;
   border-width: 0;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(145deg, #34f091, #2bbd7e);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

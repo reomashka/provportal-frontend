@@ -20,8 +20,13 @@
 .title {
   color: #34f091;
   font-weight: 700;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #34f091;
+  padding-bottom: 5px;
 }
 
 .card {
@@ -30,14 +35,20 @@
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
-  background-color: #14161a;
-  border-radius: 25px;
-  line-height: 25px;
-  overflow-x: hidden;
-  padding: 10px 35px 10px 20px;
+  background-color: #1e2229;
+  border-radius: 12px;
+  border: 1px solid rgba(52, 240, 145, 0.2);
+  line-height: 1.6;
+  overflow: hidden;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-color: rgba(52, 240, 145, 0.4);
 }
 
 .row {
@@ -45,10 +56,8 @@
   --bs-gutter-y: 0;
   display: flex;
   flex-wrap: wrap;
-  margin-top: calc(-1 * var(--bs-gutter-y));
-  margin-right: calc(-0.5 * var(--bs-gutter-x));
-  margin-left: calc(-0.5 * var(--bs-gutter-x));
   margin: 0 auto;
+  gap: 15px;
 }
 
 .row > * {
@@ -58,45 +67,45 @@
 }
 
 .table {
-  --bs-table-bg: transparent;
-  --bs-table-accent-bg: transparent;
-  --bs-table-striped-color: #212529;
-  --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
-  --bs-table-active-color: #212529;
-  --bs-table-active-bg: rgba(0, 0, 0, 0.1);
-  --bs-table-hover-color: #34f091;
-  --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
   width: 100%;
   margin-bottom: 1rem;
-  color: #ffffff;
-  vertical-align: center;
-  border-color: #1e1e1e;
-
-  border-collapse: separate;
-  border-spacing: 0px;
-  padding: 0px 0px 0px 0px;
-  width: 100%;
-  font-size: 12px;
-  margin: 5px;
+  color: #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.table > :not(caption) > * > * {
-  padding: 0.5rem 0.5rem;
-  background-color: var(--bs-table-bg);
-  border-bottom-width: 1px;
-  box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+.table thead {
+  background-color: rgba(52, 240, 145, 0.1);
+  border-bottom: 2px solid #34f091;
 }
-.table > tbody {
-  vertical-align: inherit;
+
+.table th {
+  color: #34f091;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 7px 15px;
 }
-.table > thead {
-  vertical-align: bottom;
+
+.table td {
+  padding: 7px 5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-.table > :not(:first-child) {
-  border-top: 2px solid currentColor;
+
+.tableHover > tbody > tr:hover {
+  background-color: rgba(52, 240, 145, 0.05);
+  transition: background-color 0.3s ease;
 }
 
 .tableHover > tbody > tr:hover > * {
-  --bs-table-accent-bg: var(--bs-table-hover-bg);
-  color: var(--bs-table-hover-color);
+  color: #34f091;
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 15px;
+  }
+
+  .table {
+    font-size: 11px;
+  }
 }
