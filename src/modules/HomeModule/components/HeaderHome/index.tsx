@@ -13,11 +13,11 @@ export const HeaderHome = () => {
           </div>
         </div>
 
-        <div className={styles.headerItemM}>
+        {/* <div className={styles.headerItemM}>
           <a href='https://t.me/prov_portal' className={styles.vkButton} target='_blank'>
             <p>Примите участие в разработке новой версии сайта</p>
           </a>
-        </div>
+        </div> */}
       </div>
     </header>
   );
