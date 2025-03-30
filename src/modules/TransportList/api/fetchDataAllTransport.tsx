@@ -1,16 +1,13 @@
 import axios from 'axios';
-import Transport from '@interfaces/Transport.interface';
 
-const API_URL = '/api/transport';
-
-export const fetchDataAllTransport = async (order: string): Promise<Transport[]> => {
+export const getAllTransport = async (order: string, transportClass: string) => {
   try {
-    const response = await axios.get<Transport[]>(
-      `${API_URL}/get-all?order=${order}&class='cargo'`
+    const { data } = await axios.get(
+      `/api/transport/get-all?order=${order}&class=${transportClass}`
     );
-    return response.data;
-  } catch (err) {
-    console.error('Ошибка загрузки данных со стороны сервера:', err);
-    throw new Error('Ошибка загрузки данных');
+    return { data, error: null };
+  } catch (error) {
+    console.error('Ошибка загрузки данных:', error);
+    return { data: null, error };
   }
 };
