@@ -21,7 +21,7 @@ export const CreateJob = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await axios.post('http://localhost:3000/api/jobs', data);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/jobs`, data);
       console.log('Работа успешно создана:', response.data);
     } catch (error) {
       setError('Произошла ошибка при создании работы');
