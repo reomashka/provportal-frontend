@@ -44,7 +44,7 @@ export const OnlineSection = () => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/online`);
+        const { data } = await axios.get(`/api/online`);
         setOnlineData(data);
       } catch (error) {
         console.error('Ошибка загрузки данных по онлайну серверов:', error);
