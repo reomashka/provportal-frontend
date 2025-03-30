@@ -17,7 +17,7 @@ export const JobsList = () => {
       setIsLoading(true);
       setHasError(false);
       try {
-        const { data } = await axios.get(`http://localhost:3000/api/jobs`);
+        const { data } = await axios.get(`/api/jobs`);
         setData(data);
       } catch (error) {
         console.error('Ошибка загрузки данных:', error);
