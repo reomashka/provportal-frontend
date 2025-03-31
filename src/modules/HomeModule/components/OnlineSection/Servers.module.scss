@@ -1,5 +1,6 @@
 .gameServices {
   margin-bottom: 64px;
+  overflow-x: hidden;
 
   &_title {
     color: white;
@@ -105,14 +106,10 @@
     }
   }
 
-  @media (max-width: 768px) {
-    &_block_card {
-      gap: 20px;
-    }
-
+  @media (max-width: 410px) {
     &_card {
       width: 100%;
-      max-width: 400px;
+      max-width: 290px;
     }
   }
 }

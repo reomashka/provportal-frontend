@@ -1,22 +1,30 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+
+// scss & interfaces
 import Transport from '@interfaces/Transport.interface';
 import TransportTypeProps from '@interfaces/TransportTypeProps.interface';
 import styles from './TransportList.module.scss';
+
+// components
 import { TransportCard } from '../TransportCard';
 import CardSkeleton from '@components/CardSkeleton';
+
+// redux
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState } from '@redux/store';
 import { setScrollY } from '@redux/slices/scrollSlice';
+
+// fetch api
+import { fetchAllTransport } from '../../api/fetchAllTransport';
 
 export const TransportList: React.FC<TransportTypeProps> = ({ transportType }) => {
   const [transportData, setTransportData] = useState<Transport[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const dispatch = useDispatch();
   const filterData = useSelector((state: RootState) => state.filter.value);
-  // const scrollY = useSelector((state: RootState) => state.scroll.scrollY);
 
   // Сохранение позиции прокрутки перед переходом
   useEffect(() => {
@@ -36,17 +44,13 @@ export const TransportList: React.FC<TransportTypeProps> = ({ transportType }) =
     const fetchData = async () => {
       setIsLoading(true);
       setHasError(false);
-      try {
-        const { data } = await axios.get(
-          `/api/transport/get-all?order=${filterData}&class=${transportType}`
-        );
-        setTransportData(data);
-      } catch (error) {
-        console.error('Ошибка загрузки данных:', error);
+      const { data, error } = await fetchAllTransport(filterData, transportType);
+      if (error) {
         setHasError(true);
-      } finally {
-        setIsLoading(false);
+      } else {
+        setTransportData(data);
       }
+      setIsLoading(false);
     };
 
     fetchData();
@@ -62,7 +66,6 @@ export const TransportList: React.FC<TransportTypeProps> = ({ transportType }) =
       const timePassed = currentTime - parseInt(timestamp, 10);
 
       if (timePassed < 10 * 60 * 1000) {
-        // 10 минут в миллисекундах
         window.scrollTo(0, parseInt(savedScrollY, 10));
       } else {
         localStorage.removeItem('scrollY');
@@ -86,13 +89,26 @@ export const TransportList: React.FC<TransportTypeProps> = ({ transportType }) =
     };
   }, [dispatch]);
 
+  const searchFilterTransportData = transportData.filter((item) =>
+    item.nameAuto.toLowerCase().includes(searchQuery.toLowerCase())
+  );
   return (
-    <div className={styles.transportGrid}>
-      {isLoading || hasError ? (
-        Array.from({ length: 8 }).map((_, index) => <CardSkeleton key={index} />)
-      ) : (
-        <TransportCard transportData={transportData} transportType={transportType} />
-      )}
-    </div>
+    <>
+      <input
+        type='text'
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        placeholder='Поиск транспорта...'
+        className={styles.searchInput}
+      />
+
+      <div className={styles.transportGrid}>
+        {isLoading || hasError ? (
+          Array.from({ length: 8 }).map((_, index) => <CardSkeleton key={index} />)
+        ) : (
+          <TransportCard transportData={searchFilterTransportData} transportType={transportType} />
+        )}
+      </div>
+    </>
   );
 };

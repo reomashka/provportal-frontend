@@ -6,6 +6,7 @@ technologies:
 - Redux
 - Lucide icons
 - Module SCSS
+- nginx
 
 - Nest.JS
 - git

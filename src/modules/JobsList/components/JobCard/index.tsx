@@ -21,7 +21,7 @@ export const JobCard: React.FC<TransportCardProps> = ({ jobData }) => {
       {jobData.map((job) => (
         <Link
           key={job.id}
-          to={'/transport/' + job.id}
+          to={'/jobs/' + job.id}
           style={{ textDecoration: 'none', color: 'inherit' }}
           onClick={handleCardClick}
         >

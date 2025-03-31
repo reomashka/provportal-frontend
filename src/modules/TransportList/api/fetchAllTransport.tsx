@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getAllTransport = async (order: string, transportClass: string) => {
+export const fetchAllTransport = async (order: string, transportClass: string) => {
   try {
     const { data } = await axios.get(
       `/api/transport/get-all?order=${order}&class=${transportClass}`

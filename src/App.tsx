@@ -7,6 +7,7 @@ import { TransportInfoPage } from './pages/TransportInfoPage';
 import { JobsListPage } from './pages/JobsListPage';
 
 import { JobsCRUD } from './pages/AdmPanelPages/JobsCRUD';
+import { JobInfoPage } from './pages/JobInfo';
 
 const App = () => {
   return (
@@ -33,6 +34,7 @@ const App = () => {
       <Route path='/transport/:id' element={<TransportInfoPage />} />
 
       <Route path='/jobs' element={<JobsListPage />} />
+      <Route path='/jobs/:id' element={<JobInfoPage />} />
 
       {/* adm */}
       <Route path='/adm/jobs' element={<JobsCRUD />} />

@@ -71,22 +71,15 @@
   }
 }
 
-@media (max-width: 440px) {
-  .footerLogo {
-    display: flex;
-    align-items: center;
-    font-weight: 300;
-    font-size: 7px;
-    color: #ffffff;
-    max-width: 100%; /* Ограничиваем ширину логотипа */
-    overflow: hidden; /* Обрезаем переполнение */
-    text-overflow: ellipsis; /* Добавляем многоточие для переполненного текста */
-    margin-left: auto; /* Перемещаем логотип вправо */
+@media (max-width: 700px) {
+  .footerLogo span {
+    display: none;
   }
+}
 
+@media (max-width: 440px) {
   .footer {
     padding: 25px;
-    font-size: 7px;
     display: flex;
     justify-content: center;
     align-items: center;
