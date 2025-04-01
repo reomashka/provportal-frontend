@@ -11,6 +11,11 @@
   will-change: transform, box-shadow;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .transportImage {
   width: 100%;
   height: auto;
@@ -34,6 +39,9 @@
   margin-top: auto;
   position: relative; // Для позиционирования tooltip
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   &:hover .tooltip {
     display: block; // Показываем tooltip при наведении
@@ -82,4 +90,10 @@
   font-size: 12px;
   white-space: nowrap;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.like {
+  margin: 10px 10px 10px 10px;
+
+  padding: 1px 10px;
 }

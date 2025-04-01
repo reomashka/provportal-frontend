@@ -68,12 +68,13 @@ export const OnlineSection = () => {
 
               return (
                 <motion.div
+                  key={server.server}
                   className={styles.transportCard}
                   initial={{ opacity: 0, y: 5 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: server.server * 0.1 }}
                 >
-                  <div className={styles.gameServices_card} key={server.server}>
+                  <div className={styles.gameServices_card}>
                     <img
                       className={styles.gameServices_card_img}
                       src={serverLogos[server.server]}

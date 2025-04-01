@@ -8,6 +8,7 @@ import styles from './TransportList.module.scss';
 // components
 import { TransportCard } from '../TransportCard';
 import CardSkeleton from '@components/CardSkeleton';
+import { SearchInput } from '@components/SearchInput';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
@@ -94,12 +95,10 @@ export const TransportList: React.FC<TransportTypeProps> = ({ transportType }) =
   );
   return (
     <>
-      <input
-        type='text'
+      <SearchInput
         value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
+        onChange={setSearchQuery}
         placeholder='Поиск транспорта...'
-        className={styles.searchInput}
       />
 
       <div className={styles.transportGrid}>

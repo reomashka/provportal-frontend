@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Timer, Gauge, Warehouse, Fuel, ClockAlert, Users, Grid2x2 } from 'lucide-react';
+import { Timer, Gauge, Warehouse, Fuel, ClockAlert, Users, Grid2x2, Heart } from 'lucide-react';
 import styles from './TransportCard.module.scss';
 import Transport from '@interfaces/Transport.interface';
 
@@ -16,23 +16,27 @@ export const TransportCard: React.FC<TransportCardProps> = ({ transportData, tra
     localStorage.setItem('scrollY', window.scrollY.toString());
   };
 
+  const [likedTransport, setLikedTransport] = useState<{ [key: number]: boolean }>({});
+
+  const handleLike = (id: number) => {
+    setLikedTransport((prevState) => ({
+      ...prevState,
+      [id]: !prevState[id], // Меняем статус лайка для конкретного транспорта
+    }));
+  };
+
   return (
     <>
       {transportData.map((transport) => (
-        <Link
+        <motion.div
+          className={styles.transportCard}
           key={transport.id}
-          to={'/transport/' + transport.id}
-          style={{ textDecoration: 'none', color: 'inherit' }}
-          onClick={handleCardClick} // Сохраняем позицию прокрутки перед переходом
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          whileHover={{ scale: 1.01, transition: { duration: 0.07 } }}
         >
-          <motion.div
-            className={styles.transportCard}
-            key={transport.id}
-            initial={{ opacity: 0, y: 5 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-            whileHover={{ scale: 1.01, transition: { duration: 0.07 } }}
-          >
+          <Link key={transport.id} to={'/transport/' + transport.id} onClick={handleCardClick}>
             <img
               src={`https://provportal.ru/assets/images/transport/${transport.uniqueName}.webp`}
               alt={transport.nameAuto}
@@ -86,30 +90,38 @@ export const TransportCard: React.FC<TransportCardProps> = ({ transportData, tra
                 )}
               </div>
             </div>
+          </Link>
 
-            {transportType !== 'container' ? (
-              <div className={styles.price}>
-                <span>
+          {transportType !== 'container' ? (
+            <div className={styles.price}>
+              <button
+                className={styles.like}
+                onClick={() => handleLike(transport.id)} // Передаем id транспорта в обработчик
+              >
+                {likedTransport[transport.id] ? (
+                  <Heart color='#a51d2d' fill='#a51d2d' />
+                ) : (
+                  <Heart color='#241f31' />
+                )}
+              </button>
+              <span>
+                {new Intl.NumberFormat('ru-RU', { useGrouping: true }).format(transport.price ?? 0)}{' '}
+                ₽
+                <span className={styles.tooltip}>
+                  Актуальная гос. цена:{' '}
                   {new Intl.NumberFormat('ru-RU', { useGrouping: true }).format(
-                    transport.price ?? 0
+                    (transport.price ?? 0) * 0.9
                   )}{' '}
                   ₽
-                  <span className={styles.tooltip}>
-                    Актуальная гос. цена:{' '}
-                    {new Intl.NumberFormat('ru-RU', { useGrouping: true }).format(
-                      (transport.price ?? 0) * 0.9
-                    )}{' '}
-                    ₽
-                  </span>{' '}
-                </span>
-              </div>
-            ) : (
-              <div className={styles.price}>
-                <span>Контейнер</span>
-              </div>
-            )}
-          </motion.div>
-        </Link>
+                </span>{' '}
+              </span>
+            </div>
+          ) : (
+            <div className={styles.price}>
+              <span>Контейнер</span>
+            </div>
+          )}
+        </motion.div>
       ))}
     </>
   );
