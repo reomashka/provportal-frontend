@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import styles from './header.module.scss';
+import styles from './HeaderAdmin.module.scss';
 import { Flame } from 'lucide-react';
 
-import logo from '@assets/logos/mainLogo.svg';
+import logo from '@assets/logos/provModerate.svg';
 
-export const Header = () => {
+export const HeaderAdmin = () => {
   return (
     <header>
       <div className={styles.container}>
@@ -17,9 +17,6 @@ export const Header = () => {
           <ul className={styles.navList}>
             <li>
               <Link to='/home'>Домой</Link>
-            </li>
-            <li>
-              <Link to='/adm'>Админка</Link>
             </li>
             <li className={styles.dropdown}>
               <Link to='#'>

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Timer, Gauge, Warehouse, Fuel, ClockAlert, Users, Grid2x2, Heart } from 'lucide-react';
+import { Timer, Gauge, Warehouse, Fuel, ClockAlert, Users, Grid2x2 } from 'lucide-react';
 import styles from './TransportCard.module.scss';
 import Transport from '@interfaces/Transport.interface';
 
@@ -16,14 +16,14 @@ export const TransportCard: React.FC<TransportCardProps> = ({ transportData, tra
     localStorage.setItem('scrollY', window.scrollY.toString());
   };
 
-  const [likedTransport, setLikedTransport] = useState<{ [key: number]: boolean }>({});
+  // const [likedTransport, setLikedTransport] = useState<{ [key: number]: boolean }>({});
 
-  const handleLike = (id: number) => {
-    setLikedTransport((prevState) => ({
-      ...prevState,
-      [id]: !prevState[id], // Меняем статус лайка для конкретного транспорта
-    }));
-  };
+  // const handleLike = (id: number) => {
+  //   setLikedTransport((prevState) => ({
+  //     ...prevState,
+  //     [id]: !prevState[id], // Меняем статус лайка для конкретного транспорта
+  //   }));
+  // };
 
   return (
     <>
@@ -94,7 +94,7 @@ export const TransportCard: React.FC<TransportCardProps> = ({ transportData, tra
 
           {transportType !== 'container' ? (
             <div className={styles.price}>
-              <button
+              {/* <button
                 className={styles.like}
                 onClick={() => handleLike(transport.id)} // Передаем id транспорта в обработчик
               >
@@ -103,7 +103,7 @@ export const TransportCard: React.FC<TransportCardProps> = ({ transportData, tra
                 ) : (
                   <Heart color='#241f31' />
                 )}
-              </button>
+              </button> */}
               <span>
                 {new Intl.NumberFormat('ru-RU', { useGrouping: true }).format(transport.price ?? 0)}{' '}
                 ₽

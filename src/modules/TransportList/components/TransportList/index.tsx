@@ -98,7 +98,7 @@ export const TransportList: React.FC<TransportTypeProps> = ({ transportType }) =
       <SearchInput
         value={searchQuery}
         onChange={setSearchQuery}
-        placeholder='Поиск транспорта...'
+        placeholder='Поиск по транспорту...'
       />
 
       <div className={styles.transportGrid}>

@@ -7,4 +7,7 @@ export interface Job {
   about: string;
   htmlDescriptionCode: string;
   settings: number;
+  duration?: string;
+  earnings?: string;
+  unitsExp?: string;
 }
