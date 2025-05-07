@@ -6,7 +6,7 @@ import { Header } from '@components/Header';
 import { Footer } from '@components/Footer';
 import { Banner } from '@components/Banner';
 
-export function TransportLand() {
+export const TransportNavigationGridPage = () => {
   const categories = [
     {
       title: 'Легковой транспорт',
@@ -33,8 +33,8 @@ export function TransportLand() {
   return (
     <>
       <Header />
-      <div className='container'>
-        <main>
+      <main>
+        <div className='container'>
           <Banner path='assets/images/other/bank.jpg' title='Автомобили' />
 
           <div className={styles.transportGrid}>
@@ -51,10 +51,10 @@ export function TransportLand() {
               </Link>
             ))}
           </div>
-        </main>
-      </div>
+        </div>
+      </main>
 
       <Footer />
     </>
   );
-}
+};

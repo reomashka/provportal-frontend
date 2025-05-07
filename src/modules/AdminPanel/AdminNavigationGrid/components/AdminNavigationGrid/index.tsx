@@ -1,6 +1,6 @@
 import type React from 'react';
-import { Car } from 'lucide-react';
-import './AdminNavigationGrid.scss';
+import { BriefcaseBusiness, Car, RefreshCw, Users } from 'lucide-react';
+import styles from './AdminNavigationGrid.module.scss';
 import { Link } from 'react-router-dom';
 
 interface NavigationItemProps {
@@ -11,26 +11,41 @@ interface NavigationItemProps {
 
 const NavigationItem: React.FC<NavigationItemProps> = ({ icon, title, url }) => {
   return (
-    <div className='navigation-item'>
-      <Link to={url} className='navigation-link'>
-        <div className='icon-container'>{icon}</div>
-        <div className='title'>{title}</div>
-      </Link>
-    </div>
+    <Link to={url}>
+      <div className={styles.navigationItem}>
+        <div className={styles.iconContainer}>{icon}</div>
+        <div className={styles.title}>{title}</div>
+      </div>
+    </Link>
   );
 };
 
 export const AdminNavigationGrid: React.FC = () => {
   const navigationItems = [
     {
-      icon: <Car className='icon' />,
+      icon: <Car className={styles.icon} />,
       title: 'БД Транспорт',
       url: '/adm/transport',
+    },
+    {
+      icon: <BriefcaseBusiness className={styles.icon} />,
+      title: 'БД Работы',
+      url: '/adm/jobs',
+    },
+    {
+      icon: <Users className={styles.icon} />,
+      title: 'БД Пользователи',
+      url: '/adm/users',
+    },
+    {
+      icon: <RefreshCw className={styles.icon} />,
+      title: 'Добавить обновление',
+      url: '/adm/update',
     },
   ];
 
   return (
-    <div className='navigation-grid'>
+    <div className={styles.navigationGrid}>
       {navigationItems.map((item, index) => (
         <NavigationItem key={index} icon={item.icon} title={item.title} url={item.url} />
       ))}

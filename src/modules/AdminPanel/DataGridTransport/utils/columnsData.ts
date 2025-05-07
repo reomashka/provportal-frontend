@@ -1,46 +1,76 @@
-import { GridColDef } from '@mui/x-data-grid';
+// import { ColumnDef } from '@tanstack/react-table';
+// import Transport from '@interfaces/Transport.interface';
 
-const columnsData: GridColDef[] = [
-  { field: 'id', headerName: 'ID', width: 70, editable: false },
-  {
-    field: 'nameAuto',
-    headerName: 'Название',
-    width: 150,
-    editable: true,
-  },
-  {
-    field: 'fullSpeed',
-    headerName: 'Макс. скорость',
-    type: 'number',
-    width: 110,
-    editable: true,
-  },
-  {
-    field: 'speed100Time',
-    headerName: '0-100',
-    type: 'number',
-    width: 110,
-    editable: true,
-  },
-  {
-    field: 'speedMaxTime',
-    headerName: '0-MAX',
-    type: 'number',
-    width: 110,
-    editable: true,
-  },
-  {
-    field: 'volumeTank',
-    headerName: 'Объем бака',
-    width: 110,
-    editable: true,
-  },
-  {
-    field: 'costLiter',
-    headerName: 'Цена за литр',
-    width: 110,
-    editable: true,
-  },
-];
+// const columnsData: ColumnDef<Transport>[] = [
+//   {
+//     accessorKey: 'id',
+//     header: 'ID',
+//     cell: (info) => info.getValue(),
+//   },
+//   {
+//     accessorKey: 'nameAuto',
+//     header: 'Название',
+//     cell: ({ row, getValue, column }) => (
+//       <input
+//         value={getValue() as string}
+//         onChange={(e) => (row.original[column.id] = e.target.value)}
+//       />
+//     ),
+//   },
+//   {
+//     accessorKey: 'fullSpeed',
+//     header: 'Макс. скорость',
+//     cell: ({ row, getValue, column }) => (
+//       <input
+//         type='number'
+//         value={getValue() as number}
+//         onChange={(e) => (row.original[column.id] = +e.target.value)}
+//       />
+//     ),
+//   },
+//   {
+//     accessorKey: 'speed100Time',
+//     header: '0-100',
+//     cell: ({ row, getValue, column }) => (
+//       <input
+//         type='number'
+//         value={getValue() as number}
+//         onChange={(e) => (row.original[column.id] = +e.target.value)}
+//       />
+//     ),
+//   },
+//   {
+//     accessorKey: 'speedMaxTime',
+//     header: '0-MAX',
+//     cell: ({ row, getValue, column }) => (
+//       <input
+//         type='number'
+//         value={getValue() as number}
+//         onChange={(e) => (row.original[column.id] = +e.target.value)}
+//       />
+//     ),
+//   },
+//   {
+//     accessorKey: 'volumeTank',
+//     header: 'Объем бака',
+//     cell: ({ row, getValue, column }) => (
+//       <input
+//         value={getValue() as string}
+//         onChange={(e) => (row.original[column.id] = e.target.value)}
+//       />
+//     ),
+//   },
+//   {
+//     accessorKey: 'costLiter',
+//     header: 'Цена за литр',
+//     cell: ({ row, getValue, column }) => (
+//       <input
+//         type='number'
+//         value={getValue() as number}
+//         onChange={(e) => (row.original[column.id] = +e.target.value)}
+//       />
+//     ),
+//   },
+// ];
 
-export default columnsData;
+// export default columnsData;

@@ -1,11 +1,11 @@
 import { Route } from 'react-router-dom';
 // import { JobsCRUD } from '../pages/AdminPanelPages/JobsCRUD';
 import { DataGridTransportPage } from '../pages/AdminPanelPages/DataGridTransportPage';
-import { AdminListPage } from 'src/pages/AdminPanelPages/AdminListPage';
+import { AdminNavigationGridPage } from '@pages/AdminPanelPages/AdminNavigationGridPage';
 
 export const PrivateRoutes = (
   <Route path='/adm'>
-    <Route index element={<AdminListPage />} />
+    <Route index element={<AdminNavigationGridPage />} />
     <Route path='transport' element={<DataGridTransportPage />} />
     {/* <Route path='jobs' element={<JobsCRUD />} /> */}
   </Route>

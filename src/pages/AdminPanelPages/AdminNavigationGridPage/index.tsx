@@ -3,16 +3,17 @@ import { AdminNavigationGrid } from 'src/modules/AdminPanel/AdminNavigationGrid/
 import { Header } from '@components/Header';
 import { Banner } from '@components/Banner';
 
-export const AdminListPage = () => {
+export const AdminNavigationGridPage = () => {
   return (
     <>
       <Header />
-      <div className='container'>
-        <main>
+      <main>
+        <div className='container'>
           <Banner path='assets/images/other/bank.jpg' title='Админка' />
           <AdminNavigationGrid />
-        </main>
-      </div>
+        </div>
+      </main>
+
       <Footer />
     </>
   );
