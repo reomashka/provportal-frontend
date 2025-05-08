@@ -10,4 +10,7 @@ export default defineConfig({
       '/api': 'http://localhost:3000',
     },
   },
+  optimizeDeps: {
+    include: ['@mui/material', '@mui/x-data-grid'],
+  },
 });

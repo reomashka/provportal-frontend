@@ -1,160 +1,52 @@
-import { useEffect, useState } from 'react';
-import {
-  useReactTable,
-  getCoreRowModel,
-  getPaginationRowModel,
-  flexRender,
-  ColumnDef,
-} from '@tanstack/react-table';
-import Transport from '@interfaces/Transport.interface';
-import fetchTransportData from '../api/DataGridTransportAPI';
+import React, { useState, useCallback, useMemo } from 'react';
+import { Button, CircularProgress, Box } from '@mui/material';
 
-export const DataGridTransport = () => {
-  const [data, setData] = useState<Transport[]>([]);
+export default function LazyDataGridExample() {
+  const [DataGridComponent, setDataGridComponent] = useState<React.ComponentType<any> | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    fetchTransportData()
-      .then(setData)
-      .catch((error) => console.error('Ошибка при получении данных:', error));
+  const rows = useMemo(
+    () => [
+      { id: 1, lastName: 'Doe', firstName: 'John' },
+      { id: 2, lastName: 'Smith', firstName: 'Anna' },
+    ],
+    []
+  );
+
+  const columns = useMemo(
+    () => [
+      { field: 'id', headerName: 'ID', width: 90 },
+      { field: 'firstName', headerName: 'First name', width: 150 },
+      { field: 'lastName', headerName: 'Last name', width: 150 },
+    ],
+    []
+  );
+
+  const handleLoadTable = useCallback(async () => {
+    setLoading(true);
+    try {
+      const { DataGrid } = await import('@mui/x-data-grid');
+      setDataGridComponent(() => DataGrid);
+    } catch (error) {
+      console.error('Failed to load DataGrid:', error);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
-  const handleCellChange = (rowIndex: number, columnId: string, value: any) => {
-    setData((prevData) =>
-      prevData.map((row, idx) => (idx === rowIndex ? { ...row, [columnId]: value } : row))
-    );
-  };
-
-  const columns: ColumnDef<Transport>[] = [
-    {
-      accessorKey: 'id',
-      header: 'ID',
-      cell: (info) => info.getValue(),
-    },
-    {
-      accessorKey: 'nameAuto',
-      header: 'Название',
-      cell: ({ row, column, getValue }) => (
-        <input
-          value={getValue() as string}
-          onChange={(e) => handleCellChange(row.index, column.id, e.target.value)}
-        />
-      ),
-    },
-    {
-      accessorKey: 'fullSpeed',
-      header: 'Макс. скорость',
-      cell: ({ row, column, getValue }) => (
-        <input
-          type='number'
-          value={getValue() as number}
-          onChange={(e) => handleCellChange(row.index, column.id, Number(e.target.value))}
-        />
-      ),
-    },
-    {
-      accessorKey: 'speed100Time',
-      header: '0-100',
-      cell: ({ row, column, getValue }) => (
-        <input
-          type='number'
-          value={getValue() as number}
-          onChange={(e) => handleCellChange(row.index, column.id, Number(e.target.value))}
-        />
-      ),
-    },
-    {
-      accessorKey: 'speedMaxTime',
-      header: '0-MAX',
-      cell: ({ row, column, getValue }) => (
-        <input
-          type='number'
-          value={getValue() as number}
-          onChange={(e) => handleCellChange(row.index, column.id, Number(e.target.value))}
-        />
-      ),
-    },
-    {
-      accessorKey: 'volumeTank',
-      header: 'Объем бака',
-      cell: ({ row, column, getValue }) => (
-        <input
-          value={getValue() as string}
-          onChange={(e) => handleCellChange(row.index, column.id, e.target.value)}
-        />
-      ),
-    },
-    {
-      accessorKey: 'costLiter',
-      header: 'Цена за литр',
-      cell: ({ row, column, getValue }) => (
-        <input
-          type='number'
-          value={getValue() as number}
-          onChange={(e) => handleCellChange(row.index, column.id, Number(e.target.value))}
-        />
-      ),
-    },
-  ];
-
-  const table = useReactTable({
-    data,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-  });
-
   return (
-    <div style={{ padding: '16px' }}>
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-        <thead>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <th
-                  key={header.id}
-                  style={{
-                    textAlign: 'left',
-                    borderBottom: '1px solid gray',
-                    padding: '8px',
-                  }}
-                >
-                  {flexRender(header.column.columnDef.header, header.getContext())}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
-              {row.getVisibleCells().map((cell) => (
-                <td
-                  key={cell.id}
-                  style={{
-                    borderBottom: '1px solid #444',
-                    padding: '8px',
-                  }}
-                >
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <Box sx={{ p: 2 }}>
+      <Button variant='contained' onClick={handleLoadTable} disabled={loading}>
+        Load Table
+      </Button>
 
-      <div style={{ marginTop: '16px' }}>
-        <button onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
-          Назад
-        </button>
-        <button
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-          style={{ marginLeft: '8px' }}
-        >
-          Вперёд
-        </button>
-      </div>
-    </div>
+      {loading && <CircularProgress sx={{ ml: 2 }} />}
+
+      {DataGridComponent && (
+        <Box sx={{ height: 400, mt: 2 }}>
+          <DataGridComponent rows={rows} columns={columns} />
+        </Box>
+      )}
+    </Box>
   );
-};
+}

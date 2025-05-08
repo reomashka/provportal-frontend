@@ -1,5 +1,5 @@
 import { Footer } from '@components/Footer';
-import { AdminNavigationGrid } from 'src/modules/AdminPanel/AdminNavigationGrid/components/AdminNavigationGrid';
+import { AdminNavigationGrid } from 'src/modules/AdminPanel/AdminNavigationGrid/components/index';
 import { Header } from '@components/Header';
 import { Banner } from '@components/Banner';
 
