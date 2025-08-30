@@ -1,52 +1,127 @@
-import React, { useState, useCallback, useMemo } from 'react';
-import { Button, CircularProgress, Box } from '@mui/material';
+import { useState } from 'react';
+import './DataGrid.scss';
 
-export default function LazyDataGridExample() {
-  const [DataGridComponent, setDataGridComponent] = useState<React.ComponentType<any> | null>(null);
-  const [loading, setLoading] = useState(false);
+type RowData = {
+	id: number;
+	[key: string]: any;
+};
 
-  const rows = useMemo(
-    () => [
-      { id: 1, lastName: 'Doe', firstName: 'John' },
-      { id: 2, lastName: 'Smith', firstName: 'Anna' },
-    ],
-    []
-  );
+type Column = {
+	field: string;
+	headerName: string;
+	width: number;
+};
 
-  const columns = useMemo(
-    () => [
-      { field: 'id', headerName: 'ID', width: 90 },
-      { field: 'firstName', headerName: 'First name', width: 150 },
-      { field: 'lastName', headerName: 'Last name', width: 150 },
-    ],
-    []
-  );
+const initialColumns: Column[] = [
+	{ field: 'id', headerName: 'ID', width: 80 },
+	{ field: 'name', headerName: 'Name', width: 200 },
+	{ field: 'email', headerName: 'Email', width: 250 },
+];
 
-  const handleLoadTable = useCallback(async () => {
-    setLoading(true);
-    try {
-      const { DataGrid } = await import('@mui/x-data-grid');
-      setDataGridComponent(() => DataGrid);
-    } catch (error) {
-      console.error('Failed to load DataGrid:', error);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+const mockData: RowData[] = Array.from({ length: 25 }, (_, i) => ({
+	id: i + 1,
+	name: `User ${i + 1}`,
+	email: `user${i + 1}@example.com`,
+}));
 
-  return (
-    <Box sx={{ p: 2 }}>
-      <Button variant='contained' onClick={handleLoadTable} disabled={loading}>
-        Load Table
-      </Button>
+const rowsPerPage = 5;
 
-      {loading && <CircularProgress sx={{ ml: 2 }} />}
+export const DataGridTransport = () => {
+	const [columns, setColumns] = useState(initialColumns);
+	const [rows, setRows] = useState<RowData[]>(mockData);
+	const [page, setPage] = useState(0);
+	const [editingCell, setEditingCell] = useState<{ rowId: number; field: string } | null>(null);
 
-      {DataGridComponent && (
-        <Box sx={{ height: 400, mt: 2 }}>
-          <DataGridComponent rows={rows} columns={columns} />
-        </Box>
-      )}
-    </Box>
-  );
-}
+	const pagedRows = rows.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
+
+	const handleInputChange = (rowId: number, field: string, value: string) => {
+		setRows((prev) => prev.map((row) => (row.id === rowId ? { ...row, [field]: value } : row)));
+	};
+
+	const handleSave = async () => {
+		console.log('Sending data to backend:', rows);
+		// Здесь отправка на API
+		await fetch('/api/save', {
+			method: 'POST',
+			body: JSON.stringify(rows),
+			headers: { 'Content-Type': 'application/json' },
+		});
+	};
+
+	const handleResize = (index: number, deltaX: number) => {
+		setColumns((prev) =>
+			prev.map((col, i) => (i === index ? { ...col, width: col.width + deltaX } : col)),
+		);
+	};
+
+	return (
+		<div className="data-grid dark">
+			<div className="header">
+				{columns.map((col, i) => (
+					<div key={col.field} className="cell header-cell" style={{ width: col.width }}>
+						{col.headerName}
+						<div
+							className="resizer"
+							onMouseDown={(e) => {
+								const startX = e.clientX;
+								const onMouseMove = (e: MouseEvent) => {
+									handleResize(i, e.clientX - startX);
+								};
+								const onMouseUp = () => {
+									document.removeEventListener('mousemove', onMouseMove);
+									document.removeEventListener('mouseup', onMouseUp);
+								};
+								document.addEventListener('mousemove', onMouseMove);
+								document.addEventListener('mouseup', onMouseUp);
+							}}
+						/>
+					</div>
+				))}
+			</div>
+
+			<div className="body">
+				{pagedRows.map((row) => (
+					<div className="row" key={row.id}>
+						{columns.map((col) => {
+							const isEditing = editingCell?.rowId === row.id && editingCell?.field === col.field;
+
+							return (
+								<div
+									key={col.field}
+									className="cell"
+									style={{ width: col.width }}
+									onDoubleClick={() => setEditingCell({ rowId: row.id, field: col.field })}>
+									{isEditing ? (
+										<input
+											value={row[col.field]}
+											onChange={(e) => handleInputChange(row.id, col.field, e.target.value)}
+											onBlur={() => setEditingCell(null)}
+											autoFocus
+										/>
+									) : (
+										row[col.field]
+									)}
+								</div>
+							);
+						})}
+					</div>
+				))}
+			</div>
+
+			<div className="footer">
+				<button disabled={page === 0} onClick={() => setPage((p) => p - 1)}>
+					Назад
+				</button>
+				<span>
+					Page {page + 1} of {Math.ceil(rows.length / rowsPerPage)}
+				</span>
+				<button
+					disabled={(page + 1) * rowsPerPage >= rows.length}
+					onClick={() => setPage((p) => p + 1)}>
+					Вперед
+				</button>
+				<button onClick={handleSave}>Сохранить</button>
+			</div>
+		</div>
+	);
+};

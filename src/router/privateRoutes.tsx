@@ -1,12 +1,25 @@
-import { Route } from 'react-router-dom';
-// import { JobsCRUD } from '../pages/AdminPanelPages/JobsCRUD';
-import { DataGridTransportPage } from '../pages/AdminPanelPages/DataGridTransportPage';
+import { lazy, Suspense } from 'react';
 import { AdminNavigationGridPage } from '@pages/AdminPanelPages/AdminNavigationGridPage';
 
-export const PrivateRoutes = (
-  <Route path='/adm'>
-    <Route index element={<AdminNavigationGridPage />} />
-    <Route path='transport' element={<DataGridTransportPage />} />
-    {/* <Route path='jobs' element={<JobsCRUD />} /> */}
-  </Route>
-);
+const DataGridTransportPage = lazy(() => import('@pages/AdminPanelPages/DataGridTransportPage'));
+
+export const PrivateRoutes = [
+	{
+		path: '/adm',
+		element: <AdminNavigationGridPage />,
+		children: [
+			{
+				index: true,
+				element: <AdminNavigationGridPage />,
+			},
+			{
+				path: 'transport',
+				element: (
+					<Suspense fallback={<div>Loading...</div>}>
+						<DataGridTransportPage />
+					</Suspense>
+				),
+			},
+		],
+	},
+];

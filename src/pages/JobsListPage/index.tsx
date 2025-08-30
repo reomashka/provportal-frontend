@@ -5,20 +5,20 @@ import { ScrollToTop } from '@components/ScrollToTop';
 import { Footer } from '@components/Footer';
 
 export const JobsListPage = () => {
-  return (
-    <>
-      <Header />
+	return (
+		<>
+			<Header />
 
-      <main>
-        <div className='container'>
-          <Banner path={`assets/images/other/bank.jpg`} title='Работы' />
-          <JobsList />
-          {/* <SearchContainer /> */}
-          <ScrollToTop />
-        </div>
-      </main>
+			<main>
+				<div className="container">
+					<Banner path="assets/images/other/bank.jpg" title="Работы" />
+					<JobsList />
+					{/* <SearchContainer /> */}
+					<ScrollToTop />
+				</div>
+			</main>
 
-      <Footer />
-    </>
-  );
+			<Footer />
+		</>
+	);
 };
