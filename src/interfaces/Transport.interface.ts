@@ -53,7 +53,7 @@ enum Showroom {
 }
 
 // FuelType
-enum FuelType {
+export enum FuelType {
 	AI92 = 'AI92',
 	AI95 = 'AI95',
 	AI98 = 'AI98',

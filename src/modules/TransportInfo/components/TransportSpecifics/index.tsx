@@ -1,15 +1,18 @@
 import React from 'react';
 import styles from './TransportSpecifics.module.scss';
-import Transport from '@interfaces/Transport.interface';
+import Transport, { FuelType } from '@interfaces/Transport.interface';
 
 interface TransportSpecificProps {
 	transportData: Transport | null;
 }
 
-const typeTank = {
-	'АИ-92': 52,
-	'АИ-95': 56,
-	'АИ-98': 60,
+const typeTank: Record<FuelType, number> = {
+	[FuelType.AI92]: 52,
+	[FuelType.AI95]: 56,
+	[FuelType.AI98]: 60,
+	[FuelType.AI100]: 60,
+	[FuelType.DT]: 60,
+	[FuelType.ELECTRIC]: 60,
 };
 
 export const TransportSpecific = ({ transportData }: TransportSpecificProps) => {
@@ -52,18 +55,16 @@ export const TransportSpecific = ({ transportData }: TransportSpecificProps) => 
 				{ label: 'Емкость топливного бака', value: `${transportData?.volumeTank ?? 'INT'} л.` },
 				{
 					label: 'Стоимость 1 литра топлива',
-					value: `${typeTank[transportData?.fuelType as keyof typeof fuelType] ?? 'INT'} руб.`,
+					value: transportData?.fuelType ? `${typeTank[transportData.fuelType]} руб.` : 'INT руб.',
 				},
 				{
 					label: 'Стоимость полного бака',
 					value:
 						transportData?.volumeTank && transportData?.fuelType
-							? `${
-									typeTank[transportData.fuelType as keyof typeof fuelType] *
-									transportData.volumeTank
-								} руб.`
+							? `${typeTank[transportData.fuelType] * transportData.volumeTank} руб.`
 							: 'INT руб.',
 				},
+
 				{ label: 'Тип топлива', value: transportData?.fuelType ?? 'INT' },
 			],
 		},
