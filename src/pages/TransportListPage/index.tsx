@@ -8,6 +8,8 @@ import TransportTypeProps from '@interfaces/TransportTypeProps.interface';
 
 import { TransportListPageMetadata } from './TransportListPage.metadata';
 
+import bank from '@assets/banners/bank.jpg';
+
 const transportTypeMap: Record<TransportTypeProps['transportType'], string> = {
 	moto: 'Мотоциклы',
 	passenger: 'Легковой транспорт',
@@ -18,6 +20,10 @@ const transportTypeMap: Record<TransportTypeProps['transportType'], string> = {
 	fraction: 'Фракционный транспорт',
 };
 
+const rarityType: Record<string, string> = {
+	passenger: bank,
+};
+
 export const TransportListPage = ({ transportType }: TransportTypeProps) => {
 	return (
 		<>
@@ -25,10 +31,7 @@ export const TransportListPage = ({ transportType }: TransportTypeProps) => {
 			<Header />
 			<main>
 				<div className="container">
-					<Banner
-						path={`/assets/images/other/${transportType}.webp`}
-						title={transportTypeMap[transportType]}
-					/>
+					<Banner path={rarityType[transportType]} title={transportTypeMap[transportType]} />
 					<SortButtons />
 					{/* <SearchContainer /> */}
 					<TransportList transportType={transportType} />

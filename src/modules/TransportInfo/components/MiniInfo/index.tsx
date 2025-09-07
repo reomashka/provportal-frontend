@@ -1,9 +1,27 @@
 import styles from './MiniInfo.module.scss';
 
-import Transport from '@interfaces/Transport.interface';
+import Transport, { TransportType } from '@interfaces/Transport.interface';
 interface MiniInfoProps {
 	transportData: Transport | null;
 }
+
+export const CarTypeLabels: Record<TransportType, string> = {
+	[TransportType.HATCHBACK]: 'Хэтчбек',
+	[TransportType.SEDAN]: 'Седан',
+	[TransportType.COUPE]: 'Купе',
+	[TransportType.LIFTBACK]: 'Лифтбек',
+	[TransportType.UNIVERSAL]: 'Универсал',
+	[TransportType.CROSSOVER]: 'Кроссовер',
+	[TransportType.VAN]: 'Фургон',
+	[TransportType.VNEDOROZNIK]: 'Внедорожник',
+	[TransportType.MINIBUS]: 'Микроавтобус',
+	[TransportType.BUS]: 'Автобус',
+	[TransportType.TYAGACH]: 'Тягач',
+	[TransportType.TRUCK]: 'Грузовик',
+	[TransportType.PICKUP]: 'Пикап',
+	[TransportType.CABRIOLET]: 'Кабриолет',
+	[TransportType.MOTOCYCLE]: 'Мотоцикл',
+};
 
 export const MiniInfo = ({ transportData }: MiniInfoProps) => {
 	const tableData = [
@@ -23,10 +41,29 @@ export const MiniInfo = ({ transportData }: MiniInfoProps) => {
 				(transportData?.price ?? 0) * 0.9,
 			),
 		},
-		{ label: 'Старая гос цена:', value: 'Временно отсутствует' },
-		{ label: 'Тип кузова:', value: transportData?.typeBody || '-' },
-		{ label: 'Доступно к погрузке:', value: 'INT ед. груза' },
-		{ label: 'Страна-производитель:', value: '-' },
+		{
+			label: 'Старая гос цена:',
+			value:
+				transportData?.gosCostOld
+					?.map((n) => new Intl.NumberFormat('ru-RU', { useGrouping: true }).format(n))
+					.join(', ') ?? '-',
+
+			showIf: (transportData?.gosCostOld?.length ?? 0) >= 1,
+		},
+		{
+			label: 'Тип кузова:',
+			value: transportData?.typeBody ? CarTypeLabels[transportData.typeBody] : '-',
+		},
+		{
+			label: 'Доступно к погрузке:',
+			value: 'INT ед. груза',
+			showIf: transportData?.class === 'CARGO',
+		},
+		{
+			label: 'Страна-производитель:',
+			value: '-',
+			showIf: false,
+		},
 	];
 
 	return (
@@ -40,14 +77,16 @@ export const MiniInfo = ({ transportData }: MiniInfoProps) => {
 
 					<table className={styles.table}>
 						<tbody>
-							{tableData.map((row, index) => (
-								<tr key={index}>
-									<td className={styles.textLeft}>
-										<b>{row.label}</b>
-									</td>
-									<td className={styles.textLeft}>{row.value}</td>
-								</tr>
-							))}
+							{tableData
+								.filter((item) => item.showIf !== false)
+								.map((row, index) => (
+									<tr key={index}>
+										<td className={styles.textLeft}>
+											<b>{row.label}</b>
+										</td>
+										<td className={styles.textLeft}>{row.value}</td>
+									</tr>
+								))}
 						</tbody>
 					</table>
 				</div>

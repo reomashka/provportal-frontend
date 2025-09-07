@@ -1,109 +1,114 @@
+import Transport from '@interfaces/Transport.interface';
 import styles from './TransportTuning.module.scss';
 
-export const TransportTuning = () => {
-  return (
-    <div className={styles.textCenter}>
-      <h2 className={styles.title}>Внешний тюнинг</h2>
+interface Props {
+	transportData: Transport | null;
+}
 
-      <div className={styles.card}>
-        <div>
-          <div>
-            <ul className={styles.listUnstyled}>
-              <table className={`${styles.table} ${styles.tableHover}`}>
-                <thead>
-                  <td className='td1'>
-                    <b>Название элемента</b>
-                  </td>
+export const TransportTuning = ({ transportData }: Props) => {
+	return (
+		<div className={styles.textCenter}>
+			<h2 className={styles.title}>Внешний тюнинг</h2>
 
-                  <td>
-                    <b>Доступность</b>
-                  </td>
-                </thead>
+			<div className={styles.card}>
+				<div>
+					<div>
+						<ul className={styles.listUnstyled}>
+							<table className={`${styles.table} ${styles.tableHover}`}>
+								<thead>
+									<td className="td1">
+										<b>Название элемента</b>
+									</td>
 
-                <tbody>
-                  <tr>
-                    <td colSpan={2}>
-                      <b className={styles.title}>Стайлинг</b>
-                    </td>
-                  </tr>
+									<td>
+										<b>Доступность</b>
+									</td>
+								</thead>
 
-                  <tr>
-                    <td className='td1'>
-                      <b>Первый цвет</b>
-                    </td>
-                    <td></td>
-                  </tr>
+								<tbody>
+									<tr>
+										<td colSpan={2}>
+											<b className={styles.title}>Стайлинг</b>
+										</td>
+									</tr>
 
-                  <tr>
-                    <td className='td1'>
-                      <b>Второй цвет</b>
-                    </td>
+									<tr>
+										<td className="td1">
+											<b>Первый цвет</b>
+										</td>
+										<td>{transportData?.paintFirst ? 'Есть' : 'Нет'}</td>
+									</tr>
 
-                    <td>INT</td>
-                  </tr>
+									<tr>
+										<td className="td1">
+											<b>Второй цвет</b>
+										</td>
 
-                  <tr>
-                    <td className='td1'>
-                      <b>Третий цвет</b>
-                    </td>
-                    <td>INT</td>
-                  </tr>
+										<td>{transportData?.paintSecond ? 'Есть' : 'Нет'}</td>
+									</tr>
 
-                  {/* <tr>
-                    <td colSpan={2}>
-                      <b className={styles.title}>!</b>
-                    </td>
-                  </tr> */}
+									<tr>
+										<td className="td1">
+											<b>Третий цвет</b>
+										</td>
+										<td>{transportData?.paintThird ? 'Есть' : 'Нет'}</td>
+									</tr>
 
-                  <tr>
-                    <td className='td1'>
-                      <b>Покраска салона</b>
-                    </td>
+									<tr>
+										<td colSpan={2}>
+											<b className={styles.title}> -</b>
+										</td>
+									</tr>
 
-                    <td>INT</td>
-                  </tr>
+									<tr>
+										<td className="td1">
+											<b>Покраска салона</b>
+										</td>
 
-                  <tr>
-                    <td className='td1'>
-                      <b>Антихром</b>
-                    </td>
+										<td>{transportData?.paintInter}</td>
+									</tr>
 
-                    <td>INT</td>
-                  </tr>
+									<tr>
+										<td className="td1">
+											<b>Антихром</b>
+										</td>
 
-                  <tr>
-                    <td colSpan={2}>
-                      <b className={styles.title}>Колеса</b>
-                    </td>
-                  </tr>
+										<td>{transportData?.antichrome ? 'Да' : 'Нет'}</td>
+									</tr>
 
-                  <tr>
-                    <td className='td1'>
-                      <b>Доступные диски</b>
-                    </td>
+									<tr>
+										<td colSpan={2}>
+											<b className={styles.title}>Колеса</b>
+										</td>
+									</tr>
 
-                    <td>INT</td>
-                  </tr>
+									<tr>
+										<td className="td1">
+											<b>Доступные диски</b>
+										</td>
 
-                  <tr>
-                    <td colSpan={2}>
-                      <b className={styles.title}>Разное</b>
-                    </td>
-                  </tr>
+										<td>{transportData?.rims}</td>
+									</tr>
 
-                  <tr>
-                    <td className='td1'>
-                      <b>Аксессуары</b>
-                    </td>
+									<tr>
+										<td colSpan={2}>
+											<b className={styles.title}>Разное</b>
+										</td>
+									</tr>
 
-                    <td>INT</td>
-                  </tr>
-                </tbody>
-              </table>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+									<tr>
+										<td className="td1">
+											<b>Аксессуары</b>
+										</td>
+
+										<td>{transportData?.accessories}</td>
+									</tr>
+								</tbody>
+							</table>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 };

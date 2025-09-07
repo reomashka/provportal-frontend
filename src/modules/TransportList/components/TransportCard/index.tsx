@@ -26,7 +26,7 @@ export const TransportCard = ({ transportData, transportType }: TransportCardPro
 						//  onClick={handleCardClick}
 					>
 						<img
-							src={`https://provportal.ru/assets/images/transport/${transport.uniqueName}.webp`}
+							src={`/uploads/transport/cards/${transport.uniqueName}.webp`}
 							alt={transport.nameAuto}
 							className={styles.transportImage}
 							loading="lazy"

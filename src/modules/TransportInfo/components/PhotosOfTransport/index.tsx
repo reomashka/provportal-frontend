@@ -10,14 +10,14 @@ export const PhotosOfTransport = ({ transportData }: PhotosOfTransportProps) => 
 	const [selectedSlide, setSelectedSlide] = useState('frontLeft');
 
 	const images: Record<string, string> = {
-		frontLeft: `https:/provportal.ru/assets/images/transport/frontLeft/${transportData?.uniqueName}.png`,
-		backRight: `https:/provportal.ru/assets/images/transport/backRight/${transportData?.uniqueName}.png`,
-		side: `https:/provportal.ru/assets/images/transport/side/${transportData?.uniqueName}.png`,
-		front: `https:/provportal.ru/assets/images/transport/front/${transportData?.uniqueName}.png`,
-		back: `https:/provportal.ru/assets/images/transport/back/${transportData?.uniqueName}.png`,
-		'1rowAuto': `https:/provportal.ru/assets/images/transport/1rowAuto/${transportData?.uniqueName}.png`,
-		'2rowAuto': `https:/provportal.ru/assets/images/transport/2rowAuto/${transportData?.uniqueName}.png`,
-		underhood: `https:/provportal.ru/assets/images/transport/underhood/${transportData?.uniqueName}.png`,
+		frontLeft: `/uploads/transport/frontLeft/${transportData?.uniqueName}.png`,
+		backRight: `/uploads/transport/backRight/${transportData?.uniqueName}.png`,
+		side: `/uploads/transport/side/${transportData?.uniqueName}.png`,
+		front: `/uploads/transport/front/${transportData?.uniqueName}.png`,
+		back: `/uploads/transport/back/${transportData?.uniqueName}.png`,
+		'1rowAuto': `/uploads/transport/1rowAuto/${transportData?.uniqueName}.png`,
+		'2rowAuto': `/uploads/transport/2rowAuto/${transportData?.uniqueName}.png`,
+		underhood: `/uploads/transport/underhood/${transportData?.uniqueName}.png`,
 	};
 
 	return (

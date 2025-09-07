@@ -1,24 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export interface FilterState {
-  value: string;
+	value: string;
 }
 
 const initialState: FilterState = {
-  value: 'asc',
+	value: 'asc',
 };
 
 export const filterSlice = createSlice({
-  name: 'filter',
-  initialState: initialState,
-  reducers: {
-    setAscOrder: (state) => {
-      state.value = 'asc';
-    },
-    setDescOrder: (state) => {
-      state.value = 'desc';
-    },
-  },
+	name: 'filter',
+	initialState: initialState,
+	reducers: {
+		setAscOrder: (state) => {
+			state.value = 'asc';
+		},
+		setDescOrder: (state) => {
+			state.value = 'desc';
+		},
+	},
 });
 
 export const { setAscOrder, setDescOrder } = filterSlice.actions;

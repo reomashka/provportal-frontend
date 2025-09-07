@@ -17,10 +17,19 @@ export const TransportSpecific = ({ transportData }: TransportSpecificProps) => 
 		{
 			title: 'Динамика автомобиля',
 			rows: [
-				{ label: 'Максимальная скорость', value: `${transportData?.fullSpeed ?? 'INT'} км/час` },
-				{ label: 'Разгон до 100', value: `${transportData?.speed100Time ?? 'INT'} сек.` },
-				{ label: 'Разгон до MAX', value: `${transportData?.speedMaxTime ?? 'INT'} сек.` },
-				{ label: 'Привод', value: 'Временно отсутствует' },
+				{
+					label: 'Максимальная скорость',
+					value: `${transportData?.fullSpeed ?? 'Нет информации'} км/час`,
+				},
+				{
+					label: 'Разгон до 100',
+					value: `${transportData?.speed100Time ?? 'Нет информации'} сек.`,
+				},
+				{
+					label: 'Разгон до MAX',
+					value: `${transportData?.speedMaxTime ?? 'Нет информации'} сек.`,
+				},
+				{ label: 'Привод', value: transportData?.driveType ?? 'Нет информации' },
 			],
 		},
 		{
@@ -29,7 +38,7 @@ export const TransportSpecific = ({ transportData }: TransportSpecificProps) => 
 				{
 					label: 'Доступно к погрузке',
 					value:
-						transportData?.class === 'cargo'
+						transportData?.class === 'CARGO'
 							? `${transportData?.units} ед.`
 							: 'Не грузовой транспорт',
 				},
@@ -43,24 +52,24 @@ export const TransportSpecific = ({ transportData }: TransportSpecificProps) => 
 				{ label: 'Емкость топливного бака', value: `${transportData?.volumeTank ?? 'INT'} л.` },
 				{
 					label: 'Стоимость 1 литра топлива',
-					value: `${typeTank[transportData?.typeTank as keyof typeof typeTank] ?? 'INT'} руб.`,
+					value: `${typeTank[transportData?.fuelType as keyof typeof fuelType] ?? 'INT'} руб.`,
 				},
 				{
 					label: 'Стоимость полного бака',
 					value:
-						transportData?.volumeTank && transportData?.typeTank
+						transportData?.volumeTank && transportData?.fuelType
 							? `${
-									typeTank[transportData.typeTank as keyof typeof typeTank] *
+									typeTank[transportData.fuelType as keyof typeof fuelType] *
 									transportData.volumeTank
 								} руб.`
 							: 'INT руб.',
 				},
-				{ label: 'Тип топлива', value: transportData?.typeTank ?? 'INT' },
+				{ label: 'Тип топлива', value: transportData?.fuelType ?? 'INT' },
 			],
 		},
 		{
 			title: 'Особенности',
-			rows: [{ label: 'ЕПП', value: transportData?.EPP ? 'Да' : 'Нет' }],
+			rows: [{ label: 'ЕПП', value: transportData?.epp ? 'Да' : 'Нет' }],
 		},
 	];
 

@@ -6,27 +6,42 @@ import { Header } from '@components/Header';
 import { Footer } from '@components/Footer';
 import { Banner } from '@components/Banner';
 
+import passenger from '@assets/transportNavigationGridPage/passenger.webp';
+import cargo from '@assets/transportNavigationGridPage/cargo.webp';
+import bus from '@assets/transportNavigationGridPage/bus.webp';
+import moto from '@assets/transportNavigationGridPage/moto.webp';
+
 export const TransportNavigationGridPage = () => {
 	const categories = [
 		{
 			title: 'Легковой транспорт',
-			img: 'https://provportal.ru/assets/images/transport/mainPage/passenger.webp',
+			img: passenger,
 			to: '/transport/passenger',
 		},
 		{
 			title: 'Грузовой транспорт',
-			img: 'https://provportal.ru/assets/images/transport/mainPage/cargo.webp',
+			img: cargo,
 			to: '/transport/cargo',
 		},
 		{
 			title: 'Общественный транспорт',
-			img: 'https://provportal.ru/assets/images/transport/mainPage/bus.webp',
+			img: bus,
 			to: '/transport/public',
 		},
 		{
 			title: 'Мотоциклы',
-			img: 'https://provportal.ru/assets/images/transport/mainPage/moto.webp',
+			img: moto,
 			to: '/transport/moto',
+		},
+		{
+			title: 'Контейнерный транспорт',
+			img: moto,
+			to: '/transport/container',
+		},
+		{
+			title: 'Экслюзивный транспорт',
+			img: moto,
+			to: '/transport/exclusive',
 		},
 	];
 

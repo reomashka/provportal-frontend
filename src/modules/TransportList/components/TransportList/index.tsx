@@ -19,7 +19,7 @@ import type { RootState } from '@redux/store';
 import { useQuery } from '@tanstack/react-query';
 import { fetchAllTransport } from '@modules/TransportList/api/fetchAllTransport';
 
-export const TransportList: React.FC<TransportTypeProps> = ({ transportType }) => {
+export const TransportList = ({ transportType }: TransportTypeProps) => {
 	const [searchQuery, setSearchQuery] = useState('');
 
 	const filterData = useSelector((state: RootState) => state.filter.value);

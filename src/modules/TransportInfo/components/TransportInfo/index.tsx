@@ -35,9 +35,9 @@ export const TransportInfo = () => {
 				<div className={styles.row}>
 					<TransportSpecific transportData={data} />
 					<div className={styles.selectionOfInfo}>
-						<TransportInsurance />
-						<TransportStages />
-						<TransportTuning />
+						<TransportInsurance transportData={data} />
+						<TransportStages transportData={data} />
+						<TransportTuning transportData={data} />
 					</div>
 				</div>
 			</div>

@@ -196,7 +196,7 @@ export const JobInfo = () => {
 
 						<div className={styles.jobImageContainer}>
 							<img
-								src="https://provportal.ru/assets/images/jobs/tram.webp"
+								src="http://87.228.38.103assets/images/jobs/tram.webp"
 								alt={job.name}
 								className={styles.jobImage}
 							/>

@@ -31,7 +31,7 @@ export const JobCard = ({ jobData }: TransportCardProps) => {
 						transition={{ duration: 0.3 }}
 						whileHover={{ scale: 1.01, transition: { duration: 0.07 } }}>
 						<img
-							src="https://provportal.ru/assets/images/jobs/tram.webp"
+							src="http://87.228.38.103assets/images/jobs/tram.webp"
 							alt=""
 							className={styles.transportImage}
 							loading="lazy"

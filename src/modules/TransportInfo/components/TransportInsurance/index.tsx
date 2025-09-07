@@ -1,119 +1,106 @@
+import Transport from '@interfaces/Transport.interface';
 import styles from './TransportInsurance.module.scss';
+import { calculateInsurance } from '../../utils/calculateInsurance';
+import React from 'react';
 
-export const TransportInsurance = () => {
-  return (
-    <div className={styles.textCenter}>
-      <h2 className={styles.title}>Страхование</h2>
+interface Props {
+	transportData: Transport | null;
+}
 
-      <div className={styles.card}>
-        <div>
-          <div>
-            <ul className={styles.listUnstyled}>
-              <table className={`${styles.table} ${styles.tableHover} ${styles.insuranceTable}`}>
-                <thead>
-                  <tr>
-                    <th className='td1'>
-                      <b>Вид страхования</b>
-                    </th>
-                    <th className='td2'>
-                      <b>Стоимость пакета</b>
-                    </th>
-                    <th className='td3'>
-                      <b>Стоимость ремонта (сток)</b>
-                    </th>
-                    <th className='td4'>
-                      <b>Бонусы</b>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className='td1' data-label='Вид страхования'>
-                      Без страхования
-                    </td>
-                    <td className='td2' data-label='Стоимость пакета'>
-                      -
-                    </td>
-                    <td className='td3' data-label='Стоимость ремонта (сток)'>
-                      {/* <?php
-                                  if ($autoData["noRepair"] == NULL) {
-                                      echo "-";
-                                  } else {
-                                      echo number_format($autoData["noRepair"], 0, ' ', ' ') . " рублей";
-                                  }
-                              ?> */}
-                    </td>
-                    <td className='td4' data-label='Бонусы'>
-                      Скидка не предоставляется
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className='td1' data-label='Вид страхования'>
-                      Лайт
-                    </td>
-                    <td className='td2' data-label='Стоимость пакета'>
-                      {/* <?php
-                                  if ($autoData["liteInsurance"] == NULL) {
-                                      echo "-";
-                                  } else {
-                                      echo number_format($autoData["liteInsurance"], 0, ' ', ' ') . " рублей";
-                                  }
-                              ?> */}
-                    </td>
-                    <td className='td3' data-label='Стоимость ремонта (сток)'>
-                      {/* <?php
-                                  if ($autoData["liteRepair"] == NULL) {
-                                      echo "-";
-                                  } else {
-                                      echo number_format($autoData["liteRepair"], 0, ' ', ' ') . " рублей";
-                                  }
-                              ?> */}
-                    </td>
-                    <td className='td4' data-label='Бонусы'>
-                      Скидка 30% на любой ремонт <br />1 бесплатный полный ремонт
-                    </td>
-                  </tr>
+const insuranceRows = [
+	{
+		key: 'noInsurance',
+		label: 'Без страхования',
+		bonus: 'Скидка не предоставляется',
+		repairKey: 'repairWithoutInsurance',
+		insuranceKey: null,
+	},
+	{
+		key: 'liteInsurance',
+		label: 'Лайт',
+		bonus: 'Скидка 30% на любой ремонт \n1 бесплатный полный ремонт',
+		repairKey: 'repairLiteInsurance',
+		insuranceKey: 'liteInsurance',
+	},
+	{
+		key: 'standInsurance',
+		label: 'Стандарт',
+		bonus: 'Скидка 45% на любой ремонт\n1 бесплатный полный ремонт\n7 бесплатных ремонтов до 15%',
+		repairKey: 'repairStandInsurance',
+		insuranceKey: 'standInsurance',
+	},
+	{
+		key: 'excInsurance',
+		label: 'Эксклюзив',
+		bonus:
+			'Скидка 65% на любой ремонт\n7 бесплатных полных ремонтов\n12 бесплатных ремонтов до 30%',
+		repairKey: 'repairExcInsurance',
+		insuranceKey: 'excInsurance',
+	},
+];
 
-                  <tr>
-                    <td className='td1' data-label='Вид страхования'>
-                      Стандарт
-                    </td>
-                    <td className='td2' data-label='Стоимость пакета'>
-                      INT Рублей
-                    </td>
-                    <td className='td3' data-label='Стоимость ремонта (сток)'>
-                      INT Рублей
-                    </td>
-                    <td className='td4' data-label='Бонусы'>
-                      Скидка 45% на любой ремонт
-                      <br />1 бесплатный полный ремонт
-                      <br />7 бесплатных ремонтов до 15%
-                    </td>
-                  </tr>
+export const TransportInsurance = ({ transportData }: Props) => {
+	const input = {
+		liteInsurance: transportData?.liteInsurance ?? null,
+		repairWithoutInsurance: transportData?.repairWithoutInsurance ?? 0,
+		hasStand: transportData?.hasStandIns ?? undefined,
+		hasExc: transportData?.hasExcIns ?? undefined,
+	};
+	const result = calculateInsurance(input);
 
-                  <tr>
-                    <td className='td1' data-label='Вид страхования'>
-                      Эксклюзив
-                    </td>
-                    <td className='td2' data-label='Стоимость пакета'>
-                      INT Рублей
-                    </td>
-                    <td className='td3' data-label='Стоимость ремонта (сток)'>
-                      INT Рублей
-                    </td>
-                    <td className='td4' data-label='Бонусы'>
-                      Скидка 65% на любой ремонт
-                      <br />7 бесплатных полных ремонтов
-                      <br />
-                      12 бесплатных ремонтов до 30%
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+	const renderRow = (row: (typeof insuranceRows)[0]) => {
+		const cost = row.insuranceKey ? result[row.insuranceKey as keyof typeof result] : null;
+		const amount = result[row.repairKey as keyof typeof result];
+
+		if (amount == null) return null;
+
+		return (
+			<tr key={row.key}>
+				<td className="td1" data-label="Вид страхования">
+					{row.label}
+				</td>
+				<td className="td2" data-label="Стоимость пакета">
+					{cost != null ? (cost as number).toLocaleString('ru-RU') + ' ₽' : ''}
+				</td>
+				<td className="td3" data-label="Стоимость ремонта (сток)">
+					{(amount as number).toLocaleString('ru-RU')} ₽
+				</td>
+				<td className="td4" data-label="Бонусы">
+					{row.bonus.split('\n').map((line, i) => (
+						<React.Fragment key={i}>
+							{line}
+							<br />
+						</React.Fragment>
+					))}
+				</td>
+			</tr>
+		);
+	};
+
+	return (
+		<div className={styles.textCenter}>
+			<h2 className={styles.title}>Страхование</h2>
+			<div className={styles.card}>
+				<table className={`${styles.table} ${styles.tableHover} ${styles.insuranceTable}`}>
+					<thead>
+						<tr>
+							<th className="td1">
+								<b>Вид страхования</b>
+							</th>
+							<th className="td2">
+								<b>Стоимость пакета</b>
+							</th>
+							<th className="td3">
+								<b>Стоимость ремонта (сток)</b>
+							</th>
+							<th className="td4">
+								<b>Бонусы</b>
+							</th>
+						</tr>
+					</thead>
+					<tbody>{insuranceRows.map(renderRow)}</tbody>
+				</table>
+			</div>
+		</div>
+	);
 };
