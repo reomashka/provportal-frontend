@@ -1,7 +1,7 @@
 import { Header } from '@components/Header';
 import { Banner } from '@components/Banner';
 import { SortButtons } from '@components/SortButtons';
-import { TransportList } from '../../modules/TransportList/components/TransportList';
+import { TransportList } from '@/modules/TransportList';
 import { ScrollToTop } from '@components/ScrollToTop';
 import { Footer } from '@components/Footer';
 import TransportTypeProps from '@interfaces/TransportTypeProps.interface';
@@ -37,6 +37,7 @@ export const TransportListPage = ({ transportType }: TransportTypeProps) => {
 					<TransportList transportType={transportType} />
 					<ScrollToTop />
 				</div>
+				ы
 			</main>
 
 			<Footer />

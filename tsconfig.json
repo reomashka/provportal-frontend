@@ -29,7 +29,8 @@
 			"@pages/*": ["src/pages/*"],
 			"@assets/*": ["src/assets/*"],
 			"@interfaces/*": ["src/interfaces/*"],
-			"@redux/*": ["src/redux/*"]
+			"@redux/*": ["src/redux/*"],
+			"@/*": ["src/*"]
 		}
 	},
 	"include": ["src"]

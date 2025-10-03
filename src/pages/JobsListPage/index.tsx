@@ -1,6 +1,6 @@
 import { Header } from '@components/Header';
 import { Banner } from '@components/Banner';
-import { JobsList } from 'src/modules/JobsList';
+import { JobsList } from '@/modules/JobsList';
 import { ScrollToTop } from '@components/ScrollToTop';
 import { Footer } from '@components/Footer';
 

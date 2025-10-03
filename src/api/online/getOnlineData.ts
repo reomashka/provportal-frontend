@@ -1,4 +1,4 @@
-export const fetchOnlineData = async () => {
+export const getOnlineData = async () => {
 	const response = await fetch(`/api/online`, {
 		method: 'GET',
 		headers: { 'Content-Type': 'application/json' },

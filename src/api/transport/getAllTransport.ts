@@ -1,6 +1,6 @@
 import Transport from '@interfaces/Transport.interface';
 
-export const fetchAllTransport = async (
+export const getAllTransport = async (
 	order: string,
 	transportClass: string,
 ): Promise<Transport[]> => {

@@ -2,21 +2,22 @@ import styles from './TransportInfo.module.scss';
 
 import { useParams } from 'react-router-dom';
 
-import { PhotosOfTransport } from '../PhotosOfTransport';
-import { MiniInfo } from '../MiniInfo';
-import { TransportSpecific } from '../TransportSpecifics';
-import { TransportInsurance } from '../TransportInsurance';
-import { TransportStages } from '../TransportStages';
-import { TransportTuning } from '../TransportTuning';
+import { PhotosOfTransport } from './components/PhotosOfTransport';
+import { MiniInfo } from './components/MiniInfo';
+import { TransportSpecific } from './components/TransportSpecifics';
+import { TransportInsurance } from './components/TransportInsurance';
+import { TransportStages } from './components/TransportStages';
+import { TransportTuning } from './components/TransportTuning';
+
 import { useQuery } from '@tanstack/react-query';
-import { fetchTransportInfoData } from '@modules/TransportInfo/api/fetchTransportInfoData';
+import { getTransportById } from '@/api/transport/getTransportById';
 
 export const TransportInfo = () => {
 	const { id } = useParams();
 
 	const { data, isLoading, error } = useQuery({
 		queryKey: ['transportInfo', id],
-		queryFn: () => fetchTransportInfoData(Number(id)),
+		queryFn: () => getTransportById(Number(id)),
 	});
 
 	if (isLoading) {

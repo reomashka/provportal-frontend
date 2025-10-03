@@ -34,7 +34,7 @@ export default interface Transport {
 }
 
 // TransportClass
-enum TransportClass {
+export enum TransportClass {
 	PASSENGER = 'PASSENGER', // Легковые
 	CARGO = 'CARGO', // Грузовые
 	MOTO = 'MOTO', // Мото
@@ -45,11 +45,12 @@ enum TransportClass {
 }
 
 // Showroom
-enum Showroom {
+export enum Showroom {
 	AVTOMAKS = 'AVTOMAKS',
 	MERCURY_AUTO = 'MERCURY_AUTO',
 	ROFL = 'ROFL',
 	WORLD_OF_AUTO = 'WORLD_OF_AUTO',
+	OGONEK = 'OGONEk',
 }
 
 // FuelType
@@ -63,7 +64,7 @@ export enum FuelType {
 }
 
 // CountryOrigin
-enum CountryOrigin {
+export enum CountryOrigin {
 	USSR_RUSSIA = 'USSR_RUSSIA',
 	USA = 'USA',
 	GERMANY = 'GERMANY',
@@ -83,7 +84,7 @@ enum CountryOrigin {
 }
 
 // City
-enum City {
+export enum City {
 	PRIVOLZHSK = 'PRIVOLZHSK',
 	NEVSKY = 'NEVSKY',
 	MIRNY = 'MIRNY',
@@ -109,7 +110,7 @@ export enum TransportType {
 }
 
 // DriveType
-enum DriveType {
+export enum DriveType {
 	FRONT = 'FRONT',
 	REAR = 'REAR',
 	ALL = 'ALL',

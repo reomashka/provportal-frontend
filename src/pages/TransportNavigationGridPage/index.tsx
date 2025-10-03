@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import styles from './TransportLand.module.scss';
+import styles from './TransportNavigationGridPage.module.scss';
 
 import { Header } from '@components/Header';
 import { Footer } from '@components/Footer';
@@ -10,6 +10,7 @@ import passenger from '@assets/transportNavigationGridPage/passenger.webp';
 import cargo from '@assets/transportNavigationGridPage/cargo.webp';
 import bus from '@assets/transportNavigationGridPage/bus.webp';
 import moto from '@assets/transportNavigationGridPage/moto.webp';
+import bank from '@assets/banners/bank.jpg';
 
 export const TransportNavigationGridPage = () => {
 	const categories = [
@@ -50,7 +51,7 @@ export const TransportNavigationGridPage = () => {
 			<Header />
 			<main>
 				<div className="container">
-					<Banner path="assets/images/other/bank.jpg" title="Автомобили" />
+					<Banner path={bank} title="Автомобили" />
 
 					<div className={styles.transportGrid}>
 						{categories.map((category) => (

@@ -1,4 +1,4 @@
-export const fetchTransportInfoData = async (id: number) => {
+export const getTransportById = async (id: number) => {
 	const response = await fetch(`/api/transport/get-one/${id}`, {
 		method: 'GET',
 		headers: { 'Content-Type': 'application/json' },

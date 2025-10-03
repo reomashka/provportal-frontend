@@ -1,6 +1,6 @@
 import styles from './MiniInfo.module.scss';
 
-import Transport, { TransportType } from '@interfaces/Transport.interface';
+import Transport, { TransportType, Showroom, CountryOrigin } from '@interfaces/Transport.interface';
 interface MiniInfoProps {
 	transportData: Transport | null;
 }
@@ -23,11 +23,38 @@ export const CarTypeLabels: Record<TransportType, string> = {
 	[TransportType.MOTOCYCLE]: 'Мотоцикл',
 };
 
+export const ShowroomLabels: Record<Showroom, string> = {
+	[Showroom.AVTOMAKS]: 'АвтоМакс',
+	[Showroom.MERCURY_AUTO]: 'Mercury-Auto',
+	[Showroom.ROFL]: 'РОФЛ',
+	[Showroom.WORLD_OF_AUTO]: 'World of Auto',
+	[Showroom.OGONEK]: 'Тихий Огонёк',
+};
+
+export const CountryOriginLabels: Record<CountryOrigin, string> = {
+	[CountryOrigin.USSR_RUSSIA]: 'СССР/Россия',
+	[CountryOrigin.USA]: 'США',
+	[CountryOrigin.GERMANY]: 'Германия',
+	[CountryOrigin.FRANCE]: 'Франция',
+	[CountryOrigin.ITALY]: 'Италия',
+	[CountryOrigin.SWEDEN]: 'Швеция',
+	[CountryOrigin.UK]: 'Англия',
+	[CountryOrigin.JAPAN]: 'Япония',
+	[CountryOrigin.CZECH_REPUBLIC]: 'Чехия',
+	[CountryOrigin.UKRAINE]: 'Украина',
+	[CountryOrigin.BELARUS]: 'Беларусь',
+	[CountryOrigin.AUSTRIA]: 'Австрия',
+	[CountryOrigin.SOUTH_KOREA]: 'Южная Корея',
+	[CountryOrigin.USSR_HUNGARY]: 'СССР/Венгрия',
+	[CountryOrigin.USSR_UKRAINE]: 'СССР/Украина',
+	[CountryOrigin.CHINA]: 'Китай',
+};
+
 export const MiniInfo = ({ transportData }: MiniInfoProps) => {
 	const tableData = [
 		{
 			label: 'Автосалон:',
-			value: `${transportData?.showroom || '-'} (${transportData?.city || '-'})`,
+			value: `${transportData?.showroom ? ShowroomLabels[transportData.showroom] : '-'} (${transportData?.country ? CountryOriginLabels[transportData.country] : '-'})`,
 		},
 		{
 			label: 'Стоимость в автосалоне:',

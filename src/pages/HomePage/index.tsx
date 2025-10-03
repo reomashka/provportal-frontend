@@ -1,5 +1,5 @@
 import { HomePageMetadata } from './HomePage.metadata';
-import { HomeModule } from '../../modules/HomeModule';
+import { HomeModule } from '@/modules/Home';
 import { Footer } from '@components/Footer';
 
 export const HomePage = () => {
