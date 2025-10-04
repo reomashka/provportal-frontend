@@ -1,5 +1,7 @@
 FROM node:22 as builder
 
+ENV NODE_ENV=production
+
 WORKDIR /app
 
 COPY package*.json ./
@@ -11,7 +13,7 @@ COPY . .
 RUN yarn build
 
 # Этап production
-FROM nginx:1.21.4
+FROM nginx:1.27-alpine
 
 COPY --from=builder /app/dist /usr/share/nginx/html
 
