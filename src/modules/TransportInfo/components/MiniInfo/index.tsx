@@ -1,6 +1,11 @@
 import styles from './MiniInfo.module.scss';
 
-import Transport, { TransportType, Showroom, CountryOrigin } from '@interfaces/Transport.interface';
+import Transport, {
+	TransportType,
+	Showroom,
+	CountryOrigin,
+	City,
+} from '@interfaces/Transport.interface';
 interface MiniInfoProps {
 	transportData: Transport | null;
 }
@@ -50,23 +55,31 @@ export const CountryOriginLabels: Record<CountryOrigin, string> = {
 	[CountryOrigin.CHINA]: 'Китай',
 };
 
+export const CityLabels: Record<City, string> = {
+	[City.PRIVOLZHSK]: 'Приволжск',
+	[City.NEVSKY]: 'Невский',
+	[City.MIRNY]: 'Мирный',
+};
+
 export const MiniInfo = ({ transportData }: MiniInfoProps) => {
+	console.log(transportData);
 	const tableData = [
 		{
 			label: 'Автосалон:',
-			value: `${transportData?.showroom ? ShowroomLabels[transportData.showroom] : '-'} (${transportData?.country ? CountryOriginLabels[transportData.country] : '-'})`,
+			value: `${transportData?.showroom ? ShowroomLabels[transportData.showroom] : '-'} (${transportData?.city ? CityLabels[transportData.city] : '-'})`,
 		},
 		{
 			label: 'Стоимость в автосалоне:',
-			value: new Intl.NumberFormat('ru-RU', { useGrouping: true }).format(
-				transportData?.price ?? 0,
-			),
+			value:
+				new Intl.NumberFormat('ru-RU', { useGrouping: true }).format(transportData?.price ?? 0) +
+				' ₽',
 		},
 		{
 			label: 'Актуальная гос цена:',
-			value: new Intl.NumberFormat('ru-RU', { useGrouping: true }).format(
-				(transportData?.price ?? 0) * 0.9,
-			),
+			value:
+				new Intl.NumberFormat('ru-RU', { useGrouping: true }).format(
+					(transportData?.price ?? 0) * 0.9,
+				) + ' ₽',
 		},
 		{
 			label: 'Старая гос цена:',
@@ -74,7 +87,6 @@ export const MiniInfo = ({ transportData }: MiniInfoProps) => {
 				transportData?.gosCostOld
 					?.map((n) => new Intl.NumberFormat('ru-RU', { useGrouping: true }).format(n))
 					.join(', ') ?? '-',
-
 			showIf: (transportData?.gosCostOld?.length ?? 0) >= 1,
 		},
 		{
