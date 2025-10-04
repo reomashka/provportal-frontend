@@ -6,6 +6,8 @@ WORKDIR /app
 
 COPY package*.json ./
 
+COPY .htpasswd /etc/nginx/.htpasswd
+
 RUN yarn
 
 COPY . .
