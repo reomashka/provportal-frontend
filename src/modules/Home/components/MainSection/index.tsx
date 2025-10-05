@@ -31,7 +31,6 @@ export const MainSection = () => {
 
 	return (
 		<section className={styles.mainSection}>
-			<p className={styles.mainSectionTitle}>Основные разделы</p>
 			<div className={styles.mainSectionCardBlock}>
 				{mainSectionCards.map((card) => (
 					<motion.div

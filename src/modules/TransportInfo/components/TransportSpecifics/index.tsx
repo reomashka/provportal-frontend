@@ -1,19 +1,11 @@
 import React from 'react';
 import styles from './TransportSpecifics.module.scss';
-import Transport, { FuelType } from '@interfaces/Transport.interface';
+import Transport from '@interfaces/Transport.interface';
+import { DriveTypeLabels, FuelPrice, FuelTypeLabels } from '@/constants/transportLabels';
 
 interface TransportSpecificProps {
 	transportData: Transport | null;
 }
-
-const typeTank: Record<FuelType, number> = {
-	[FuelType.AI92]: 52,
-	[FuelType.AI95]: 56,
-	[FuelType.AI98]: 60,
-	[FuelType.AI100]: 60,
-	[FuelType.DT]: 60,
-	[FuelType.ELECTRIC]: 60,
-};
 
 export const TransportSpecific = ({ transportData }: TransportSpecificProps) => {
 	const tableData = [
@@ -32,7 +24,12 @@ export const TransportSpecific = ({ transportData }: TransportSpecificProps) => 
 					label: 'Разгон до MAX',
 					value: `${transportData?.speedMaxTime ?? 'Нет информации'} сек.`,
 				},
-				{ label: 'Привод', value: transportData?.driveType ?? 'Нет информации' },
+				{
+					label: 'Привод',
+					value: transportData?.driveType
+						? (DriveTypeLabels[transportData?.driveType] ?? '-')
+						: 'Нет информации',
+				},
 			],
 		},
 		{
@@ -55,17 +52,22 @@ export const TransportSpecific = ({ transportData }: TransportSpecificProps) => 
 				{ label: 'Емкость топливного бака', value: `${transportData?.volumeTank ?? 'INT'} л.` },
 				{
 					label: 'Стоимость 1 литра топлива',
-					value: transportData?.fuelType ? `${typeTank[transportData.fuelType]} руб.` : 'INT руб.',
+					value: transportData?.fuelType ? `${FuelPrice[transportData.fuelType]} руб.` : 'INT руб.',
 				},
 				{
 					label: 'Стоимость полного бака',
 					value:
 						transportData?.volumeTank && transportData?.fuelType
-							? `${typeTank[transportData.fuelType] * transportData.volumeTank} руб.`
+							? `${FuelPrice[transportData.fuelType] * transportData.volumeTank} руб.`
 							: 'INT руб.',
 				},
 
-				{ label: 'Тип топлива', value: transportData?.fuelType ?? 'INT' },
+				{
+					label: 'Тип топлива',
+					value: transportData?.fuelType
+						? (FuelTypeLabels[transportData.fuelType] ?? 'INT')
+						: 'INT',
+				},
 			],
 		},
 		{

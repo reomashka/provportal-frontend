@@ -1,0 +1,23 @@
+.title {
+	font-size: 32px;
+	font-weight: 700;
+	line-height: 30px;
+	color: white;
+
+	margin-bottom: 32px;
+	font-weight: 700;
+	line-height: 1.2;
+	text-align: center;
+	position: relative;
+
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: -10px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 100px;
+		height: 3px;
+		background: linear-gradient(to right, transparent, #4a4a4a, transparent);
+	}
+}

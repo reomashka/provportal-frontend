@@ -3,7 +3,6 @@ import styles from './NewsSection.module.scss';
 export const NewsSection = () => {
 	return (
 		<section className={styles.newsSection}>
-			<p className={styles.newsSection_title}>Последние новости и обновления</p>
 			<div className={styles.newsSection_cardBlock}>
 				<div className={styles.newsSection_cardBlock_card}>
 					<div className={styles.cardImage}>
@@ -16,8 +15,6 @@ export const NewsSection = () => {
 					<div className={styles.cardFooter}>
 						<p>
 							<b>Telegram-канал Провинции преодолел отметку в 20.000 подписчиков! 🚀</b>
-							<br />
-							<br />
 							Спасибо, что вы с нами, читаете, комментируете и поддерживаете. Ценим каждого из вас!
 						</p>
 					</div>
@@ -34,8 +31,6 @@ export const NewsSection = () => {
 					<div className={styles.cardFooter}>
 						<p>
 							<b>Telegram-канал Провинции преодолел отметку в 20.000 подписчиков! 🚀</b>
-							<br />
-							<br />
 							Спасибо, что вы с нами, читаете, комментируете и поддерживаете. Ценим каждого из вас!
 						</p>
 					</div>
@@ -52,8 +47,6 @@ export const NewsSection = () => {
 					<div className={styles.cardFooter}>
 						<p>
 							<b>Telegram-канал Провинции преодолел отметку в 20.000 подписчиков! 🚀</b>
-							<br />
-							<br />
 							Спасибо, что вы с нами, читаете, комментируете и поддерживаете. Ценим каждого из вас!
 						</p>
 					</div>

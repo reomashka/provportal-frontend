@@ -99,7 +99,7 @@ export const OnlineSection = () => {
 
 	return (
 		<section className={styles.gameServices}>
-			<p className={styles.gameServices_title}>Игровые серверы</p>
+			{/* <p className={styles.gameServices_title}>Игровые серверы</p> */}
 			<div className={styles.gameServices_block_card}>{renderServers()}</div>
 		</section>
 	);
