@@ -2,16 +2,18 @@ import { useState, type ChangeEvent, type FormEvent } from 'react';
 import styles from './index.module.scss';
 import placeholder from '@/assets/placeholder.svg';
 import { toast } from 'react-toastify';
+import { useMutation } from '@tanstack/react-query';
+import { createAnnouncement } from '@/api/announcement/createAnouncement';
+import { AnnouncementType } from '@interfaces/Announcement.interface';
+import { uploadFile } from '@/api/common/upload';
 
-type ContentType = 'update' | 'news';
-
-const TypeValue: Record<ContentType, string> = {
-	update: 'Обновление',
-	news: 'Новости',
+const TypeValue: Record<AnnouncementType, string> = {
+	[AnnouncementType.NEWS]: 'Новости',
+	[AnnouncementType.UPDATE]: 'Обновление',
 };
 
 interface FormData {
-	type: ContentType;
+	type: AnnouncementType;
 	title: string;
 	description: string;
 	date: string;
@@ -20,18 +22,32 @@ interface FormData {
 
 export default function NewsFormPage() {
 	const [formData, setFormData] = useState<FormData>({
-		type: 'news',
+		type: AnnouncementType.NEWS,
 		title: '',
 		description: '',
 		date: new Date().toISOString().split('T')[0],
 		image: null,
 	});
 
+	const mutation = useMutation({
+		mutationFn: createAnnouncement,
+		onSuccess: () => {
+			toast.success('Успешно отправлено!');
+			// можно сбросить форму здесь
+		},
+		onError: () => {
+			toast.error('Ошибка при отправке');
+		},
+	});
+
 	const [imagePreview, setImagePreview] = useState<string | null>(null);
 	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const handleTypeChange = (e: ChangeEvent<HTMLSelectElement>) => {
-		setFormData({ ...formData, type: e.target.value as ContentType });
+		setFormData({
+			...formData,
+			type: e.target.value as AnnouncementType,
+		});
 	};
 
 	const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -62,37 +78,33 @@ export default function NewsFormPage() {
 		e.preventDefault();
 		setIsSubmitting(true);
 
-		// Simulate API call
 		try {
-			console.log('Submitting form data:', formData);
+			const createAnouncement = await createAnnouncement({
+				type: formData.type,
+				title: formData.title,
+				description: formData.description,
+				date: new Date(formData.date).toISOString(),
+			});
 
-			// Here you would typically send the data to your API
-			// const formDataToSend = new FormData()
-			// formDataToSend.append('type', formData.type)
-			// formDataToSend.append('title', formData.title)
-			// formDataToSend.append('description', formData.description)
-			// formDataToSend.append('date', formData.date)
-			// if (formData.image) {
-			//   formDataToSend.append('image', formData.image)
-			// }
-			// await fetch('/api/news', { method: 'POST', body: formDataToSend })
+			let fileUrl = null;
+			if (formData.image) {
+				const uploadRes = await uploadFile(formData.image, createAnouncement.id);
+				fileUrl = uploadRes.url;
+			}
 
-			await new Promise((resolve) => setTimeout(resolve, 1000));
-
-			toast.success('Успешно отправлено!');
-
-			// Reset form
+			// 4️⃣ Всё успешно — очищаем форму
 			setFormData({
-				type: 'news',
+				type: formData.type as AnnouncementType,
 				title: '',
 				description: '',
-				date: new Date().toISOString().split('T')[0],
+				date: new Date().toISOString(),
 				image: null,
 			});
 			setImagePreview(null);
-		} catch (error) {
-			console.error('Error submitting form:', error);
-			toast.error('Ошибка при отправке');
+			toast.success('Объявление успешно создано');
+		} catch (err) {
+			toast.error('Ошибка при создании объявления');
+			console.error(err);
 		} finally {
 			setIsSubmitting(false);
 		}
@@ -104,7 +116,6 @@ export default function NewsFormPage() {
 				<h1 className={styles.title}>Добавить новость или обновление</h1>
 
 				<form onSubmit={handleSubmit} className={styles.form}>
-					{/* Type Selection */}
 					<div className={styles.formGroup}>
 						<label htmlFor="type" className={styles.label}>
 							Тип контента
@@ -116,8 +127,8 @@ export default function NewsFormPage() {
 							onChange={handleTypeChange}
 							className={styles.select}
 							required>
-							<option value="news">Новости</option>
-							<option value="update">Обновление</option>
+							<option value={AnnouncementType.NEWS}>Новости</option>
+							<option value={AnnouncementType.UPDATE}>Обновление</option>
 						</select>
 					</div>
 
