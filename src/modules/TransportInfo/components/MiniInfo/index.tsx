@@ -1,65 +1,17 @@
 import styles from './MiniInfo.module.scss';
 
-import Transport, {
-	TransportType,
-	Showroom,
-	CountryOrigin,
-	City,
-} from '@interfaces/Transport.interface';
+import Transport from '@interfaces/Transport.interface';
+import {
+	CityLabels,
+	CountryOriginLabels,
+	DriveTypeLabels,
+	ShowroomLabels,
+	TransportTypeLabels,
+} from '@/constants/transportLabels';
+
 interface MiniInfoProps {
 	transportData: Transport | null;
 }
-
-export const CarTypeLabels: Record<TransportType, string> = {
-	[TransportType.HATCHBACK]: 'Хэтчбек',
-	[TransportType.SEDAN]: 'Седан',
-	[TransportType.COUPE]: 'Купе',
-	[TransportType.LIFTBACK]: 'Лифтбек',
-	[TransportType.UNIVERSAL]: 'Универсал',
-	[TransportType.CROSSOVER]: 'Кроссовер',
-	[TransportType.VAN]: 'Фургон',
-	[TransportType.VNEDOROZNIK]: 'Внедорожник',
-	[TransportType.MINIBUS]: 'Микроавтобус',
-	[TransportType.BUS]: 'Автобус',
-	[TransportType.TYAGACH]: 'Тягач',
-	[TransportType.TRUCK]: 'Грузовик',
-	[TransportType.PICKUP]: 'Пикап',
-	[TransportType.CABRIOLET]: 'Кабриолет',
-	[TransportType.MOTOCYCLE]: 'Мотоцикл',
-};
-
-export const ShowroomLabels: Record<Showroom, string> = {
-	[Showroom.AVTOMAKS]: 'АвтоМакс',
-	[Showroom.MERCURY_AUTO]: 'Mercury-Auto',
-	[Showroom.ROFL]: 'РОФЛ',
-	[Showroom.WORLD_OF_AUTO]: 'World of Auto',
-	[Showroom.OGONEK]: 'Тихий Огонёк',
-};
-
-export const CountryOriginLabels: Record<CountryOrigin, string> = {
-	[CountryOrigin.USSR_RUSSIA]: 'СССР/Россия',
-	[CountryOrigin.USA]: 'США',
-	[CountryOrigin.GERMANY]: 'Германия',
-	[CountryOrigin.FRANCE]: 'Франция',
-	[CountryOrigin.ITALY]: 'Италия',
-	[CountryOrigin.SWEDEN]: 'Швеция',
-	[CountryOrigin.UK]: 'Англия',
-	[CountryOrigin.JAPAN]: 'Япония',
-	[CountryOrigin.CZECH_REPUBLIC]: 'Чехия',
-	[CountryOrigin.UKRAINE]: 'Украина',
-	[CountryOrigin.BELARUS]: 'Беларусь',
-	[CountryOrigin.AUSTRIA]: 'Австрия',
-	[CountryOrigin.SOUTH_KOREA]: 'Южная Корея',
-	[CountryOrigin.USSR_HUNGARY]: 'СССР/Венгрия',
-	[CountryOrigin.USSR_UKRAINE]: 'СССР/Украина',
-	[CountryOrigin.CHINA]: 'Китай',
-};
-
-export const CityLabels: Record<City, string> = {
-	[City.PRIVOLZHSK]: 'Приволжск',
-	[City.NEVSKY]: 'Невский',
-	[City.MIRNY]: 'Мирный',
-};
 
 export const MiniInfo = ({ transportData }: MiniInfoProps) => {
 	console.log(transportData);
@@ -91,7 +43,7 @@ export const MiniInfo = ({ transportData }: MiniInfoProps) => {
 		},
 		{
 			label: 'Тип кузова:',
-			value: transportData?.typeBody ? CarTypeLabels[transportData.typeBody] : '-',
+			value: transportData?.typeBody ? TransportTypeLabels[transportData.typeBody] : '-',
 		},
 		{
 			label: 'Доступно к погрузке:',
@@ -100,8 +52,11 @@ export const MiniInfo = ({ transportData }: MiniInfoProps) => {
 		},
 		{
 			label: 'Страна-производитель:',
-			value: '-',
-			showIf: false,
+			value: transportData?.country ? CountryOriginLabels[transportData.country] : '-',
+		},
+		{
+			label: 'Привод:',
+			value: transportData?.driveType ? DriveTypeLabels[transportData.driveType] : '-',
 		},
 	];
 

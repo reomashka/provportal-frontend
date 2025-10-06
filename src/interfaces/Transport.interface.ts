@@ -50,7 +50,7 @@ export enum Showroom {
 	MERCURY_AUTO = 'MERCURY_AUTO',
 	ROFL = 'ROFL',
 	WORLD_OF_AUTO = 'WORLD_OF_AUTO',
-	OGONEK = 'OGONEk',
+	OGONEK = 'OGONEK',
 }
 
 // FuelType
