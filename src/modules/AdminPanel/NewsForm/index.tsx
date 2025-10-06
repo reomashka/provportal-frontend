@@ -2,7 +2,6 @@ import { useState, type ChangeEvent, type FormEvent } from 'react';
 import styles from './index.module.scss';
 import placeholder from '@/assets/placeholder.svg';
 import { toast } from 'react-toastify';
-import { useMutation } from '@tanstack/react-query';
 import { createAnnouncement } from '@/api/announcement/createAnouncement';
 import { AnnouncementType } from '@interfaces/Announcement.interface';
 import { uploadFile } from '@/api/common/upload';
@@ -27,17 +26,6 @@ export default function NewsFormPage() {
 		description: '',
 		date: new Date().toISOString().split('T')[0],
 		image: null,
-	});
-
-	const mutation = useMutation({
-		mutationFn: createAnnouncement,
-		onSuccess: () => {
-			toast.success('Успешно отправлено!');
-			// можно сбросить форму здесь
-		},
-		onError: () => {
-			toast.error('Ошибка при отправке');
-		},
 	});
 
 	const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -86,10 +74,8 @@ export default function NewsFormPage() {
 				date: new Date(formData.date).toISOString(),
 			});
 
-			let fileUrl = null;
 			if (formData.image) {
-				const uploadRes = await uploadFile(formData.image, createAnouncement.id);
-				fileUrl = uploadRes.url;
+				await uploadFile(formData.image, createAnouncement.id);
 			}
 
 			// 4️⃣ Всё успешно — очищаем форму
