@@ -11,24 +11,27 @@ import { TransportListPageMetadata } from './TransportListPage.metadata';
 import bank from '@assets/banners/bank.jpg';
 import cargoBanner from '@/assets/banners/cargo.webp';
 import guvdBanner from '@/assets/banners/house.png';
+import passenger from '@/assets/banners/passenger.webp';
+import { TransportClass } from '@interfaces/Transport.interface';
 
-const transportTypeMap: Record<TransportTypeProps['transportType'], string> = {
-	moto: 'Мотоциклы',
-	passenger: 'Легковой транспорт',
-	cargo: 'Грузовой транспорт',
-	public: 'Общественный транспорт',
-	container: 'Транспорт из контейнеров',
-	exclusive: 'Экслюзивный транспорт',
-	fraction: 'Фракционный транспорт',
+const transportTypeMap: Record<TransportClass, string> = {
+	[TransportClass.MOTO]: 'Мотоциклы',
+	[TransportClass.PASSENGER]: 'Легковой транспорт',
+	[TransportClass.CARGO]: 'Грузовой транспорт',
+	[TransportClass.PUBLIC]: 'Общественный транспорт',
+	[TransportClass.CONTAINER]: 'Транспорт из контейнеров',
+	[TransportClass.EXCLUSIVE]: 'Экслюзивный транспорт',
+	[TransportClass.FRACTION]: 'Фракционный транспорт',
 };
 
-const rarityType: Record<string, string> = {
-	passenger: bank,
-	cargo: cargoBanner,
-	public: guvdBanner,
-	container: bank,
-	exclusive: bank,
-	moto: bank,
+const rarityType: Record<TransportClass, string> = {
+	[TransportClass.PASSENGER]: passenger,
+	[TransportClass.CARGO]: cargoBanner,
+	[TransportClass.PUBLIC]: guvdBanner,
+	[TransportClass.CONTAINER]: bank,
+	[TransportClass.EXCLUSIVE]: bank,
+	[TransportClass.MOTO]: bank,
+	[TransportClass.FRACTION]: bank,
 };
 
 export const TransportListPage = ({ transportType }: TransportTypeProps) => {

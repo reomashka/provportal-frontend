@@ -29,14 +29,11 @@ export const TransportList = observer(({ transportType }: TransportTypeProps) =>
 		return items.filter((item) => {
 			const { filters } = store;
 
-			// пример: фильтр по epp
 			if (filters.epp && !item.epp) return false;
 
-			// пример: фильтр по стране
 			if (filters.countryOrigin.length && !filters.countryOrigin.includes(item.country ?? ''))
 				return false;
 
-			// пример: фильтр по типу топлива
 			if (filters.fuelType.length && !filters.fuelType.includes(item.fuelType ?? '')) return false;
 
 			if (filters.bodyType.length && !filters.bodyType.includes(item.typeBody ?? '')) return false;

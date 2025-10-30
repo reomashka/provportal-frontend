@@ -2,16 +2,17 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Timer, Gauge, Warehouse, Fuel, ClockAlert, Users, Grid2x2 } from 'lucide-react';
 import styles from './TransportCard.module.scss';
-import Transport from '@interfaces/Transport.interface';
+import Transport, { TransportClass } from '@interfaces/Transport.interface';
 import placeholder from '@/assets/sorryPlaceholder.svg';
 import { ShowroomLabels } from '@/constants/transportLabels';
 
 interface TransportCardProps {
 	transportData: Transport[];
-	transportType: string;
+	transportType: TransportClass;
 }
 
 export const TransportCard = ({ transportData, transportType }: TransportCardProps) => {
+	console.log(transportData);
 	return (
 		<>
 			{transportData.map((transport) => (
@@ -70,7 +71,7 @@ export const TransportCard = ({ transportData, transportType }: TransportCardPro
 									<span>{ShowroomLabels[transport.showroom ?? 'MERCURY_AUTO']}</span>
 								</div>
 
-								{transportType === 'public' ? (
+								{transportType === TransportClass.PUBLIC ? (
 									<div className={styles.detailItem}>
 										<Users className={styles.icon} color="#ffffff" strokeWidth={1.5} />
 										<span> {transport.seats}</span>
@@ -84,19 +85,26 @@ export const TransportCard = ({ transportData, transportType }: TransportCardPro
 							</div>
 						</div>
 					</Link>
-
-					{transportType !== 'container' ? (
+					{transportType === TransportClass.CONTAINER ? (
+						<div className={styles.price}>
+							<span>Контейнер</span>
+						</div>
+					) : transportType === TransportClass.EXCLUSIVE ? (
+						<div className={styles.price}>
+							<span>Эксклюзив</span>
+						</div>
+					) : (
 						<div className={styles.price}>
 							{/* <button
-                className={styles.like}
-                onClick={() => handleLike(transport.id)}
-              >
-                {likedTransport[transport.id] ? (
-                  <Heart color='#a51d2d' fill='#a51d2d' />
-                ) : (
-                  <Heart color='#241f31' />
-                )}
-              </button> */}
+								className={styles.like}
+								onClick={() => handleLike(transport.id)}
+							>
+								{likedTransport[transport.id] ? (
+								<Heart color='#a51d2d' fill='#a51d2d' />
+								) : (
+								<Heart color='#241f31' />
+								)}
+							</button> */}
 							<span>
 								{new Intl.NumberFormat('ru-RU', { useGrouping: true }).format(transport.price ?? 0)}{' '}
 								₽
@@ -108,10 +116,6 @@ export const TransportCard = ({ transportData, transportType }: TransportCardPro
 									₽
 								</span>{' '}
 							</span>
-						</div>
-					) : (
-						<div className={styles.price}>
-							<span>Контейнер</span>
 						</div>
 					)}
 				</motion.div>

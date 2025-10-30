@@ -1,16 +1,10 @@
 import { TransportListPage } from '../pages/TransportListPage';
 import { TransportInfoPage } from '../pages/TransportInfoPage';
+import { TransportClass } from '@interfaces/Transport.interface';
 
-type TransportType = 'moto' | 'passenger' | 'cargo' | 'public' | 'container' | 'exclusive';
+type TransportType = TransportClass;
 
-const transportTypes: TransportType[] = [
-	'moto',
-	'passenger',
-	'cargo',
-	'public',
-	'container',
-	'exclusive',
-];
+const transportTypes: TransportType[] = Object.values(TransportClass);
 
 export const TransportRoutes = [
 	{

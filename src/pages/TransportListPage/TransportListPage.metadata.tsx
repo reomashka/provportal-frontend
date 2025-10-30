@@ -1,16 +1,32 @@
 import { Helmet } from 'react-helmet-async';
 
 export const TransportListPageMetadata = () => {
-  return (
-    <Helmet>
-      <title>Транспорт. ProvPortal</title>
-      <meta name='description' content='Информация по всему транспорту. МТА Провинция' />
-      <meta
-        name='keywords'
-        content='МТА, Провинция, ProvPortal, prov portal, пров портал, провпортал'
-      />
-      <meta property='og:title' content='Транспорт. ProvPortal' />
-      <meta property='og:description' content='Информация по всему транспорту. МТА Провинция' />
-    </Helmet>
-  );
+	const title = 'Транспорт - ProvPortal';
+	const description =
+		'Полная информация обо всех транспортных средствах сервера МТА Провинция. Каталог, характеристики и статистика транспорта на ProvPortal.';
+	const keywords =
+		'МТА Провинция транспорт, машины МТА, транспорт провинция, ProvPortal, пров портал, prov portal, провпортал';
+	const url = 'https://provportal.ru/transport';
+
+	return (
+		<Helmet>
+			{/* Основные метатеги */}
+			<title>{title}</title>
+			<meta name="description" content={description} />
+			<meta name="keywords" content={keywords} />
+			<link rel="canonical" href={url} />
+
+			{/* Open Graph (Facebook, VK, Telegram) */}
+			<meta property="og:type" content="website" />
+			<meta property="og:url" content={url} />
+			<meta property="og:title" content={title} />
+			<meta property="og:description" content={description} />
+			<meta property="og:site_name" content="ProvPortal" />
+			<meta property="og:locale" content="ru_RU" />
+
+			{/* Дополнительно для поисковых систем */}
+			<meta name="robots" content="index, follow" />
+			<meta name="author" content="ProvPortal" />
+		</Helmet>
+	);
 };
