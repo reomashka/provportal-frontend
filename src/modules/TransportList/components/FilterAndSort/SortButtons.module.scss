@@ -1,0 +1,433 @@
+.container {
+	margin: 24px 0;
+	background: #1a1a1a;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 16px 24px;
+	background: #222;
+	border-bottom: 1px solid #333;
+	flex-wrap: wrap;
+	gap: 16px;
+}
+
+.toggleButton {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 10px 20px;
+	background: #2a2a2a;
+	border: 1px solid #3a3a3a;
+	border-radius: 8px;
+	color: #e0e0e0;
+	font-size: 15px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.2s ease;
+
+	&:hover {
+		background: #333;
+		border-color: #4a4a4a;
+	}
+
+	svg {
+		flex-shrink: 0;
+	}
+}
+
+.badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 22px;
+	height: 22px;
+	padding: 0 6px;
+	background: #4a90e2;
+	border-radius: 11px;
+	color: #fff;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.sortContainer {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+
+	label {
+		color: #b0b0b0;
+		font-size: 14px;
+		font-weight: 500;
+	}
+}
+
+.sortSelect {
+	padding: 8px 16px;
+	background: #2a2a2a;
+	border: 1px solid #3a3a3a;
+	border-radius: 8px;
+	color: #e0e0e0;
+	font-size: 14px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+
+	&:hover {
+		border-color: #4a4a4a;
+	}
+
+	&:focus {
+		outline: none;
+		border-color: #4a90e2;
+	}
+
+	option {
+		background: #2a2a2a;
+		color: #e0e0e0;
+	}
+}
+
+.filtersPanel {
+	background: #1a1a1a;
+	animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.filtersGrid {
+	padding: 24px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 24px;
+	margin-bottom: 24px;
+}
+
+.filterGroup {
+	h3 {
+		margin: 0 0 12px 0;
+		color: #e0e0e0;
+		font-size: 15px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+	}
+}
+
+.checkboxGroup {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.checkbox {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	cursor: pointer;
+	user-select: none;
+
+	input[type='checkbox'] {
+		width: 20px;
+		height: 20px;
+		margin: 0;
+		cursor: pointer;
+		accent-color: #4a90e2;
+	}
+
+	span {
+		color: #d0d0d0;
+		font-size: 14px;
+		transition: color 0.2s ease;
+	}
+
+	&:hover span {
+		color: #fff;
+	}
+}
+
+.buttonGroup {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.filterButton {
+	padding: 8px 16px;
+	background: #2a2a2a;
+	border: 1px solid #3a3a3a;
+	border-radius: 8px;
+	color: #d0d0d0;
+	font-size: 14px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.2s ease;
+
+	&:hover {
+		background: #333;
+		border-color: #4a4a4a;
+		color: #fff;
+	}
+
+	&.active {
+		background: #4a90e2;
+		border-color: #4a90e2;
+		color: #fff;
+	}
+}
+
+.bodyTypeGroup {
+	grid-column: 1 / -1;
+}
+
+.bodyTypeGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+	gap: 12px;
+}
+
+.bodyTypeButton {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+	padding: 16px 12px;
+	background: #2a2a2a;
+	border: 2px solid #3a3a3a;
+	border-radius: 10px;
+	color: #d0d0d0;
+	font-size: 13px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.2s ease;
+
+	&:hover {
+		background: #333;
+		border-color: #4a4a4a;
+		color: #fff;
+		transform: translateY(-2px);
+	}
+
+	&.active {
+		background: #2a4a6a;
+		border-color: #4a90e2;
+		color: #fff;
+
+		.bodyTypeIcon {
+			color: #4a90e2;
+		}
+	}
+}
+
+.bodyTypeIcon {
+	width: 48px;
+	height: 24px;
+	color: #808080;
+	transition: color 0.2s ease;
+
+	svg {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 12px;
+	padding-top: 20px;
+	border-top: 1px solid #333;
+	padding: 24px;
+}
+
+.resetButton,
+.applyButton {
+	padding: 10px 24px;
+	border: none;
+	border-radius: 8px;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.resetButton {
+	background: #2a2a2a;
+	color: #d0d0d0;
+	border: 1px solid #3a3a3a;
+
+	&:hover {
+		background: #333;
+		color: #fff;
+	}
+}
+
+.applyButton {
+	background: #4a90e2;
+	color: #fff;
+
+	&:hover {
+		background: #3a7bc8;
+	}
+}
+
+.activeFilters {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 16px 24px;
+	background: #252525;
+	border-bottom: 1px solid #333;
+	flex-wrap: wrap;
+}
+
+.activeFiltersLabel {
+	color: #b0b0b0;
+	font-size: 14px;
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.filterTags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	flex: 1;
+}
+
+.filterTag {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	padding: 6px 10px;
+	background: #2a2a2a;
+	border: 1px solid #3a3a3a;
+	border-radius: 6px;
+	font-size: 13px;
+	animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.filterTagCategory {
+	color: #888;
+	font-weight: 500;
+}
+
+.filterTagValue {
+	color: #e0e0e0;
+	font-weight: 600;
+}
+
+.filterTagRemove {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+	margin-left: 4px;
+	padding: 0;
+	background: transparent;
+	border: none;
+	border-radius: 4px;
+	color: #888;
+	cursor: pointer;
+	transition: all 0.2s ease;
+
+	&:hover {
+		background: #3a3a3a;
+		color: #ff6b6b;
+	}
+
+	svg {
+		width: 14px;
+		height: 14px;
+	}
+}
+
+.clearAllButton {
+	padding: 6px 16px;
+	background: #2a2a2a;
+	border: 1px solid #3a3a3a;
+	border-radius: 6px;
+	color: #d0d0d0;
+	font-size: 13px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	white-space: nowrap;
+
+	&:hover {
+		background: #333;
+		border-color: #ff6b6b;
+		color: #ff6b6b;
+	}
+}
+
+@media (max-width: 768px) {
+	.header {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.toggleButton {
+		width: 100%;
+		justify-content: center;
+	}
+
+	.sortContainer {
+		width: 100%;
+		justify-content: space-between;
+	}
+
+	.filtersGrid {
+		grid-template-columns: 1fr;
+	}
+
+	.bodyTypeGrid {
+		grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+	}
+
+	.actions {
+		flex-direction: column;
+
+		button {
+			width: 100%;
+		}
+	}
+
+	.activeFilters {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.filterTags {
+		width: 100%;
+	}
+
+	.clearAllButton {
+		width: 100%;
+	}
+}

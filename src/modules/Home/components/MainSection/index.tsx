@@ -23,10 +23,10 @@ export const MainSection = () => {
 	const mainSectionCards = [
 		{ id: 1, name: 'Автомобили', link: '/transport', color: 'blue', icon: 'iconCar' },
 		{ id: 2, name: 'Организации', link: '/systems/org', color: 'purp', icon: 'iconHome' },
-		{ id: 3, name: 'Работы', link: '/jobs', color: 'red', icon: 'iconFraction' },
+		{ id: 3, name: 'Работы', link: '/jobs', color: 'red', icon: 'iconWork' },
 		{ id: 4, name: 'Игровые системы', link: '/systems', color: 'green', icon: 'iconServer' },
 		{ id: 5, name: 'Банковская система', link: '/systems/bank', color: 'yel', icon: 'iconCard' },
-		{ id: 6, name: 'Фракции', link: '/fractions', color: 'oran', icon: 'iconWork' },
+		{ id: 6, name: 'Фракции', link: '/fractions', color: 'oran', icon: 'iconFraction' },
 	];
 
 	return (

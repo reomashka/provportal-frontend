@@ -1,4 +1,4 @@
-import { BriefcaseBusiness, Car, RefreshCw, Users } from 'lucide-react';
+import { Car, RefreshCw } from 'lucide-react';
 import styles from './AdminNavigationGrid.module.scss';
 import { Link } from 'react-router-dom';
 
@@ -26,16 +26,16 @@ export const AdminNavigationGrid = () => {
 			title: 'БД Транспорт',
 			url: '/adm/transport',
 		},
-		{
-			icon: <BriefcaseBusiness className={styles.icon} />,
-			title: 'БД Работы',
-			url: '/adm/jobs',
-		},
-		{
-			icon: <Users className={styles.icon} />,
-			title: 'БД Пользователи',
-			url: '/adm/users',
-		},
+		// {
+		// 	icon: <BriefcaseBusiness className={styles.icon} />,
+		// 	title: 'БД Работы',
+		// 	url: '/adm/jobs',
+		// },
+		// {
+		// 	icon: <Users className={styles.icon} />,
+		// 	title: 'БД Пользователи',
+		// 	url: '/adm/users',
+		// },
 		{
 			icon: <RefreshCw className={styles.icon} />,
 			title: 'Добавить обновление',

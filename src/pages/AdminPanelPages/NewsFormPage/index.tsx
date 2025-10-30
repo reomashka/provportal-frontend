@@ -1,14 +1,14 @@
 import { Footer } from '@components/Footer';
 import { Header } from '@components/Header';
-import NewsFormPage from '@modules/AdminPanel/NewsForm';
+import { NewsForm } from '@modules/AdminPanel/NewsForm';
 
-export const AddUpdatePage = () => {
+export const NewsFormPage = () => {
 	return (
 		<>
 			<Header />
 			<main>
 				<div className="container">
-					<NewsFormPage />
+					<NewsForm />
 				</div>
 			</main>
 			<Footer />

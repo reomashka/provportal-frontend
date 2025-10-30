@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { AdminNavigationGridPage } from '@pages/AdminPanelPages/AdminNavigationGridPage';
-import { AddUpdatePage } from '@pages/AdminPanelPages/NewsFormPage';
+import { NewsFormPage } from '@pages/AdminPanelPages/NewsFormPage';
 
 const DataGridTransportPage = lazy(() => import('@pages/AdminPanelPages/DataGridTransportPage'));
 
@@ -25,7 +25,7 @@ export const PrivateRoutes = [
 		path: 'adm/update',
 		element: (
 			<Suspense fallback={<div>Loading...</div>}>
-				<AddUpdatePage />
+				<NewsFormPage />
 			</Suspense>
 		),
 	},

@@ -9,25 +9,13 @@ import { NewsFormData } from './types/NewsFormData.interface';
 import { formatDateForDisplay } from './utils/date';
 import { useAnouncementMutation } from './hooks/useAnouncementMutation';
 
-// ====================================================================
-// CONSTANTS
-// ====================================================================
-// TODO: Вынести в constants/announcement.ts
-
 const MAX_TITLE_LENGTH = 100;
 const MAX_DESCRIPTION_LENGTH = 500;
 
 const getTodayDateString = (): string => {
 	return new Date().toISOString().split('T')[0];
 };
-
-// ====================================================================
-// MAIN COMPONENT
-// ====================================================================
 export const NewsForm = () => {
-	// ================================================================
-	// FORM SETUP
-	// ================================================================
 	const {
 		control,
 		handleSubmit,
@@ -43,7 +31,7 @@ export const NewsForm = () => {
 			date: getTodayDateString(),
 			image: null,
 		},
-		mode: 'onChange', // Валидация при изменении
+		mode: 'onChange',
 	});
 
 	// Наблюдаем за всеми полями для preview

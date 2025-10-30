@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Timer, Gauge, Warehouse, Fuel, ClockAlert, Users, Grid2x2 } from 'lucide-react';
 import styles from './TransportCard.module.scss';
 import Transport from '@interfaces/Transport.interface';
+import placeholder from '@/assets/sorryPlaceholder.svg';
+import { ShowroomLabels } from '@/constants/transportLabels';
 
 interface TransportCardProps {
 	transportData: Transport[];
@@ -30,6 +32,9 @@ export const TransportCard = ({ transportData, transportType }: TransportCardPro
 							alt={transport.nameAuto}
 							className={styles.transportImage}
 							loading="lazy"
+							onError={(e) => {
+								(e.currentTarget as HTMLImageElement).src = placeholder;
+							}}
 						/>
 
 						<div className={styles.headerCard}>
@@ -62,7 +67,7 @@ export const TransportCard = ({ transportData, transportType }: TransportCardPro
 
 								<div className={styles.detailItem}>
 									<Warehouse className={styles.icon} color="#ffffff" strokeWidth={1.5} />
-									<span>{transport.showroom}</span>
+									<span>{ShowroomLabels[transport.showroom ?? 'MERCURY_AUTO']}</span>
 								</div>
 
 								{transportType === 'public' ? (
