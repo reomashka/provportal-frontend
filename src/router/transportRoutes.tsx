@@ -11,11 +11,11 @@ export const TransportRoutes = [
 		path: '/transport',
 		children: [
 			...transportTypes.map((type) => ({
-				path: type, // /transport/moto, /transport/passenger и т.д.
+				path: type,
 				element: <TransportListPage transportType={type} />,
 			})),
 			{
-				path: ':id', // /transport/:id
+				path: ':id',
 				element: <TransportInfoPage />,
 			},
 		],

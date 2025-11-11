@@ -14,7 +14,6 @@ interface MiniInfoProps {
 }
 
 export const MiniInfo = ({ transportData }: MiniInfoProps) => {
-	console.log(transportData);
 	const tableData = [
 		{
 			label: 'Автосалон:',

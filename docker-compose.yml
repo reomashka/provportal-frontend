@@ -1,11 +1,11 @@
 services:
   frontend:
+    container_name: frontend-pp
     build: .
-    ports:
-      - '8080:80'
-      - '8443:443'
     networks:
       - shared_net
+    expose:
+      - '9090'
     restart: unless-stopped
 
 networks:

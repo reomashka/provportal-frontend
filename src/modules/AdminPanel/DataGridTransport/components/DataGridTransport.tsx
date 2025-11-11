@@ -40,7 +40,6 @@ export const DataGridTransport = () => {
 
 	const handleSave = async () => {
 		console.log('Sending data to backend:', rows);
-		// Здесь отправка на API
 		await fetch('/api/save', {
 			method: 'POST',
 			body: JSON.stringify(rows),

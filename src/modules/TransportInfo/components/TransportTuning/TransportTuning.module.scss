@@ -1,119 +1,88 @@
 .textCenter {
-  text-align: center !important;
+	text-align: center !important;
 }
 
 .title {
-  color: #34f091;
-  font-weight: 700;
-  margin-bottom: 15px;
-  margin-top: 40px;
-  font-size: 1.25rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding-bottom: 5px;
+	color: #34f091;
+	font-weight: 700;
+	margin-bottom: 15px;
+	margin-top: 40px;
+	font-size: 1.25rem;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	padding-bottom: 5px;
 }
 
 .card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #1e2229;
-  border-radius: 12px;
-  border: 1px solid rgba(52, 240, 145, 0.2);
-  line-height: 1.6;
-  overflow: hidden;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: #1e2229;
+	border-radius: 12px;
+	border: 1px solid rgba(52, 240, 145, 0.2);
+	line-height: 1.6;
+	overflow: hidden;
+	padding: 20px;
+	box-shadow:
+		0 4px 6px rgba(0, 0, 0, 0.1),
+		0 1px 3px rgba(0, 0, 0, 0.08);
+	transition: all 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-color: rgba(52, 240, 145, 0.4);
+	transform: translateY(-5px);
+	box-shadow:
+		0 6px 12px rgba(0, 0, 0, 0.15),
+		0 2px 4px rgba(0, 0, 0, 0.1);
+	border-color: rgba(52, 240, 145, 0.4);
 }
 
 .listUnstyled {
-  padding-left: 0;
-  list-style: none;
+	padding-left: 0;
+	list-style: none;
 }
 
 .table {
-  width: 100%;
-  margin-bottom: 1rem;
-  color: #e0e0e0;
-  border-radius: 8px;
-  overflow: hidden;
+	width: 100%;
+	margin-bottom: 1rem;
+	color: #e0e0e0;
+	border-radius: 8px;
+	overflow: hidden;
 }
 
 .table thead {
-  border-bottom: 2px solid #34f091;
+	border-bottom: 2px solid #34f091;
 }
 
 .table th {
-  color: #34f091;
-  font-weight: 600;
-  text-transform: uppercase;
-  padding: 12px 15px;
+	color: #34f091;
+	font-weight: 600;
+	text-transform: uppercase;
+	padding: 12px 15px;
 }
 
 .table td {
-  padding: 12px 15px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	padding: 12px 15px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .tableHover > tbody > tr:hover {
-  background-color: rgba(52, 240, 145, 0.05);
-  transition: background-color 0.3s ease;
+	background-color: rgba(52, 240, 145, 0.05);
+	transition: background-color 0.3s ease;
 }
 
 .tableHover > tbody > tr:hover > * {
-  color: #34f091;
+	color: #34f091;
 }
 
 @media (max-width: 768px) {
-  .card {
-    padding: 15px;
-  }
+	.card {
+		padding: 15px;
+	}
 
-  .table {
-    font-size: 11px;
-  }
+	.table {
+		font-size: 11px;
+	}
 }
-
-// @media (max-width: 576px) {
-//   .table {
-//     display: block;
-//     overflow-x: auto;
-//   }
-
-//   .table thead {
-//     display: none;
-//   }
-
-//   .table tbody tr {
-//     display: block;
-//     margin-bottom: 15px;
-//     border-radius: 8px;
-//     padding: 10px;
-//   }
-
-//   .table td {
-//     display: block;
-//     width: 100%;
-//     border: none;
-//     padding: 8px;
-//     text-align: left;
-//     position: relative;
-//   }
-
-//   .table td::before {
-//     content: attr(data-label);
-//     font-weight: bold;
-//     display: block;
-//     margin-bottom: 5px;
-//     color: #00974b;
-//   }
-// }

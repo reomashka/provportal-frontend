@@ -6,11 +6,11 @@ export const JobRoutes = [
 		path: '/jobs',
 		children: [
 			{
-				index: true, // это будет /jobs
+				index: true,
 				element: <JobsListPage />,
 			},
 			{
-				path: ':id', // это будет /jobs/:id
+				path: ':id',
 				element: <JobInfoPage />,
 			},
 		],

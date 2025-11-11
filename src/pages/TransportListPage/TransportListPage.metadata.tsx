@@ -10,13 +10,11 @@ export const TransportListPageMetadata = () => {
 
 	return (
 		<Helmet>
-			{/* Основные метатеги */}
 			<title>{title}</title>
 			<meta name="description" content={description} />
 			<meta name="keywords" content={keywords} />
 			<link rel="canonical" href={url} />
 
-			{/* Open Graph (Facebook, VK, Telegram) */}
 			<meta property="og:type" content="website" />
 			<meta property="og:url" content={url} />
 			<meta property="og:title" content={title} />
@@ -24,7 +22,6 @@ export const TransportListPageMetadata = () => {
 			<meta property="og:site_name" content="ProvPortal" />
 			<meta property="og:locale" content="ru_RU" />
 
-			{/* Дополнительно для поисковых систем */}
 			<meta name="robots" content="index, follow" />
 			<meta name="author" content="ProvPortal" />
 		</Helmet>

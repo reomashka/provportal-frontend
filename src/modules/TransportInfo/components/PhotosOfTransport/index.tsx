@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './PhotosOfTransport.module.scss';
-
+import placeholder from '@/assets/sorryPlaceholder.svg';
 import Transport from '@interfaces/Transport.interface';
 
 interface PhotosOfTransportProps {
@@ -26,7 +26,15 @@ export const PhotosOfTransport = ({ transportData }: PhotosOfTransportProps) => 
 				<ul className={styles.carousel_thumbnails}>
 					{Object.keys(images).map((key) => (
 						<label key={key} style={{ marginBottom: '10px', cursor: 'pointer' }}>
-							<img src={images[key]} alt={key} onClick={() => setSelectedSlide(key)} />
+							<img
+								src={images[key]}
+								alt={key}
+								onClick={() => setSelectedSlide(key)}
+								onError={(e) => {
+									const target = e.currentTarget;
+									target.style.display = 'none';
+								}}
+							/>
 						</label>
 					))}
 				</ul>
@@ -40,7 +48,13 @@ export const PhotosOfTransport = ({ transportData }: PhotosOfTransportProps) => 
 								key={key}
 								className={`${styles.carousel_slide} ${selectedSlide === key ? styles.active : ''}`}>
 								<figure>
-									<img src={images[key]} alt={key} />
+									<img
+										src={images[key]}
+										alt={key}
+										onError={(e) => {
+											(e.currentTarget as HTMLImageElement).src = placeholder;
+										}}
+									/>
 								</figure>
 							</li>
 						))}
