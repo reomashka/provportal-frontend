@@ -22,7 +22,7 @@ export const MainSection = () => {
 
 	const mainSectionCards = [
 		{ id: 1, name: 'Автомобили', link: '/transport', color: 'blue', icon: 'iconCar' },
-		{ id: 2, name: 'Организации', link: '/systems/org', color: 'purp', icon: 'iconHome' },
+		{ id: 2, name: 'Аксессуары', link: '/items', color: 'purp', icon: 'iconHome' },
 		{ id: 3, name: 'Работы', link: '/jobs', color: 'red', icon: 'iconWork' },
 		{ id: 4, name: 'Игровые системы', link: '/systems', color: 'green', icon: 'iconServer' },
 		{ id: 5, name: 'Банковская система', link: '/systems/bank', color: 'yel', icon: 'iconCard' },

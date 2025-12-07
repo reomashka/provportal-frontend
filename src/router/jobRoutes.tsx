@@ -10,7 +10,7 @@ export const JobRoutes = [
 				element: <JobsListPage />,
 			},
 			{
-				path: ':id',
+				path: ':id/:city',
 				element: <JobInfoPage />,
 			},
 		],

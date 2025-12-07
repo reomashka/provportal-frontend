@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+
+import ReactMarkdown from 'react-markdown';
 
 import { ScrollToTop } from '@components/ScrollToTop';
 
-import { Job } from '@interfaces/Job.interface';
+import { City, Job } from '@interfaces/Job.interface';
 import styles from './JobInfo.module.scss';
 import {
 	CircleFadingArrowUp,
@@ -16,126 +18,81 @@ import {
 	BarChart,
 	ChevronDown,
 } from 'lucide-react';
+import { useQuery } from '@tanstack/react-query';
+import { getCurrentJob } from '@/api/jobs/getCurrentJob';
+import { CitiesJobLabels } from '@/constants/jobLabels';
+import { levelCoefficients } from '@/constants/levelCoefficients';
 
 export const JobInfo = () => {
-	const { id } = useParams<{ id: string }>();
-	const [job, setJob] = useState<Job | null>(null);
-	const [isLoading, setIsLoading] = useState(true);
+	const { id, city } = useParams<{ id: string; city: string }>();
 	const [selectedLevel, setSelectedLevel] = useState(1);
 	const [selectedHours, setSelectedHours] = useState(1);
-	const [jobStats, setJobStats] = useState({
-		earnings: '',
-		unitsExp: '',
+
+	const { data: job, isLoading } = useQuery<Job>({
+		queryKey: ['jobs', id, city],
+		queryFn: () => getCurrentJob(Number(id)),
 	});
 
-	useEffect(() => {
-		setIsLoading(true);
-
-		const timer = setTimeout(() => {
-			const mockJob: Job = {
-				id: Number(id) || 1,
-				name: `Работа водителем трамвая #${id}`,
-				lvl: 3,
-				uniqueName: `job-${id}`,
-				city: 'Приволжск, Невский',
-				about: 'Работа в транспортной сфере с высокой заработной платой и гибким графиком',
-				htmlDescriptionCode: `
-        <p>Работа в транспортной компании предлагает разнообразные возможности для карьерного роста и развития. Наша компания является лидером в транспортной отрасли, обеспечивая надежные и комфортные перевозки для жителей города.</p>
-        
-        <h3>Обязанности:</h3>
-        <ul>
-          <li>Перевозка пассажиров по городским маршрутам</li>
-          <li>Соблюдение графика движения и расписания</li>
-          <li>Поддержание чистоты и порядка в транспортном средстве</li>
-          <li>Контроль билетов и обслуживание пассажиров</li>
-          <li>Ведение необходимой документации</li>
-        </ul>
-        
-        <h3>Требования:</h3>
-        <ul>
-          <li>Образование не ниже среднего</li>
-          <li>Опыт вождения от 1 года</li>
-          <li>Знание правил дорожного движения</li>
-          <li>Ответственность и пунктуальность</li>
-          <li>Коммуникабельность и стрессоустойчивость</li>
-        </ul>
-        
-        <h3>Преимущества:</h3>
-        <ul>
-          <li>Стабильный доход с возможностью роста</li>
-          <li>Официальное трудоустройство</li>
-          <li>Полный социальный пакет</li>
-          <li>Гибкий график работы</li>
-          <li>Возможность карьерного роста</li>
-          <li>Корпоративное обучение и повышение квалификации</li>
-        </ul>`,
-				settings: 1,
-				duration: '1 час',
-				earnings: '11 260 ₽',
-				unitsExp: '134/160',
-			};
-
-			setJob(mockJob);
-			setSelectedLevel(1);
-			setSelectedHours(1);
-			setJobStats({
-				earnings: mockJob.earnings || '0 ₽',
-				unitsExp: mockJob.unitsExp || '0/0',
-			});
-			setIsLoading(false);
-		}, 1000);
-
-		return () => clearTimeout(timer);
-	}, [id]);
-
-	useEffect(() => {
-		if (job) {
-			// Calculate new values based on selected level and hours
-			const baseEarnings = 11260; // Base value extracted from original job.earnings
-			const baseUnits = 134; // Base value extracted from original job.unitsExp
-			const baseExp = 160; // Base value extracted from original job.unitsExp
-
-			// Increase earnings and exp based on level (multiplier increases with level)
-			const earningsMultiplier = 1 + selectedLevel * 0.15;
-			const unitsMultiplier = 1 + selectedLevel * 0.1;
-			const expMultiplier = 1 + selectedLevel * 0.08;
-
-			// Multiply by hours
-			const hoursMultiplier = selectedHours;
-
-			const newEarnings = Math.round(baseEarnings * earningsMultiplier * hoursMultiplier);
-			const newUnits = Math.round(baseUnits * unitsMultiplier * hoursMultiplier);
-			const newExp = Math.round(baseExp * expMultiplier * hoursMultiplier);
-
-			setJobStats({
-				earnings: `${newEarnings.toLocaleString('ru-RU')} ₽`,
-				unitsExp: `${newUnits}/${newExp}`,
-			});
-		}
-	}, [selectedLevel, selectedHours, job]);
-
-	useEffect(() => {
-		const savedScrollY = localStorage.getItem('scrollY');
-		if (savedScrollY) {
-			window.scrollTo(0, 0);
-			localStorage.removeItem('scrollY');
-		}
-	}, []);
-
-	// Generate arrays for levels 1-30 and hours 1-30
 	const levels = Array.from({ length: 30 }, (_, i) => i + 1);
 	const hours = Array.from({ length: 30 }, (_, i) => i + 1);
 
+	let salary = 0;
+	// let salaryPerMinute = 0;
+	// let salaryPerHour = 0;
+	// let salaryPer2Hour = 0;
+	// let salaryPerSecond = 0;
+	// let stops = 0;
+	// let expJobs = 0;
+	// let exp1Hour = 0;
+
+	if (job) {
+		const cityKey = (city || '').toUpperCase() as keyof typeof City;
+
+		const currentSalary = job.salaries.find((s) => s.city === City[cityKey]);
+
+		if (!currentSalary) return null;
+
+		salary = Math.floor(
+			(currentSalary.amount / 100) *
+				levelCoefficients[selectedLevel as keyof typeof levelCoefficients],
+		);
+		// const salaryPerMinute = Math.floor(salary / job.salaries[0].time);
+		// const salaryPerHour = Math.floor(salaryPerMinute * 60);
+		// const salaryPer2Hour = Math.floor(salaryPerHour * 2);
+		// const salaryPerSecond = Math.floor(job.salaries[0].time * 60);
+		// const stops = Math.floor(60 / job.salaries[0].time);
+		// const expJobs = Math.floor(job.salaries[0].exp * stops);
+
+		// const exp1Hour = stops * job.salaries[0].exp;
+	}
+
+	const cities = job?.salaries.map((s) => s.city);
+	console.log(cities);
+	const navigate = useNavigate();
+
 	return (
 		<>
-			{/* <Banner path={`/assets/images/other/bank.jpg`} title={job?.name || 'Просмотр работы'} /> */}
-
 			<div className={styles.jobInfoContainer}>
 				<div className={styles.backLink}>
 					<Link to="/jobs">
 						<ArrowLeft size={18} />
 						<span>Вернуться к списку работ</span>
 					</Link>
+
+					<div className={styles.cityButtons}>
+						{job?.salaries.map((s) => {
+							const isActive = s.city.toLowerCase() === city?.toLowerCase();
+
+							return (
+								<button
+									key={s.city}
+									onClick={() => navigate(`/jobs/${id}/${s.city.toLowerCase()}`)}
+									className={`${styles.cityButton} ${isActive ? styles.active : ''}`}>
+									{CitiesJobLabels[s.city]}
+								</button>
+							);
+						})}
+					</div>
 				</div>
 
 				{isLoading ? (
@@ -164,18 +121,12 @@ export const JobInfo = () => {
 							<div className={styles.statItem}>
 								<MapPin className={styles.statIcon} />
 								<div className={styles.statContent}>
-									<div className={styles.statValue}>{job.city}</div>
-									<div className={styles.statLabel}>Город/ПГТ работы</div>
+									<div className={styles.statValue}>
+										{job.salaries?.map((salary) => CitiesJobLabels[salary.city]).join(', ')}
+									</div>
+									<div className={styles.statLabel}>Город/ПГТ где можно устроиться</div>
 								</div>
 							</div>
-
-							{/* <div className={styles.statItem}>
-                    <Clock className={styles.statIcon} />
-                    <div className={styles.statContent}>
-                      <div className={styles.statValue}>5/2</div>
-                      <div className={styles.statLabel}>График работы</div>
-                    </div>
-                  </div> */}
 
 							<div className={styles.statItem}>
 								<Award className={styles.statIcon} />
@@ -184,19 +135,11 @@ export const JobInfo = () => {
 									<div className={styles.statLabel}>Уровень персонажа</div>
 								</div>
 							</div>
-
-							{/* <div className={styles.statItem}>
-                    <PanelRightOpen className={styles.statIcon} />
-                    <div className={styles.statContent}>
-                      <div className={styles.statValue}>Полная</div>
-                      <div className={styles.statLabel}>Занятость</div>
-                    </div>
-                  </div> */}
 						</div>
 
 						<div className={styles.jobImageContainer}>
 							<img
-								src="http://87.228.38.103assets/images/jobs/tram.webp"
+								src={`/uploads/jobs/${job.id}.webp`}
 								alt={job.name}
 								className={styles.jobImage}
 							/>
@@ -204,16 +147,13 @@ export const JobInfo = () => {
 
 						<div className={styles.jobDescription}>
 							<h2>Описание работы</h2>
-							<div
-								className={styles.descriptionContent}
-								dangerouslySetInnerHTML={{
-									__html: job.htmlDescriptionCode || '<p>Описание отсутствует</p>',
-								}}
-							/>
+							<div className={styles.descriptionContent}>
+								<ReactMarkdown>{job.description}</ReactMarkdown>
+							</div>
 						</div>
 
 						<div className={styles.jobDetailsTable}>
-							<h2>Детали работы</h2>
+							<h2>Заработок</h2>
 
 							<div className={styles.selectorsContainer}>
 								<div className={styles.levelSelector}>
@@ -277,37 +217,23 @@ export const JobInfo = () => {
 										<Coins size={20} className={styles.tableIcon} />
 										<span className={styles.tableName}>Заработок:</span>
 									</div>
-									<div className={styles.tableValue}>{jobStats.earnings}</div>
+									<div className={styles.tableValue}>
+										{Math.floor(
+											((selectedHours * 60) / job.salaries[0].time) * salary,
+										).toLocaleString('ru-RU')}
+										₽
+									</div>
 								</div>
 								<div className={styles.tableRow}>
 									<div className={styles.tableCell}>
 										<BarChart size={20} className={styles.tableIcon} />
-										<span className={styles.tableName}>Единицы / опыт:</span>
+										<span className={styles.tableName}>Опыт:</span>
 									</div>
-									<div className={styles.tableValue}>{jobStats.unitsExp}</div>
-								</div>
-							</div>
-						</div>
-
-						<div className={styles.applicationSection}>
-							<h2>Как устроиться на работу</h2>
-							<div className={styles.applicationSteps}>
-								<p>Чтобы устроиться на эту работу, вам необходимо:</p>
-								<ol>
-									<li>Достичь {job.lvl} уровня персонажа</li>
-									<li>Находиться в городе {job.city}</li>
-									<li>Обратиться в центр занятости города</li>
-									<li>Пройти собеседование с работодателем</li>
-									<li>Подписать трудовой договор при успешном прохождении всех этапов</li>
-								</ol>
-
-								<div className={styles.additionalInfo}>
-									<p>При устройстве на работу вы получите:</p>
-									<ul>
-										<li>Форменную одежду</li>
-										<li>Необходимые инструменты и оборудование</li>
-										<li>Базовое обучение</li>
-									</ul>
+									<div className={styles.tableValue}>
+										{Math.floor(
+											((selectedHours * 60) / job.salaries[0].time) * job.salaries[0].exp,
+										)}
+									</div>
 								</div>
 							</div>
 						</div>

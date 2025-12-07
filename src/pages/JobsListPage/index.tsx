@@ -3,6 +3,7 @@ import { Banner } from '@components/Banner';
 import { JobsList } from '@/modules/JobsList';
 import { ScrollToTop } from '@components/ScrollToTop';
 import { Footer } from '@components/Footer';
+import bank from '@/assets/banners/bank.jpg';
 
 export const JobsListPage = () => {
 	return (
@@ -11,9 +12,8 @@ export const JobsListPage = () => {
 
 			<main>
 				<div className="container">
-					<Banner path="assets/images/other/bank.jpg" title="Работы" />
+					<Banner path={bank} title="Работы" />
 					<JobsList />
-					{/* <SearchContainer /> */}
 					<ScrollToTop />
 				</div>
 			</main>

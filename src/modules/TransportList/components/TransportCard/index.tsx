@@ -12,7 +12,6 @@ interface TransportCardProps {
 }
 
 export const TransportCard = ({ transportData, transportType }: TransportCardProps) => {
-	console.log(transportData);
 	return (
 		<>
 			{transportData.map((transport) => (

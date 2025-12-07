@@ -5,48 +5,51 @@ import { useState, useEffect } from 'react';
 import { JobCard } from '../JobCard';
 import { Job } from '@interfaces/Job.interface';
 import CardSkeleton from '@components/CardSkeleton';
-import { Link } from 'react-router-dom';
+import { SearchInput } from '@components/SearchInput';
 
 export const JobsList = () => {
-  const [data, setData] = useState<Job[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
+	const [data, setData] = useState<Job[]>([]);
+	const [isLoading, setIsLoading] = useState(true);
+	const [hasError, setHasError] = useState(false);
+	const [searchQuery, setSearchQuery] = useState('');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      setHasError(false);
-      try {
-        const { data } = await axios.get(`/api/jobs`);
-        setData(data);
-      } catch (error) {
-        console.error('Ошибка загрузки данных:', error);
-        setHasError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+	useEffect(() => {
+		const fetchData = async () => {
+			setIsLoading(true);
+			setHasError(false);
+			try {
+				const { data } = await axios.get(`/api/jobs`);
+				setData(data);
+			} catch (error) {
+				console.error('Ошибка загрузки данных:', error);
+				setHasError(true);
+			} finally {
+				setIsLoading(false);
+			}
+		};
 
-    fetchData();
-  }, []);
+		fetchData();
+	}, []);
 
-  const role = 'admin';
+	const filteredData = (data ?? []).filter((item) =>
+		item.name?.toLowerCase().includes(searchQuery.toLowerCase()),
+	);
 
-  return (
-    <>
-      {role === 'admin' && (
-        <Link className={`${styles.sortButton}`} to='/adm/jobs'>
-          Добавить работу
-        </Link>
-      )}
+	return (
+		<>
+			<SearchInput
+				value={searchQuery}
+				onChange={setSearchQuery}
+				placeholder="Поиск по работам..."
+			/>
 
-      <div className={styles.jobsGrid}>
-        {isLoading || hasError ? (
-          Array.from({ length: 8 }).map((_, index) => <CardSkeleton key={index} />)
-        ) : data ? (
-          <JobCard jobData={data} />
-        ) : null}
-      </div>
-    </>
-  );
+			<div className={styles.jobsGrid}>
+				{isLoading || hasError ? (
+					Array.from({ length: 8 }).map((_, index) => <CardSkeleton key={index} />)
+				) : data ? (
+					<JobCard jobData={filteredData} />
+				) : null}
+			</div>
+		</>
+	);
 };

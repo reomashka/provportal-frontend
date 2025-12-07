@@ -28,7 +28,7 @@ export default interface Transport {
 	antichrome?: boolean | null;
 	accessories?: string | null;
 	rims?: string | null;
-	gosCostOld: number[];
+	gosCostOld?: number[];
 	class?: TransportClass | null;
 	units?: number | null;
 }
@@ -115,3 +115,17 @@ export enum DriveType {
 	REAR = 'REAR',
 	ALL = 'ALL',
 }
+
+export const PHOTO_CATEGORIES = [
+	'front',
+	'back',
+	'1rowAuto',
+	'2rowAuto',
+	'backRight',
+	'frontLeft',
+	'side',
+	'trunk',
+	'underhood',
+] as const;
+
+export type PhotoCategory = (typeof PHOTO_CATEGORIES)[number];

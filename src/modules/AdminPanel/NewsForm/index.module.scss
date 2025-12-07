@@ -1,7 +1,6 @@
 .container {
 	min-height: 100vh;
 	padding: 2rem 1rem;
-	/* Changed to grid layout for form and preview side by side */
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 2rem;
@@ -202,7 +201,6 @@
 	cursor: not-allowed;
 }
 
-/* Added preview section styles */
 .previewSection {
 	background: #1a1a1a;
 	border-radius: 12px;

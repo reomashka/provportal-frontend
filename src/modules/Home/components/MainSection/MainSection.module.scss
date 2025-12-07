@@ -1,102 +1,104 @@
 .mainSection {
-  color: white;
-  margin-bottom: 44px;
+	color: white;
+	margin-bottom: 44px;
 }
 
 .mainSectionTitle {
-  font-size: 25px;
-  font-weight: 700;
-  line-height: 30px;
-  margin-bottom: 46px;
+	font-size: 25px;
+	font-weight: 700;
+	line-height: 30px;
+	margin-bottom: 46px;
 }
 
 .mainSectionCardBlock {
-  display: flex;
-  gap: 44px;
-  flex-wrap: wrap;
-  justify-content: space-between;
+	display: flex;
+	gap: 44px;
+	flex-wrap: wrap;
+	justify-content: space-between;
 }
 
 .mainSectionCardBlock a {
-  text-decoration: none;
-  color: white;
+	text-decoration: none;
+	color: white;
 }
 
 .mainSectionCard {
-  position: relative;
-  width: 125px;
-  height: 120px;
-  border-radius: 9px;
-  background: rgb(16, 16, 16);
-  padding: 20px 20px 0px 20px;
-  overflow: hidden;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+	position: relative;
+	width: 125px;
+	height: 120px;
+	border-radius: 9px;
+	background: rgb(16, 16, 16);
+	padding: 20px 20px 0px 20px;
+	overflow: hidden;
+	transition:
+		background-color 0.3s ease,
+		transform 0.3s ease;
 }
 
 .mainSectionCard:hover {
-  transform: scale(1.1); /* Увеличение кнопки */
+	transform: scale(1.1);
 }
 
 .mainSectionCard img {
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-  width: 30px;
+	position: absolute;
+	bottom: 15px;
+	right: 15px;
+	width: 30px;
 }
 
 .mainSectionCard::after {
-  position: absolute;
-  content: '';
-  width: 80px;
-  height: 80px;
-  border-radius: 150px 0 0 0;
-  left: 170px;
-  top: 110px;
+	position: absolute;
+	content: '';
+	width: 80px;
+	height: 80px;
+	border-radius: 150px 0 0 0;
+	left: 170px;
+	top: 110px;
 }
 
 .mainSectionCard p {
-  font-size: 19px;
-  font-weight: 600;
-  line-height: 26px;
+	font-size: 19px;
+	font-weight: 600;
+	line-height: 26px;
 }
 
 @media (max-width: 470px) {
-  .mainSectionCard {
-    width: 100px;
-  }
+	.mainSectionCard {
+		width: 100px;
+	}
 
-  .mainSectionCard p {
-    font-weight: 500;
-    font-size: 15px;
-  }
+	.mainSectionCard p {
+		font-weight: 500;
+		font-size: 15px;
+	}
 }
 
 .blue::after {
-  box-shadow: 0px 0px 18.7px 90px rgba(38, 45, 210, 0.25);
-  background: rgba(38, 45, 210, 0.25);
+	box-shadow: 0px 0px 18.7px 90px rgba(38, 45, 210, 0.25);
+	background: rgba(38, 45, 210, 0.25);
 }
 
 .purp::after {
-  box-shadow: 0px 0px 18.7px 90px rgba(98, 61, 158, 0.25);
-  background: rgba(98, 61, 158, 0.25);
+	box-shadow: 0px 0px 18.7px 90px rgba(98, 61, 158, 0.25);
+	background: rgba(98, 61, 158, 0.25);
 }
 
 .red::after {
-  box-shadow: 0px 0px 18.7px 90px rgba(160, 54, 54, 0.25);
-  background: rgba(160, 54, 54, 0.25);
+	box-shadow: 0px 0px 18.7px 90px rgba(160, 54, 54, 0.25);
+	background: rgba(160, 54, 54, 0.25);
 }
 
 .green::after {
-  box-shadow: 0px 0px 18.7px 90px rgba(42, 170, 47, 0.25);
-  background: rgba(42, 170, 47, 0.25);
+	box-shadow: 0px 0px 18.7px 90px rgba(42, 170, 47, 0.25);
+	background: rgba(42, 170, 47, 0.25);
 }
 
 .yel::after {
-  box-shadow: 0px 0px 18.7px 90px rgba(209, 161, 38, 0.25);
-  background: rgba(209, 161, 38, 0.25);
+	box-shadow: 0px 0px 18.7px 90px rgba(209, 161, 38, 0.25);
+	background: rgba(209, 161, 38, 0.25);
 }
 
 .oran::after {
-  box-shadow: 0px 0px 18.7px 90px rgba(233, 93, 48, 0.25);
-  background: rgba(233, 93, 48, 0.25);
+	box-shadow: 0px 0px 18.7px 90px rgba(233, 93, 48, 0.25);
+	background: rgba(233, 93, 48, 0.25);
 }

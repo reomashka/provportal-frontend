@@ -11,7 +11,7 @@ technologies:
 - Nest.JS
 - git
 - postgreSQL
-- Prisma
+- Drizzle
 - Docker
 - Swagger
 

@@ -67,13 +67,11 @@ export const TransportList = observer(({ transportType }: TransportTypeProps) =>
 	);
 	return (
 		<>
-			{console.log(store.filters.epp)}
 			<SearchInput
 				value={searchQuery}
 				onChange={setSearchQuery}
 				placeholder="Поиск по транспорту..."
 			/>
-
 			<div className={styles.transportGrid}>
 				{isLoading || error ? (
 					Array.from({ length: 8 }).map((_, index) => <CardSkeleton key={index} />)

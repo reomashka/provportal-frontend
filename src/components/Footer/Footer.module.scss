@@ -1,91 +1,91 @@
 .footer {
-  // background-color: #101010;
-  padding: 25px;
-  font-size: 13px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0; /* Убираем возможность сжатия футера */
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: auto;
+	// background-color: #101010;
+	padding: 25px;
+	font-size: 13px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+	width: 100%;
+	box-sizing: border-box;
+	margin-top: auto;
 
-  &.footerLinks {
-    display: flex;
-    gap: 10px;
-  }
+	&.footerLinks {
+		display: flex;
+		gap: 10px;
+	}
 
-  .footerLink {
-    text-decoration: none;
-    padding: 4px 10px;
-    border-radius: 5px;
-    display: inline-block;
-    margin: 5px;
+	.footerLink {
+		text-decoration: none;
+		padding: 4px 10px;
+		border-radius: 5px;
+		display: inline-block;
+		margin: 5px;
 
-    &.vk {
-      background-color: rgba(84, 152, 255, 0.15);
-      color: #436bf5;
-    }
+		&.vk {
+			background-color: rgba(84, 152, 255, 0.15);
+			color: #436bf5;
+		}
 
-    &.telegram {
-      background-color: rgba(84, 152, 255, 0.15);
-      color: #5498ff;
-    }
+		&.telegram {
+			background-color: rgba(84, 152, 255, 0.15);
+			color: #5498ff;
+		}
 
-    &.team {
-      background-color: rgba(140, 51, 229, 0.15);
-      color: #9e4def;
-    }
-  }
+		&.team {
+			background-color: rgba(140, 51, 229, 0.15);
+			color: #9e4def;
+		}
+	}
 
-  .footerLogo {
-    display: flex;
-    align-items: center;
-    font-weight: 600;
-    font-size: 15px;
-    color: #ffffff;
-    max-width: 100%; /* Ограничиваем ширину логотипа */
-    overflow: hidden; /* Обрезаем переполнение */
-    text-overflow: ellipsis; /* Добавляем многоточие для переполненного текста */
-    margin-left: auto; /* Перемещаем логотип вправо */
+	.footerLogo {
+		display: flex;
+		align-items: center;
+		font-weight: 600;
+		font-size: 15px;
+		color: #ffffff;
+		max-width: 100%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		margin-left: auto;
 
-    img {
-      margin-right: 8px;
-    }
+		img {
+			margin-right: 8px;
+		}
 
-    span {
-      font-size: 1.2em; /* Задает размер шрифта для текста */
-    }
-  }
+		span {
+			font-size: 1.2em;
+		}
+	}
 
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0 1rem;
-    max-width: 1350px;
-    margin: 0 auto;
-    height: 100%;
-  }
+	.container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		box-sizing: border-box;
+		padding: 0 1rem;
+		max-width: 1350px;
+		margin: 0 auto;
+		height: 100%;
+	}
 }
 
 @media (max-width: 700px) {
-  .footerLogo span {
-    display: none;
-  }
+	.footerLogo span {
+		display: none;
+	}
 }
 
 @media (max-width: 440px) {
-  .footer {
-    padding: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 0 0 auto;
-    width: 100%;
-    margin: 30px auto 0 auto;
-    box-sizing: border-box;
-  }
+	.footer {
+		padding: 25px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex: 0 0 auto;
+		width: 100%;
+		margin: 30px auto 0 auto;
+		box-sizing: border-box;
+	}
 }

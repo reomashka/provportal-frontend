@@ -1,60 +1,59 @@
 .jobsGrid {
-  max-width: 1300px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  box-sizing: border-box;
-  justify-content: end; /* Выравнивание сетки по правому краю */
+	width: 100%;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	box-sizing: border-box;
+	justify-content: end;
 }
 
 @media (max-width: 1300px) {
-  .jobsGrid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+	.jobsGrid {
+		grid-template-columns: repeat(3, 1fr);
+	}
 }
 
 @media (max-width: 1150px) {
-  .jobsGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+	.jobsGrid {
+		grid-template-columns: repeat(2, 1fr);
+	}
 }
 
 @media (max-width: 768px) {
-  .jobsGrid {
-    grid-template-columns: repeat(1, 1fr);
-    padding: 0 10px;
-  }
+	.jobsGrid {
+		grid-template-columns: repeat(1, 1fr);
+	}
 }
 .sortButton {
-  display: inline-block;
-  max-width: 300px;
-  padding: 0.5rem 2rem;
-  margin-bottom: 15px;
-  border-radius: 0.25rem;
-  background-color: #059669;
-  color: #ffffff;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  font-weight: 500;
-  font-size: 16px;
-  text-align: center;
-  text-decoration: none;
+	display: inline-block;
+	max-width: 300px;
+	padding: 0.5rem 2rem;
+	margin-bottom: 15px;
+	border-radius: 0.25rem;
+	background-color: #059669;
+	color: #ffffff;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	font-weight: 500;
+	font-size: 16px;
+	text-align: center;
+	text-decoration: none;
 
-  &:hover {
-    background-color: #52525b;
-  }
+	&:hover {
+		background-color: #52525b;
+	}
 
-  &.active {
-    background-color: #059669;
+	&.active {
+		background-color: #059669;
 
-    &:hover {
-      background-color: #047857;
-    }
-  }
+		&:hover {
+			background-color: #047857;
+		}
+	}
 }
 
 .active {
-  background-color: #047857;
+	background-color: #047857;
 }
