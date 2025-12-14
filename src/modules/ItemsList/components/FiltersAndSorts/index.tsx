@@ -6,8 +6,8 @@ import {
 	ShowroomLabels,
 	TransportTypeLabels,
 } from '@/constants/transportLabels';
-import { FilterState } from '@modules/TransportList/interfaces/FilterSort.interface';
-// import { SORT_OPTIONS } from '@modules/TransportList/constants/FilterSort';
+import { FilterState } from '@/modules/TransportList/interfaces/FilterSort.interface';
+// import { SORT_OPTIONS } from '@/modules/TransportList/constants/FilterSort';
 import { transportStore } from '@/store/transportFilterSortStore';
 import { observer } from 'mobx-react-lite';
 import {
@@ -16,9 +16,9 @@ import {
 	FuelType,
 	Showroom,
 	TransportType,
-} from '@interfaces/Transport.interface';
+} from '@/interfaces/Transport.interface';
 import { AccessoryCategoryLabels, AccessorySubtypeLabels } from '@/constants/ItemLabels';
-import { AccessoryCategory, AccessorySubtype } from '@interfaces/Item.interface';
+import { AccessoryCategory, AccessorySubtype } from '@/interfaces/Item.interface';
 
 export const FiltersAndSorts = observer(() => {
 	const store = transportStore;

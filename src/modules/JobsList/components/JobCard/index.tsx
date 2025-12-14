@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Info, CircleFadingArrowUp, MapPin } from 'lucide-react';
 import styles from './TransportCard.module.scss';
 
-import { Job } from '@interfaces/Job.interface';
+import { Job } from '@/interfaces/Job.interface';
 import { CitiesJobLabels } from '@/constants/jobLabels';
 
 interface TransportCardProps {

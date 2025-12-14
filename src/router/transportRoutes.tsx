@@ -1,6 +1,6 @@
 import { TransportListPage } from '../pages/TransportListPage';
 import { TransportInfoPage } from '../pages/TransportInfoPage';
-import { TransportClass } from '@interfaces/Transport.interface';
+import { TransportClass } from '@/interfaces/Transport.interface';
 
 type TransportType = TransportClass;
 

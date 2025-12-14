@@ -5,7 +5,7 @@ import {
 	Showroom,
 	CountryOrigin,
 	City,
-} from '@interfaces/Transport.interface';
+} from '@/interfaces/Transport.interface';
 
 export const DriveTypeLabels: Record<DriveType, string> = {
 	[DriveType.ALL]: 'Полный',

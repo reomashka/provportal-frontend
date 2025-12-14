@@ -1,11 +1,10 @@
 import styles from './JobsList.module.scss';
-import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 import { JobCard } from '../JobCard';
-import { Job } from '@interfaces/Job.interface';
-import CardSkeleton from '@components/CardSkeleton';
-import { SearchInput } from '@components/SearchInput';
+import { Job } from '@/interfaces/Job.interface';
+import CardSkeleton from '@/components/CardSkeleton';
+import { SearchInput } from '@/components/SearchInput';
 
 export const JobsList = () => {
 	const [data, setData] = useState<Job[]>([]);
@@ -18,7 +17,11 @@ export const JobsList = () => {
 			setIsLoading(true);
 			setHasError(false);
 			try {
-				const { data } = await axios.get(`/api/jobs`);
+				const response = await fetch('/api/jobs');
+				if (!response.ok) {
+					throw new Error(`HTTP error! status: ${response.status}`);
+				}
+				const data = await response.json();
 				setData(data);
 			} catch (error) {
 				console.error('Ошибка загрузки данных:', error);

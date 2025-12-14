@@ -1,4 +1,4 @@
-import { AccessoryCategory, AccessorySubtype, Currency } from '@interfaces/Item.interface';
+import { AccessoryCategory, AccessorySubtype, Currency } from '@/interfaces/Item.interface';
 
 // Категории
 export const AccessoryCategoryLabels: Record<AccessoryCategory, string> = {

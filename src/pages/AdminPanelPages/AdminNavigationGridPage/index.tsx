@@ -1,7 +1,7 @@
-import { Footer } from '@components/Footer';
+import { Footer } from '@/components/Footer';
 import { AdminNavigationGrid } from '@/modules/AdminPanel/AdminNavigationGrid/components/index';
-import { Header } from '@components/Header';
-import { Banner } from '@components/Banner';
+import { Header } from '@/components/Header';
+import { Banner } from '@/components/Banner';
 
 import bank from '@/assets/banners/bank.jpg';
 export const AdminNavigationGridPage = () => {

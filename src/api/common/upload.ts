@@ -8,5 +8,9 @@ export async function uploadFile(file: File, title: string) {
 		body: formData,
 	});
 
+	if (!res.ok) {
+		throw new Error('Ошибка загрузки');
+	}
+
 	return res.json();
 }

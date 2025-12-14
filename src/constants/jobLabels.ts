@@ -1,4 +1,4 @@
-import { City } from '@interfaces/Job.interface';
+import { City } from '@/interfaces/Job.interface';
 
 export const CitiesJobLabels: Record<City, string> = {
 	[City.MIRNY]: 'Мирный',

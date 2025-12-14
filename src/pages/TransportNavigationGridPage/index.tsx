@@ -2,15 +2,15 @@ import { Link } from 'react-router-dom';
 
 import styles from './TransportNavigationGridPage.module.scss';
 
-import { Header } from '@components/Header';
-import { Footer } from '@components/Footer';
-import { Banner } from '@components/Banner';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
+import { Banner } from '@/components/Banner';
 
-import passenger from '@assets/transportNavigationGridPage/passenger.webp';
-import cargo from '@assets/transportNavigationGridPage/cargo.webp';
-import bus from '@assets/transportNavigationGridPage/bus.webp';
-import moto from '@assets/transportNavigationGridPage/moto.webp';
-import bank from '@assets/banners/bank.jpg';
+import passenger from '@/assets/transportNavigationGridPage/passenger.webp';
+import cargo from '@/assets/transportNavigationGridPage/cargo.webp';
+import bus from '@/assets/transportNavigationGridPage/bus.webp';
+import moto from '@/assets/transportNavigationGridPage/moto.webp';
+import bank from '@/assets/banners/bank.jpg';
 
 export const TransportNavigationGridPage = () => {
 	const categories = [

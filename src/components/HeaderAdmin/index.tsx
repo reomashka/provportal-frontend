@@ -2,21 +2,21 @@ import { Link } from 'react-router-dom';
 import styles from './HeaderAdmin.module.scss';
 import { Flame } from 'lucide-react';
 
-import logo from '@assets/logos/provModerateLogo.svg';
+import logo from '@/assets/logos/provModerateLogo.svg';
 
 export const HeaderAdmin = () => {
 	return (
 		<header>
 			<div className={styles.container}>
 				<div className={styles.logo}>
-					<Link to="/home">
+					<Link to="/">
 						<img src={logo} alt="Logo"></img>
 					</Link>
 				</div>
 				<nav>
 					<ul className={styles.navList}>
 						<li>
-							<Link to="/home">Домой</Link>
+							<Link to="/">Домой</Link>
 						</li>
 						<li className={styles.dropdown}>
 							<Link to="#">

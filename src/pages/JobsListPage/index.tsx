@@ -1,8 +1,8 @@
-import { Header } from '@components/Header';
-import { Banner } from '@components/Banner';
+import { Header } from '@/components/Header';
+import { Banner } from '@/components/Banner';
 import { JobsList } from '@/modules/JobsList';
-import { ScrollToTop } from '@components/ScrollToTop';
-import { Footer } from '@components/Footer';
+import { ScrollToTop } from '@/components/ScrollToTop';
+import { Footer } from '@/components/Footer';
 import bank from '@/assets/banners/bank.jpg';
 
 export const JobsListPage = () => {

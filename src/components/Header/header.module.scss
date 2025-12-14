@@ -1,156 +1,157 @@
 header {
-  color: #fff;
-  align-items: center;
-  position: relative;
-  padding: 10px 0;
-  z-index: 10;
-  width: 100%;
+	color: #fff;
+	align-items: center;
+	position: relative;
+	padding: 10px 0;
+	z-index: 10;
+	width: 100%;
+	margin-top: 10px;
 }
 
 .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  box-sizing: border-box;
-  max-width: 1350px;
-  margin: 0 auto;
-  height: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	box-sizing: border-box;
+	max-width: 1350px;
+	margin: 0 auto;
+	height: 100%;
 }
 
 .logo {
-  margin-left: 10px;
+	margin-left: 10px;
 
-  img {
-    height: 60px;
-    margin-bottom: 10px;
-  }
+	img {
+		height: 60px;
+		margin-bottom: 10px;
+	}
 }
 
 nav {
-  .navList {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+	.navList {
+		display: flex;
+		list-style: none;
+		margin: 0;
+		padding: 0;
 
-    li {
-      position: relative;
-      margin-left: 20px;
-      font-size: 16px;
-    }
+		li {
+			position: relative;
+			margin-left: 20px;
+			font-size: 16px;
+		}
 
-    a {
-      text-decoration: none;
-      color: #fff;
-      padding: 10px 15px;
-      display: flex;
-      align-items: center;
-      position: relative;
+		a {
+			text-decoration: none;
+			color: #fff;
+			padding: 10px 15px;
+			display: flex;
+			align-items: center;
+			position: relative;
 
-      &::before {
-        content: '';
-        position: absolute;
-        bottom: -5px;
-        left: 50%;
-        width: 0;
-        height: 2px;
-        background-color: #00c16e;
-        transition: all 0.3s ease;
-      }
+			&::before {
+				content: '';
+				position: absolute;
+				bottom: -5px;
+				left: 50%;
+				width: 0;
+				height: 2px;
+				background-color: #00c16e;
+				transition: all 0.3s ease;
+			}
 
-      &:hover {
-        &::before {
-          left: 10%;
-          width: 80%;
-        }
-      }
-    }
-  }
+			&:hover {
+				&::before {
+					left: 10%;
+					width: 80%;
+				}
+			}
+		}
+	}
 
-  .arrow {
-    margin-left: 5px;
-    transition: transform 0.3s ease;
-  }
+	.arrow {
+		margin-left: 5px;
+		transition: transform 0.3s ease;
+	}
 
-  .dropdownMenu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #333;
-    list-style: none;
-    padding: 10px 0;
-    margin: 0;
-    border-radius: 5px;
-    z-index: 20;
+	.dropdownMenu {
+		display: none;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		background-color: #333;
+		list-style: none;
+		padding: 10px 0;
+		margin: 0;
+		border-radius: 5px;
+		z-index: 20;
 
-    li {
-      margin: 0;
-    }
+		li {
+			margin: 0;
+		}
 
-    a {
-      padding: 10px 20px;
-    }
+		a {
+			padding: 10px 20px;
+		}
 
-    .dropdown {
-      position: relative;
+		.dropdown {
+			position: relative;
 
-      .dropdownMenu {
-        top: 0;
-        left: 100%;
-        margin-left: 1px;
-      }
-    }
-  }
+			.dropdownMenu {
+				top: 0;
+				left: 100%;
+				margin-left: 1px;
+			}
+		}
+	}
 
-  .dropdown:hover {
-    .dropdownMenu {
-      display: block;
-      pointer-events: none;
-      animation: enablePointerEvents 0.01s forwards 0.01s;
-    }
+	.dropdown:hover {
+		.dropdownMenu {
+			display: block;
+			pointer-events: none;
+			animation: enablePointerEvents 0.01s forwards 0.01s;
+		}
 
-    > a {
-      .arrow {
-        transform: rotate(180deg);
-      }
-    }
-  }
+		> a {
+			.arrow {
+				transform: rotate(180deg);
+			}
+		}
+	}
 }
 
 @keyframes enablePointerEvents {
-  to {
-    pointer-events: auto;
-  }
+	to {
+		pointer-events: auto;
+	}
 }
 
 .noAnimation {
-  transition: none;
+	transition: none;
 }
 
 @media (max-width: 645px) {
-  header {
-    flex-direction: column;
-  }
+	header {
+		flex-direction: column;
+	}
 
-  .container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+	.container {
+		flex-direction: column;
+		align-items: flex-start;
+	}
 
-  .navList {
-    flex-direction: column;
-    width: 100%;
+	.navList {
+		flex-direction: column;
+		width: 100%;
 
-    li {
-      width: 100%;
-    }
-  }
+		li {
+			width: 100%;
+		}
+	}
 
-  .dropdownMenu {
-    margin-top: 10px;
-    height: auto;
-    position: static;
-  }
+	.dropdownMenu {
+		margin-top: 10px;
+		height: auto;
+		position: static;
+	}
 }

@@ -1,16 +1,16 @@
 import styles from './ItemsList.module.scss';
 import { useQuery } from '@tanstack/react-query';
 import { getAllItems } from '@/api/items/getAllItems';
-// import { Banner } from '@components/Banner';
+// import { Banner } from '@/components/Banner';
 // import bank from '@/assets/banners/bank.jpg';
-import { Currency, Item } from '@interfaces/Item.interface';
+import { Currency, Item } from '@/interfaces/Item.interface';
 import {
 	AccessoryCategoryLabels,
 	AccessorySubtypeLabels,
 	CurrencyLabels,
 } from '@/constants/ItemLabels';
 import { useEffect, useState } from 'react';
-import { SearchInput } from '@components/SearchInput';
+import { SearchInput } from '@/components/SearchInput';
 import placeholder from '@/assets/placeholder128.svg';
 // import { FiltersAndSorts } from './components/FiltersAndSorts';
 
@@ -69,7 +69,6 @@ export const ItemList = () => {
 									src={`/uploads/items/${item.itemId}.png`}
 									alt={item.itemName}
 									className={styles.image}
-									sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 25vw"
 									onError={(e) => {
 										(e.currentTarget as HTMLImageElement).src = placeholder;
 									}}
@@ -77,7 +76,7 @@ export const ItemList = () => {
 							</div>
 							<div className={styles.cardContent}>
 								<h3 className={styles.itemName}>{item.itemName}</h3>
-								<h1>{item.itemId}</h1>
+								{/* <h1>{item.itemId}</h1> */}
 
 								<div className={styles.metadata}>
 									<div className={styles.metaItem}>

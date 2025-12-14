@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './TransportSpecifics.module.scss';
-import Transport from '@interfaces/Transport.interface';
+import Transport from '@/interfaces/Transport.interface';
 import { DriveTypeLabels, FuelPrice, FuelTypeLabels } from '@/constants/transportLabels';
 
 interface TransportSpecificProps {

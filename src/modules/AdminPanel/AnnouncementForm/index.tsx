@@ -3,11 +3,16 @@ import { useForm, Controller } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import styles from './index.module.scss';
 import placeholder from '@/assets/placeholder.svg';
-import { AnnouncementType } from '@interfaces/Announcement.interface';
+import { AnnouncementType } from '@/interfaces/Announcement.interface';
 import { TYPE_LABELS } from './constants/announcement';
 import { NewsFormData } from './types/NewsFormData.interface';
 import { formatDateForDisplay } from './utils/date';
-import { useAnouncementMutation } from './hooks/useAnouncementMutation';
+import { useAnnouncementMutation } from './hooks/useAnouncementMutation';
+
+// ====================================================================
+// CONSTANTS
+// ====================================================================
+// TODO: Вынести в constants/announcement.ts
 
 const MAX_TITLE_LENGTH = 100;
 const MAX_DESCRIPTION_LENGTH = 500;
@@ -15,7 +20,14 @@ const MAX_DESCRIPTION_LENGTH = 500;
 const getTodayDateString = (): string => {
 	return new Date().toISOString().split('T')[0];
 };
-export const NewsForm = () => {
+
+// ====================================================================
+// MAIN COMPONENT
+// ====================================================================
+export const AnnouncementForm = () => {
+	// ================================================================
+	// FORM SETUP
+	// ================================================================
 	const {
 		control,
 		handleSubmit,
@@ -31,14 +43,14 @@ export const NewsForm = () => {
 			date: getTodayDateString(),
 			image: null,
 		},
-		mode: 'onChange',
+		mode: 'onChange', // Валидация при изменении
 	});
 
 	// Наблюдаем за всеми полями для preview
 	const watchedFields = watch();
 	const imageFile = watchedFields.image;
 
-	const { createAnnouncementMutation, uploadImageMutation } = useAnouncementMutation();
+	const { createAnnouncementMutation, uploadImageMutation } = useAnnouncementMutation();
 
 	// TODO: Можно вынести в хук useImagePreview(file)
 	const imagePreview = useMemo(() => {
@@ -62,14 +74,12 @@ export const NewsForm = () => {
 		(e: React.ChangeEvent<HTMLInputElement>) => {
 			const file = e.target.files?.[0];
 			if (file) {
-				// Валидация типа файла
 				if (!file.type.startsWith('image/')) {
 					toast.error('Пожалуйста, выберите изображение');
 					return;
 				}
 
-				// Опционально: валидация размера файла (например, макс 5MB)
-				const maxSize = 5 * 1024 * 1024; // 5MB
+				const maxSize = 5 * 1024 * 1024;
 				if (file.size > maxSize) {
 					toast.error('Размер файла не должен превышать 5MB');
 					return;
@@ -95,20 +105,23 @@ export const NewsForm = () => {
 					description: data.description,
 					date: new Date(data.date).toISOString(),
 				});
+				console.log(announcement);
 
 				// 2. Загружаем изображение, если есть
-				if (data.image) {
+				if (data.image && announcement.id) {
 					await uploadImageMutation.mutateAsync({
 						file: data.image,
-						announcementId: announcement.id,
+						title: announcement.id,
 					});
+				} else {
+					console.error(data.image, announcement.id);
 				}
 
 				// 3. Сбрасываем форму после успешной отправки
 				reset({
-					type: data.type, // Сохраняем текущий тип
-					title: '',
-					description: '',
+					type: announcement.type,
+					title: announcement.title, // берём из ответа сервера
+					description: announcement.description,
 					date: getTodayDateString(),
 					image: null,
 				});

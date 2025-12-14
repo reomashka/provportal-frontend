@@ -3,9 +3,9 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 
 import ReactMarkdown from 'react-markdown';
 
-import { ScrollToTop } from '@components/ScrollToTop';
+import { ScrollToTop } from '@/components/ScrollToTop';
 
-import { City, Job } from '@interfaces/Job.interface';
+import { City, Job } from '@/interfaces/Job.interface';
 import styles from './JobInfo.module.scss';
 import {
 	CircleFadingArrowUp,

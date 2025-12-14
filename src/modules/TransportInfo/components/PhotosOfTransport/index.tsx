@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './PhotosOfTransport.module.scss';
 import placeholder from '@/assets/sorryPlaceholder.svg';
-import Transport from '@interfaces/Transport.interface';
+import Transport from '@/interfaces/Transport.interface';
 
 interface PhotosOfTransportProps {
 	transportData: Transport | null;

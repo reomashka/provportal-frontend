@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom';
 import styles from './HeaderHome.module.scss';
-import logoHome from '@assets/logos/mainLogo.svg';
+import logoHome from '@/assets/logos/mainLogo.svg';
 
 export const HeaderHome = () => {
 	return (
@@ -7,9 +8,9 @@ export const HeaderHome = () => {
 			<div className={styles.containerHeader}>
 				<div className={styles.headerItem}>
 					<div className={styles.headerItemLogo}>
-						<a href="/home">
+						<Link to="/">
 							<img src={logoHome} alt="#" />
-						</a>
+						</Link>
 					</div>
 				</div>
 

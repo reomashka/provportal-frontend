@@ -9,7 +9,7 @@ import Transport, {
 	Showroom,
 	TransportClass,
 	TransportType,
-} from '@interfaces/Transport.interface';
+} from '@/interfaces/Transport.interface';
 export function DataGridTransport() {
 	const [transports, setTransports] = useState<Transport[]>([
 		{

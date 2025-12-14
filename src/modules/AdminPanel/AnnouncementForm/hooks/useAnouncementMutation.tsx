@@ -2,12 +2,12 @@ import { useMutation } from '@tanstack/react-query';
 import { CreateAnnouncementPayload } from '../types/CreateAnnouncementPayload.interface';
 import { CreateAnnouncementResponse } from '../types/CreateAnnouncementResponse.interface';
 
-import { createAnnouncement as createAnnouncementApi } from '@/api/announcement/createAnouncement';
+import { createAnnouncement as createAnnouncementApi } from '@/api/announcement/createAnnouncement';
 import { uploadFile as uploadFileApi } from '@/api/common/upload';
 
 import { toast } from 'react-toastify';
 
-export const useAnouncementMutation = () => {
+export const useAnnouncementMutation = () => {
 	const createAnnouncementMutation = useMutation<
 		CreateAnnouncementResponse,
 		Error,
@@ -25,9 +25,9 @@ export const useAnouncementMutation = () => {
 		},
 	});
 
-	const uploadImageMutation = useMutation<void, Error, { file: File; announcementId: string }>({
-		mutationFn: async ({ file, announcementId }) => {
-			await uploadFileApi(file, announcementId);
+	const uploadImageMutation = useMutation<void, Error, { file: File; title: string }>({
+		mutationFn: async ({ file, title }) => {
+			await uploadFileApi(file, title);
 		},
 		onError: (error) => {
 			toast.error('Ошибка при загрузке изображения');

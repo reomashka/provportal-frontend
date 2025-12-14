@@ -1,8 +1,8 @@
 import { lazy, Suspense } from 'react';
-import { AdminNavigationGridPage } from '@pages/AdminPanelPages/AdminNavigationGridPage';
-import { NewsFormPage } from '@pages/AdminPanelPages/NewsFormPage';
+import { AdminNavigationGridPage } from '@/pages/AdminPanelPages/AdminNavigationGridPage';
+import { NewsFormPage } from '@/pages/AdminPanelPages/AnnouncementFormPage';
 
-const DataGridTransportPage = lazy(() => import('@pages/AdminPanelPages/DataGridTransportPage'));
+const DataGridTransportPage = lazy(() => import('@/pages/AdminPanelPages/DataGridTransportPage'));
 
 export const PrivateRoutes = [
 	{

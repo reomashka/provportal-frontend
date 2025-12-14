@@ -1,5 +1,5 @@
 // import { ColumnDef } from '@tanstack/react-table';
-// import Transport from '@interfaces/Transport.interface';
+// import Transport from '@/interfaces/Transport.interface';
 
 // const columnsData: ColumnDef<Transport>[] = [
 //   {

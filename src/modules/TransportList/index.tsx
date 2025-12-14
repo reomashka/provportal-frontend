@@ -7,8 +7,8 @@ import styles from './TransportList.module.scss';
 
 // components
 import { TransportCard } from './components/TransportCard';
-import CardSkeleton from '@components/CardSkeleton';
-import { SearchInput } from '@components/SearchInput';
+import CardSkeleton from '@/components/CardSkeleton';
+import { SearchInput } from '@/components/SearchInput';
 
 // api
 import { useQuery } from '@tanstack/react-query';

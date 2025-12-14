@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx';
-import { INITIAL_FILTERS } from '@modules/TransportList/constants/FilterSort';
-import { FilterState } from '@modules/TransportList/interfaces/FilterSort.interface';
+import { INITIAL_FILTERS } from '@/modules/TransportList/constants/FilterSort';
+import { FilterState } from '@/modules/TransportList/interfaces/FilterSort.interface';
 
 class TransportFilterSortStore {
 	isOpen = false;

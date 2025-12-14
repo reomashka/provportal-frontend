@@ -2,21 +2,21 @@ import { Link } from 'react-router-dom';
 import styles from './header.module.scss';
 import { Flame } from 'lucide-react';
 
-import logo from '@assets/logos/mainLogo.svg';
+import logo from '@/assets/logos/mainLogo.svg';
 
 export const Header = () => {
 	return (
 		<header>
 			<div className={styles.container}>
 				<div className={styles.logo}>
-					<Link to="/home">
+					<Link to="/">
 						<img src={logo} alt="Logo"></img>
 					</Link>
 				</div>
 				<nav>
 					<ul className={styles.navList}>
 						<li>
-							<Link to="/home">Домой</Link>
+							<Link to="/">Домой</Link>
 						</li>
 						<li>
 							<Link to="/adm">Админка</Link>

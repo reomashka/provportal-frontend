@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Timer, Gauge, Warehouse, Fuel, ClockAlert, Users, Grid2x2 } from 'lucide-react';
 import styles from './TransportCard.module.scss';
-import Transport, { TransportClass } from '@interfaces/Transport.interface';
+import Transport, { TransportClass } from '@/interfaces/Transport.interface';
 import placeholder from '@/assets/sorryPlaceholder.svg';
 import { ShowroomLabels } from '@/constants/transportLabels';
 

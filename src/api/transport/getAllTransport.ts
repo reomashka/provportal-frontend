@@ -1,4 +1,4 @@
-import Transport from '@interfaces/Transport.interface';
+import Transport from '@/interfaces/Transport.interface';
 
 export const getAllTransport = async (transportClass: string): Promise<Transport[]> => {
 	const response = await fetch(`/api/transport/get-all?class=${transportClass}`, {

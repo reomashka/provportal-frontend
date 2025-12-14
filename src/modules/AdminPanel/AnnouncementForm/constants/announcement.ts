@@ -1,4 +1,4 @@
-import { AnnouncementType } from '@interfaces/Announcement.interface';
+import { AnnouncementType } from '@/interfaces/Announcement.interface';
 
 export const TYPE_LABELS: Record<AnnouncementType, string> = {
 	[AnnouncementType.NEWS]: 'Новости',

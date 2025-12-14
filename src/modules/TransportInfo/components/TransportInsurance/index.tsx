@@ -1,4 +1,4 @@
-import Transport from '@interfaces/Transport.interface';
+import Transport from '@/interfaces/Transport.interface';
 import styles from './TransportInsurance.module.scss';
 import { calculateInsurance } from '../../utils/calculateInsurance';
 import React from 'react';

@@ -1,6 +1,6 @@
 import styles from './MiniInfo.module.scss';
 
-import Transport from '@interfaces/Transport.interface';
+import Transport from '@/interfaces/Transport.interface';
 import {
 	CityLabels,
 	CountryOriginLabels,

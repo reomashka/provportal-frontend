@@ -1,4 +1,4 @@
-import { AnnouncementType } from '@interfaces/Announcement.interface';
+import { AnnouncementType } from '@/interfaces/Announcement.interface';
 
 export interface CreateAnnouncement {
 	title: string;
@@ -8,7 +8,7 @@ export interface CreateAnnouncement {
 }
 
 export async function createAnnouncement(data: CreateAnnouncement) {
-	const res = await fetch('/api/announcement', {
+	const res = await fetch('/api/announcement/create', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(data),

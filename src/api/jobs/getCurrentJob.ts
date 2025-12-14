@@ -1,4 +1,4 @@
-import { Job } from '@interfaces/Job.interface';
+import { Job } from '@/interfaces/Job.interface';
 
 export const getCurrentJob = async (id: number): Promise<Job> => {
 	const response = await fetch(`/api/jobs/${id}`, {

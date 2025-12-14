@@ -1,4 +1,4 @@
-import Transport from '@interfaces/Transport.interface';
+import Transport from '@/interfaces/Transport.interface';
 import styles from './TransportStages.module.scss';
 
 interface Props {

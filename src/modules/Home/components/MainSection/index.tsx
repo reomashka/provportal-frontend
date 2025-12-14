@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-import iconCar from '@assets/homePage/main-section-img/mc-car.svg';
-import iconCard from '@assets/homePage/main-section-img/mc-card.svg';
-import iconFraction from '@assets/homePage/main-section-img/mc-fraction.svg';
-import iconHome from '@assets/homePage/main-section-img/mc-home.svg';
-import iconServer from '@assets/homePage/main-section-img/mc-server.svg';
-import iconWork from '@assets/homePage/main-section-img/mc-work.svg';
+import iconCar from '@/assets/homePage/main-section-img/mc-car.svg';
+import iconCard from '@/assets/homePage/main-section-img/mc-card.svg';
+import iconFraction from '@/assets/homePage/main-section-img/mc-fraction.svg';
+import iconHome from '@/assets/homePage/main-section-img/mc-home.svg';
+import iconServer from '@/assets/homePage/main-section-img/mc-server.svg';
+import iconWork from '@/assets/homePage/main-section-img/mc-work.svg';
 
 import styles from './MainSection.module.scss';
 

@@ -1,18 +1,18 @@
-import { Header } from '@components/Header';
-import { Banner } from '@components/Banner';
-import { SortButtons } from '@modules/TransportList/components/FilterAndSort';
+import { Header } from '@/components/Header';
+import { Banner } from '@/components/Banner';
+import { SortButtons } from '@/modules/TransportList/components/FilterAndSort';
 import { TransportList } from '@/modules/TransportList';
-import { ScrollToTop } from '@components/ScrollToTop';
-import { Footer } from '@components/Footer';
-import TransportTypeProps from '@interfaces/TransportTypeProps.interface';
+import { ScrollToTop } from '@/components/ScrollToTop';
+import { Footer } from '@/components/Footer';
+import TransportTypeProps from '@/interfaces/TransportTypeProps.interface';
 
 import { TransportListPageMetadata } from './TransportListPage.metadata';
 
-import bank from '@assets/banners/bank.jpg';
+import bank from '@/assets/banners/bank.jpg';
 import cargoBanner from '@/assets/banners/cargo.webp';
 import guvdBanner from '@/assets/banners/house.png';
 import passenger from '@/assets/banners/passenger.webp';
-import { TransportClass } from '@interfaces/Transport.interface';
+import { TransportClass } from '@/interfaces/Transport.interface';
 
 const transportTypeMap: Record<TransportClass, string> = {
 	[TransportClass.MOTO]: 'Мотоциклы',
