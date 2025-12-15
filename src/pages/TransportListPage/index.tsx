@@ -6,14 +6,12 @@ import { ScrollToTop } from '@/components/ScrollToTop';
 import { Footer } from '@/components/Footer';
 import TransportTypeProps from '@/interfaces/TransportTypeProps.interface';
 
-import { TransportListPageMetadata } from './TransportListPage.metadata';
-
 import bank from '@/assets/banners/bank.jpg';
 import cargoBanner from '@/assets/banners/cargo.webp';
 import guvdBanner from '@/assets/banners/house.png';
 import passenger from '@/assets/banners/passenger.webp';
 import { TransportClass } from '@/interfaces/Transport.interface';
-
+import { MetadataWrapper } from '@/components/MetadataWrapper';
 const transportTypeMap: Record<TransportClass, string> = {
 	[TransportClass.MOTO]: 'Мотоциклы',
 	[TransportClass.PASSENGER]: 'Легковой транспорт',
@@ -37,7 +35,10 @@ const rarityType: Record<TransportClass, string> = {
 export const TransportListPage = ({ transportType }: TransportTypeProps) => {
 	return (
 		<>
-			<TransportListPageMetadata />
+			<MetadataWrapper
+				title="Транспорт | ProvPortal"
+				description="Полная информация обо всех транспортных средствах сервера МТА Провинция. Каталог, характеристики и статистика транспорта на ProvPortal."
+			/>
 			<Header />
 			<main>
 				<div className="container">

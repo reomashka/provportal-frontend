@@ -4,6 +4,8 @@ import { getAnnouncements } from '@/api/announcement/getAnnouncements';
 import { Announcement } from '@/interfaces/Announcement.interface';
 
 import placeholder from '@/assets/placeholder.svg';
+import MarkdownWrapper from '@/components/MarkdownWrapper';
+import ReactMarkdown from 'react-markdown';
 
 export const NewsSection = () => {
 	const { data, isLoading } = useQuery<Announcement[]>({
@@ -45,7 +47,9 @@ export const NewsSection = () => {
 						<div className={styles.cardFooter}>
 							<p>
 								<b>{item.title}</b>
-								{item.description}
+								<MarkdownWrapper>
+									<ReactMarkdown>{item.description}</ReactMarkdown>
+								</MarkdownWrapper>
 							</p>
 						</div>
 					</div>

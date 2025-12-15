@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /adm/*
+
+Sitemap: https://provportal.ru/sitemap.xml

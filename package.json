@@ -45,6 +45,7 @@
 		"react-hook-form": "^7.64.0",
 		"react-markdown": "^10.1.0",
 		"react-router-dom": "^7.1.5",
+		"react-snowfall": "^2.4.0",
 		"react-toastify": "^11.0.5",
 		"zod": "^4.1.11"
 	}

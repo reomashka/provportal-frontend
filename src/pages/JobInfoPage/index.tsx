@@ -1,12 +1,15 @@
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { JobInfo } from '@/modules/JobInfo';
-import { JobInfoPageMetadata } from './JobInfoPage.metadata';
+import { MetadataWrapper } from '@/components/MetadataWrapper';
 
 export const JobInfoPage = () => {
 	return (
 		<>
-			<JobInfoPageMetadata />
+			<MetadataWrapper
+				title="Транспорт | ProvPortal"
+				description="Полная информация обо всех транспортных средствах сервера МТА Провинция. Каталог, характеристики и статистика транспорта на ProvPortal."
+			/>
 			<Header />
 			<main>
 				<div className="container">
