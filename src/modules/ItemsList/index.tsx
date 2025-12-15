@@ -32,11 +32,11 @@ export const ItemList = () => {
 		const handleHash = () => {
 			const hash = window.location.hash;
 
-			if (hash.startsWith('#item-')) {
-				const id = Number(hash.replace('#item-', ''));
+			if (hash.startsWith('#id-')) {
+				const id = Number(hash.replace('#id-', ''));
 				setActiveId(id);
 
-				const el = document.getElementById(`item-${id}`);
+				const el = document.getElementById(`id-${id}`);
 				el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
 			}
 		};

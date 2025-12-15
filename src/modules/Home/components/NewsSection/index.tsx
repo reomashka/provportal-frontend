@@ -32,11 +32,13 @@ export const NewsSection = () => {
 									{item.type === 'NEWS' ? 'Новости' : 'Обновление'}
 								</p>
 								<p className={styles.cardSubtitle}>
-									{new Intl.DateTimeFormat('ru-RU', {
-										day: 'numeric',
-										month: 'numeric',
-										year: 'numeric',
-									}).format(new Date(item.date))}
+									{item.date
+										? new Intl.DateTimeFormat('ru-RU', {
+												day: 'numeric',
+												month: 'numeric',
+												year: 'numeric',
+											}).format(new Date(item.date))
+										: '—'}
 								</p>
 							</div>
 						</div>
