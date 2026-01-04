@@ -1,6 +1,6 @@
-import { TransportListPage } from '../pages/TransportListPage';
-import { TransportInfoPage } from '../pages/TransportInfoPage';
 import { TransportClass } from '@/interfaces/Transport.interface';
+import { TransportListPage } from '@/pages/transport';
+import { TransportDetailsPage } from '@/pages/transport/[id]';
 
 type TransportType = TransportClass;
 
@@ -16,7 +16,7 @@ export const TransportRoutes = [
 			})),
 			{
 				path: ':id',
-				element: <TransportInfoPage />,
+				element: <TransportDetailsPage />,
 			},
 		],
 	},

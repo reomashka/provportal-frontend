@@ -1,8 +1,7 @@
-import { lazy, Suspense } from 'react';
-import { AdminNavigationGridPage } from '@/pages/AdminPanelPages/AdminNavigationGridPage';
-import { NewsFormPage } from '@/pages/AdminPanelPages/AnnouncementFormPage';
+import { Suspense } from 'react';
 
-const DataGridTransportPage = lazy(() => import('@/pages/AdminPanelPages/DataGridTransportPage'));
+import { AnnouncementFormPage } from '@/pages/admin/announcement-form';
+import { AdminNavigationGridPage } from '@/pages/admin/navigation';
 
 export const PrivateRoutes = [
 	{
@@ -14,18 +13,10 @@ export const PrivateRoutes = [
 		),
 	},
 	{
-		path: 'adm/transport',
-		element: (
-			<Suspense fallback={<div>Loading...</div>}>
-				<DataGridTransportPage />
-			</Suspense>
-		),
-	},
-	{
 		path: 'adm/update',
 		element: (
 			<Suspense fallback={<div>Loading...</div>}>
-				<NewsFormPage />
+				<AnnouncementFormPage />
 			</Suspense>
 		),
 	},

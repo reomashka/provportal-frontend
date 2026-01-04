@@ -1,10 +1,10 @@
 import {
+	City,
+	CountryOrigin,
 	DriveType,
 	FuelType,
-	TransportType,
 	Showroom,
-	CountryOrigin,
-	City,
+	TransportType,
 } from '@/interfaces/Transport.interface';
 
 export const DriveTypeLabels: Record<DriveType, string> = {

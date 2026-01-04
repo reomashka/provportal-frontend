@@ -1,0 +1,115 @@
+@media (min-width: 992px) {
+	.cardSpecifics {
+		flex: 0 0 auto;
+		width: 33.33333333%;
+	}
+}
+
+.textCenter {
+	text-align: center !important;
+}
+
+.textLeft {
+	text-align: left;
+}
+
+.textRight {
+	text-align: right;
+}
+
+.title {
+	color: #34f091;
+	font-weight: 700;
+	margin-bottom: 15px;
+	margin-top: 15px;
+	font-size: 1.25rem;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	border-bottom: 2px solid #34f091;
+	padding-bottom: 5px;
+}
+
+.card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: #1e2229;
+	border-radius: 12px;
+	border: 1px solid rgba(52, 240, 145, 0.2);
+	line-height: 1.6;
+	overflow: hidden;
+	padding: 20px;
+	box-shadow:
+		0 4px 6px rgba(0, 0, 0, 0.1),
+		0 1px 3px rgba(0, 0, 0, 0.08);
+	transition: all 0.3s ease;
+}
+
+.card:hover {
+	transform: translateY(-5px);
+	box-shadow:
+		0 6px 12px rgba(0, 0, 0, 0.15),
+		0 2px 4px rgba(0, 0, 0, 0.1);
+	border-color: rgba(52, 240, 145, 0.4);
+}
+
+.row {
+	--bs-gutter-x: 1rem;
+	--bs-gutter-y: 0;
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 auto;
+	gap: 15px;
+}
+
+.row > * {
+	flex-shrink: 0;
+	width: 100%;
+	max-width: 100%;
+}
+
+.table {
+	width: 100%;
+	margin-bottom: 1rem;
+	color: #e0e0e0;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.table thead {
+	background-color: rgba(52, 240, 145, 0.1);
+	border-bottom: 2px solid #34f091;
+}
+
+.table th {
+	color: #34f091;
+	font-weight: 600;
+	text-transform: uppercase;
+	padding: 7px 15px;
+}
+
+.table td {
+	padding: 7px 5px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tableHover > tbody > tr:hover {
+	background-color: rgba(52, 240, 145, 0.05);
+	transition: background-color 0.3s ease;
+}
+
+.tableHover > tbody > tr:hover > * {
+	color: #34f091;
+}
+
+@media (max-width: 768px) {
+	.card {
+		padding: 15px;
+	}
+
+	.table {
+		font-size: 11px;
+	}
+}

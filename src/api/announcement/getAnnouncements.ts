@@ -1,5 +1,5 @@
 export const getAnnouncements = async () => {
-	const response = await fetch(`/api/announcement`, {
+	const response = await fetch(`/api/announcements`, {
 		method: 'GET',
 		headers: { 'Content-Type': 'application/json' },
 	});

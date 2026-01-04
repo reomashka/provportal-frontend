@@ -1,0 +1,33 @@
+.row {
+	--bs-gutter-x: 1rem;
+	--bs-gutter-y: 0;
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: calc(-1 * var(--bs-gutter-y));
+
+	> * {
+		flex-shrink: 0;
+		width: 100%;
+		max-width: 100%;
+		padding-right: calc(var(--bs-gutter-x) * 0.5);
+		padding-left: calc(var(--bs-gutter-x) * 0.5);
+		margin-top: var(--bs-gutter-y);
+	}
+}
+
+@media (min-width: 992px) {
+	.selectionOfInfo {
+		flex: 0 0 auto;
+		width: 66.66666667%;
+	}
+}
+
+:global {
+	.wrapper {
+		*,
+		::after,
+		::before {
+			box-sizing: border-box;
+		}
+	}
+}

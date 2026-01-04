@@ -1,6 +1,6 @@
 export default interface Transport {
 	id: number;
-	nameAuto: string;
+	name: string;
 	price?: number | null;
 	fullSpeed?: number | null;
 	speed100Time?: number | null;

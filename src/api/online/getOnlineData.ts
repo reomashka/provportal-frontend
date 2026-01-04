@@ -1,4 +1,9 @@
-export const getOnlineData = async () => {
+export interface ServerData {
+	server: number;
+	online: number;
+	slots: number;
+}
+export const getOnlineData = async (): Promise<ServerData[]> => {
 	const response = await fetch(`/api/online`, {
 		method: 'GET',
 		headers: { 'Content-Type': 'application/json' },

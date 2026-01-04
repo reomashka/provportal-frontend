@@ -1,0 +1,100 @@
+import { useQuery } from '@tanstack/react-query';
+import { motion } from 'framer-motion';
+import { useCallback, useMemo } from 'react';
+
+import { getOnlineData, ServerData } from '@/api/online/getOnlineData';
+import s1 from '@/assets/homePage/section-gms-img/s1.png';
+import s2 from '@/assets/homePage/section-gms-img/s2.png';
+import s3 from '@/assets/homePage/section-gms-img/s3.png';
+import s4 from '@/assets/homePage/section-gms-img/s4.png';
+import s5 from '@/assets/homePage/section-gms-img/s5.png';
+import s6 from '@/assets/homePage/section-gms-img/s6.png';
+import s7 from '@/assets/homePage/section-gms-img/s7.png';
+import vkLogo from '@/assets/homePage/section-gms-img/Vk-game.png';
+
+import OnlineSkeleton from '../OnlineSectionSkeleton';
+import styles from './OnlineSection.module.scss';
+
+const serverLogos = {
+	1: s1,
+	2: s2,
+	3: s3,
+	4: s4,
+	5: s5,
+	6: s6,
+	7: s7,
+} as const;
+
+const serverVkLinks = {
+	1: 'province_one',
+	2: '2province',
+	3: 'provinceserver3',
+	4: 'provincefour',
+	5: 'province_rp5',
+	6: 'province6server',
+	7: 'provinceseven',
+} as const;
+
+interface ServerCardProps {
+	serverData: ServerData;
+}
+
+const ServerCard = ({ serverData }: ServerCardProps) => {
+	const { server, online, slots } = serverData;
+	const logo = serverLogos[server as keyof typeof serverLogos];
+	const vkLink = serverVkLinks[server as keyof typeof serverVkLinks];
+
+	if (!logo) return null;
+
+	return (
+		<motion.div
+			key={server}
+			className={styles.transportCard}
+			initial={{ opacity: 0, y: 5 }}
+			animate={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.3, delay: server * 0.1 }}>
+			<div className={styles.gameServices_card}>
+				<img className={styles.gameServices_card_img} src={logo} alt={`Server ${server}`} />
+				<div className={styles.gameServices_card_text_block}>
+					<p>{server} сервер</p>
+					<span>
+						Онлайн: {online} / {slots}
+					</span>
+				</div>
+				{vkLink && (
+					<a href={`https://vk.com/${vkLink}`} target="_blank" rel="noopener noreferrer">
+						<img src={vkLogo} width={40} height={40} alt="VK" />
+					</a>
+				)}
+			</div>
+		</motion.div>
+	);
+};
+
+export const OnlineSection = () => {
+	const { data: onlineData, isLoading } = useQuery<ServerData[]>({
+		queryKey: ['onlineData'],
+		queryFn: getOnlineData,
+	});
+
+	const servers = useMemo((): ServerData[] => {
+		if (!onlineData) return [];
+		return onlineData;
+	}, [onlineData]);
+
+	const renderServers = useCallback(() => {
+		if (isLoading) {
+			return Array.from({ length: 3 }).map((_, index) => <OnlineSkeleton key={index} />);
+		}
+		return servers.map((serverData) => (
+			<ServerCard key={serverData.server} serverData={serverData} />
+		));
+	}, [servers, isLoading]);
+
+	return (
+		<section className={styles.gameServices}>
+			{/* <p className={styles.gameServices_title}>Игровые серверы</p> */}
+			<div className={styles.gameServices_block_card}>{renderServers()}</div>
+		</section>
+	);
+};

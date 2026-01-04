@@ -1,5 +1,5 @@
-import { JobsListPage } from '../pages/JobsListPage';
-import { JobInfoPage } from '../pages/JobInfoPage';
+import { JobsListPage } from '@/pages/jobs';
+import { JobDetailsPage } from '@/pages/jobs/[id]';
 
 export const JobRoutes = [
 	{
@@ -11,7 +11,7 @@ export const JobRoutes = [
 			},
 			{
 				path: ':id/:city',
-				element: <JobInfoPage />,
+				element: <JobDetailsPage />,
 			},
 		],
 	},

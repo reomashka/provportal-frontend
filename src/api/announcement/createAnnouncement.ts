@@ -8,7 +8,7 @@ export interface CreateAnnouncement {
 }
 
 export async function createAnnouncement(data: CreateAnnouncement) {
-	const res = await fetch('/api/announcement/create', {
+	const res = await fetch('/api/announcements/create', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(data),

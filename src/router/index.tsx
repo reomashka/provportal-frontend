@@ -1,9 +1,10 @@
-import { createBrowserRouter, RouterProvider, Outlet, ScrollRestoration } from 'react-router-dom';
-import { PublicRoutes } from './publicRoutes';
-import { PrivateRoutes } from './privateRoutes';
-import { TransportRoutes } from './transportRoutes';
+import { createBrowserRouter, Outlet, RouterProvider, ScrollRestoration } from 'react-router-dom';
+
+import { NotFoundPage } from '../pages/not-found';
 import { JobRoutes } from './jobRoutes';
-import { NotFoundPage } from '../pages/NotFoundPage';
+import { PrivateRoutes } from './privateRoutes';
+import { PublicRoutes } from './publicRoutes';
+import { TransportRoutes } from './transportRoutes';
 
 const routes = [
 	{
