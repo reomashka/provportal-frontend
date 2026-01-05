@@ -64,7 +64,7 @@ export const MiniInfo = ({ transportData }: MiniInfoProps) => {
 			<div className={styles.row}>
 				<div className={styles.col}>
 					<h2 className={`${styles.textCenter} ${styles.title}`}>
-						{transportData?.nameAuto || 'Название автомобиля'}
+						{transportData?.name || 'Название автомобиля'}
 					</h2>
 					<h5 className={styles.textCenter}>Описание автомобиля</h5>
 
