@@ -80,35 +80,29 @@ export const TransportSpecific = ({ transportData }: TransportSpecificProps) => 
 
 	return (
 		<div className={styles.cardSpecifics}>
-			<div className={styles.textCenter}>
+			<div className={styles['text-align--center']}>
 				<h2 className={styles.title}>Характеристики</h2>
 				<div className={styles.card}>
 					<div className={styles.row}>
-						<table className={`${styles.table} ${styles.tableHover}`}>
+						<table className={`${styles.table} ${styles['table-hover']}`}>
 							<thead>
 								<tr>
-									<td className={styles.textLeft}>
-										<b>Характеристика</b>
-									</td>
-									<td className={styles.textRight}>
-										<b>Значение</b>
-									</td>
+									<th className={styles['text-align--left']}>Характеристика</th>
+									<th className={styles['text-align--right']}>Значение</th>
 								</tr>
 							</thead>
 							<tbody>
-								{tableData.map((section, index) => (
-									<React.Fragment key={`section-${index}`}>
+								{tableData.map((section, i) => (
+									<React.Fragment key={i}>
 										<tr>
-											<td colSpan={2}>
-												<b className={styles.title}>{section.title}</b>
+											<td colSpan={2} className={styles.title}>
+												{section.title}
 											</td>
 										</tr>
-										{section.rows.map((row, rowIndex) => (
-											<tr key={`row-${rowIndex}`}>
-												<td className={styles.textLeft}>
-													<b>{row.label}</b>
-												</td>
-												<td className={styles.textRight}>{row.value}</td>
+										{section.rows.map((row, j) => (
+											<tr key={j}>
+												<td className={styles['text-align--left']}>{row.label}</td>
+												<td className={styles['text-align--right']}>{row.value}</td>
 											</tr>
 										))}
 									</React.Fragment>

@@ -21,17 +21,23 @@ export default interface Transport {
 	city?: City | null;
 	country?: CountryOrigin | null;
 	stageCounter?: number | null;
-	paintInter?: string | null;
-	paintFirst?: string | null;
-	paintSecond?: string | null;
-	paintThird?: string | null;
-	antichrome?: boolean | null;
-	accessories?: string | null;
-	rims?: string | null;
 	gosCostOld?: number[];
 	class?: TransportClass | null;
 	units?: number | null;
+	customization: TransportCustomization;
 }
+
+export type TransportCustomization = {
+	paint: {
+		interior?: string;
+		primary: string | null;
+		secondary: string | null;
+		tertiary: string | null;
+		antichrome?: boolean;
+	};
+	accessories: { name: string; price: number }[];
+	rims?: string;
+};
 
 // TransportClass
 export enum TransportClass {

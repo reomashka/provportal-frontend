@@ -7,108 +7,85 @@ interface Props {
 }
 
 export const TransportTuning = ({ transportData }: Props) => {
+	const paint = transportData?.customization.paint;
+	const accessories = transportData?.customization.accessories;
+
 	return (
 		<div className={styles.textCenter}>
 			<h2 className={styles.title}>Внешний тюнинг</h2>
 
 			<div className={styles.card}>
-				<div>
-					<div>
-						<ul className={styles.listUnstyled}>
-							<table className={`${styles.table} ${styles.tableHover}`}>
-								<thead>
-									<td className="td1">
-										<b>Название элемента</b>
-									</td>
+				<table className={`${styles.table} ${styles.tableHover}`}>
+					<thead>
+						<tr>
+							<th className={styles.colName}>Название элемента</th>
+							<th>Доступность</th>
+						</tr>
+					</thead>
 
-									<td>
-										<b>Доступность</b>
-									</td>
-								</thead>
+					<tbody>
+						<tr>
+							<td colSpan={2} className={styles.sectionTitle}>
+								Стайлинг
+							</td>
+						</tr>
 
-								<tbody>
-									<tr>
-										<td colSpan={2}>
-											<b className={styles.title}>Стайлинг</b>
-										</td>
-									</tr>
+						<tr>
+							<td className={styles.colName}>Первый цвет</td>
+							<td>{paint?.primary ?? 'Недоступно'}</td>
+						</tr>
 
-									<tr>
-										<td className="td1">
-											<b>Первый цвет</b>
-										</td>
-										<td>{transportData?.paintFirst ? 'Есть' : 'Нет'}</td>
-									</tr>
+						<tr>
+							<td className={styles.colName}>Второй цвет</td>
+							<td>{paint?.secondary ?? 'Недоступно'}</td>
+						</tr>
 
-									<tr>
-										<td className="td1">
-											<b>Второй цвет</b>
-										</td>
+						<tr>
+							<td className={styles.colName}>Третий цвет</td>
+							<td>{paint?.tertiary ?? 'Недоступно'}</td>
+						</tr>
 
-										<td>{transportData?.paintSecond ? 'Есть' : 'Нет'}</td>
-									</tr>
+						<tr>
+							<td className={styles.colName}>Покраска салона</td>
+							<td>{paint?.interior ?? 'Недоступно'}</td>
+						</tr>
 
-									<tr>
-										<td className="td1">
-											<b>Третий цвет</b>
-										</td>
-										<td>{transportData?.paintThird ? 'Есть' : 'Нет'}</td>
-									</tr>
+						<tr>
+							<td className={styles.colName}>Антихром</td>
+							<td>{paint?.antichrome ? 'Доступно' : 'Недоступно'}</td>
+						</tr>
 
-									<tr>
-										<td colSpan={2}>
-											<b className={styles.title}> -</b>
-										</td>
-									</tr>
+						<tr>
+							<td colSpan={2} className={styles.sectionTitle}>
+								Колёса
+							</td>
+						</tr>
 
-									<tr>
-										<td className="td1">
-											<b>Покраска салона</b>
-										</td>
+						<tr>
+							<td className={styles.colName}>Доступные диски</td>
+							<td>{transportData?.customization.rims ?? '—'}</td>
+						</tr>
 
-										<td>{transportData?.paintInter}</td>
-									</tr>
+						<tr>
+							<td colSpan={2} className={styles.sectionTitle}>
+								Разное
+							</td>
+						</tr>
 
-									<tr>
-										<td className="td1">
-											<b>Антихром</b>
-										</td>
-
-										<td>{transportData?.antichrome ? 'Да' : 'Нет'}</td>
-									</tr>
-
-									<tr>
-										<td colSpan={2}>
-											<b className={styles.title}>Колеса</b>
-										</td>
-									</tr>
-
-									<tr>
-										<td className="td1">
-											<b>Доступные диски</b>
-										</td>
-
-										<td>{transportData?.rims}</td>
-									</tr>
-
-									<tr>
-										<td colSpan={2}>
-											<b className={styles.title}>Разное</b>
-										</td>
-									</tr>
-
-									<tr>
-										<td className="td1">
-											<b>Аксессуары</b>
-										</td>
-
-										<td>{transportData?.accessories}</td>
-									</tr>
-								</tbody>
-							</table>
-						</ul>
-					</div>
-				</div>
+						<tr>
+							<td className={styles.colName}>Аксессуары</td>
+							<td>
+								{accessories?.length
+									? accessories.map((acc) => (
+											<div key={acc.name}>
+												{acc.name} — {acc.price.toLocaleString('ru-RU')} ₽
+											</div>
+										))
+									: '—'}
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	);

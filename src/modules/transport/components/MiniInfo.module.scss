@@ -1,8 +1,8 @@
 @media (min-width: 768px) {
 	.cardMiniInfo {
 		flex: 0 0 auto;
-		width: 33.33333333%;
-		padding: 15px;
+		width: 33%;
+		// padding: 15px;
 		transition:
 			transform 0.3s ease,
 			box-shadow 0.3s ease;
@@ -26,13 +26,9 @@
 	margin-top: calc(-1 * var(--bs-gutter-y));
 	margin-right: calc(-0.5 * var(--bs-gutter-x));
 	margin-left: calc(-0.5 * var(--bs-gutter-x));
-	// margin-top: -20px;
 }
 
 .row > * {
-	flex-shrink: 0;
-	width: 100%;
-	max-width: 100%;
 	padding-right: calc(var(--bs-gutter-x) * 0.5);
 	padding-left: calc(var(--bs-gutter-x) * 0.5);
 	margin-top: var(--bs-gutter-y);
@@ -60,11 +56,13 @@
 }
 
 .title {
-	color: #34f091;
-	font-weight: 700;
+	color: var(--text-color-transport);
+	font-weight: var(--title-weight-transport);
+	font-size: var(--title-size-transport);
+	border-bottom: var(--title-border-bottom-transport);
+
 	margin-bottom: 15px;
 	margin-top: 20px;
-	font-size: 20px;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -83,7 +81,7 @@
 	color: #ffffff;
 	vertical-align: middle;
 	border-color: rgba(255, 255, 255, 0.1);
-	border-collapse: separate;
+	border-collapse: collapse;
 	border-spacing: 0;
 	font-size: 14px;
 	border-radius: 10px;
