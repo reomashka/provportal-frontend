@@ -1,19 +1,7 @@
 import { Check, X } from 'lucide-react';
-import styles from './TransportTuning.module.scss';
 
-interface Transport {
-	customization: {
-		paint?: {
-			primary?: boolean;
-			secondary?: boolean;
-			tertiary?: boolean;
-			interior?: boolean;
-			antichrome?: boolean;
-		};
-		rims?: string;
-		accessories?: Array<{ name: string; price: number }>;
-	};
-}
+import styles from './TransportTuning.module.scss';
+import Transport from '@/interfaces/Transport.interface';
 
 interface Props {
 	transportData: Transport | null;

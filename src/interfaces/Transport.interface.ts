@@ -29,14 +29,14 @@ export default interface Transport {
 
 export type TransportCustomization = {
 	paint: {
-		interior?: string;
-		primary: string | null;
-		secondary: string | null;
-		tertiary: string | null;
-		antichrome?: boolean;
+		interior: boolean;
+		primary: boolean;
+		secondary: boolean;
+		tertiary: boolean;
+		antichrome: boolean;
 	};
 	accessories: { name: string; price: number }[];
-	rims?: string;
+	rims: string | null;
 };
 
 // TransportClass
