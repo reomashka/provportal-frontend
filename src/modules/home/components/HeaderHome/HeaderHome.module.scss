@@ -110,12 +110,7 @@
 		content: '';
 		position: absolute;
 		inset: -2px;
-		background: linear-gradient(
-			135deg,
-			hsla(124, 100%, 25%, 0.5),
-			hsla(120, 100%, 19%, 0.5),
-			hsla(100, 100%, 19%, 0.5)
-		);
+		background: linear-gradient(135deg, #34f091);
 		border-radius: inherit;
 		z-index: -1;
 		opacity: 0;
@@ -179,62 +174,5 @@
 	}
 	100% {
 		transform: translateX(200%) rotate(45deg);
-	}
-}
-
-// Вариант с более агрессивным стилем (раскомментируй если нужен)
-.authLinkAggressive {
-	position: relative;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	padding: 1rem 2.5rem;
-	font-weight: 700;
-	font-size: 0.9375rem;
-	text-decoration: none;
-	text-transform: uppercase;
-	letter-spacing: 0.05em;
-	border-radius: 0.5rem;
-	overflow: hidden;
-	background: linear-gradient(135deg, hsl(221 83% 53%), hsl(262 83% 58%));
-	border: 0;
-	box-shadow:
-		0 0 20px hsl(221 83% 53% / 0.4),
-		0 4px 12px rgb(0 0 0 / 0.5),
-		inset 0 1px 0 rgb(255 255 255 / 0.2);
-	transition: all 0.3s ease;
-
-	p {
-		position: relative;
-		z-index: 2;
-		margin: 0;
-		color: white;
-		text-shadow: 0 1px 2px rgb(0 0 0 / 0.3);
-	}
-
-	&::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		background: linear-gradient(135deg, hsl(262 83% 58%), hsl(221 83% 53%));
-		opacity: 0;
-		transition: opacity 0.3s ease;
-		z-index: 1;
-	}
-
-	&:hover {
-		transform: translateY(-2px) scale(1.02);
-		box-shadow:
-			0 0 30px hsl(221 83% 53% / 0.6),
-			0 8px 20px rgb(0 0 0 / 0.6),
-			inset 0 1px 0 rgb(255 255 255 / 0.3);
-
-		&::before {
-			opacity: 1;
-		}
-	}
-
-	&:active {
-		transform: translateY(0) scale(1);
 	}
 }
